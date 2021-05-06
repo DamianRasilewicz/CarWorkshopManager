@@ -10,4 +10,8 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column
+    private String firstName;
+    private String lastName;
+
 }
