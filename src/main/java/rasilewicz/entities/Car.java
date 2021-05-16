@@ -1,9 +1,12 @@
 package rasilewicz.entities;
 
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
 @Table(name = "cars")
 public class Car {
 
