@@ -1,4 +1,4 @@
-package rasilewicz.controllers;
+package rasilewicz.car_workshop_manager.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
