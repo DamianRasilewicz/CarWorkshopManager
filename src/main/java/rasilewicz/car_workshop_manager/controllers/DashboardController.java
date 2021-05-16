@@ -5,11 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MainPagesController {
+public class DashboardController {
 
-    @GetMapping("/")
+    @GetMapping("/dashboard")
     public String index(Model model){
 
-        return "mainPages/index";
+        return "dashboardPages/dashboard";
     }
 }
