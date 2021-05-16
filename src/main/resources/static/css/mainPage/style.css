@@ -743,16 +743,16 @@ ul.navbar-nav > li.active > a {
   height: 30px;
 }
 
-/* header right */
-.header-right {
-  float: right;
+/* header left */
+.header-left {
+  float: left;
 }
 
 ul.top-info-box {
   list-style: none;
   margin: 0;
   padding: 0;
-  float: right;
+  float: left;
 }
 
 @media (max-width: 767px) {
