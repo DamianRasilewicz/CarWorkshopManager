@@ -8,8 +8,8 @@ import java.util.List;
 
 @Entity
 @Getter
-@Table(name = "clients")
-public class Client {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Client {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "user")
     private List<Visit> visits = new ArrayList<>();
 
 }

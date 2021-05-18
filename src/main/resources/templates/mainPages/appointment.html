@@ -6,17 +6,17 @@
 
 <span th:replace="/header :: header"></span>
 
-<div id="banner-area" class="banner-area" style="background-image:url(images/banner/banner1.jpg)">
+<div id="banner-area" class="banner-area" th:style="'background-image:url(' + @{/images/banner/banner1.jpg} + ');'">
   <div class="banner-text">
     <div class="container">
         <div class="row">
           <div class="col-lg-12">
               <div class="banner-heading">
-                <h1 class="banner-title">Car repair order</h1>
+                <h1 class="banner-title" style="color: black">Car repair order</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
-                      <li class="breadcrumb-item"><a href="#">Home</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                      <li class="breadcrumb-item" style="color: black"><a th:href="@{/}">Home</a></li>
+                      <li class="breadcrumb-item" style="color: black"><a th:href="@{/}">Contact Us</a></li>
                     </ol>
                 </nav>
               </div>

@@ -2664,11 +2664,11 @@ img.testimonial-thumb {
 .breadcrumb .breadcrumb-item,
 .breadcrumb li a:focus,
 .breadcrumb li a:hover {
-  color: #fff !important;
+  color: black;
 }
 
 .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
-  color: #fff;
+  color: black;
 }
 
 /*-- About us page --*/

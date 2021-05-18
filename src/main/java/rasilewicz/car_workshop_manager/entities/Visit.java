@@ -18,5 +18,5 @@ public class Visit {
     private LocalTime visitTime;
 
     @ManyToOne
-    private Client client;
+    private User user;
 }
