@@ -12,4 +12,10 @@ public class MainPageController {
 
         return "mainPages/index";
     }
+
+    @GetMapping("/appointment")
+    public String makeAnAppointment(Model model){
+
+        return "mainPages/appointment";
+    }
 }
