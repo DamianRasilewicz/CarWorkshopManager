@@ -17,7 +17,7 @@ public class Task {
     @Column
     private String description;
     private Double approExecutTime;
-    private Double payment;
+    private Double estimatedCost;
 
     @ManyToMany(mappedBy = "tasks")
     private List<Order> orders ;
