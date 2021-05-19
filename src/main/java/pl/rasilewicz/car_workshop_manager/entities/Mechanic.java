@@ -1,8 +1,9 @@
-package rasilewicz.car_workshop_manager.entities;
+package pl.rasilewicz.car_workshop_manager.entities;
 
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,4 +24,6 @@ public class Mechanic {
     @JoinColumn(name = "workshop_id")
     private Workshop workshop;
 
+    @ManyToMany(mappedBy = "mechanics")
+    private List<Order> orders ;
 }

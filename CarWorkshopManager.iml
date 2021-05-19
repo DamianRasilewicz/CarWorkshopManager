@@ -15,7 +15,7 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/rasilewicz/car_workshop_manager/CarWorkshopManagerApplication.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/rasilewicz/configuration/WebConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/pl/rasilewicz/car_workshop_manager/configuration/WebConfig.java</file>
         </fileset>
       </configuration>
     </facet>

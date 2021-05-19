@@ -1,4 +1,4 @@
-package rasilewicz.car_workshop_manager.entities;
+package pl.rasilewicz.car_workshop_manager.entities;
 
 import lombok.Getter;
 
@@ -18,8 +18,14 @@ public class Order {
     private String status;
     private Double cost;
     private Integer workingHours;
-
+    private Double partsCost;
+    private Double workCost;
 
     @ManyToMany(mappedBy = "orders")
     private List<Visit> visits;
+
+    @ManyToMany()
+    @JoinTable(name = "orders_mechanics", joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "mechanic_id"))
+    private List<Mechanic> mechanics;
 }

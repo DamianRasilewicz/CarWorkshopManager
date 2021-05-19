@@ -1,4 +1,4 @@
-package rasilewicz.car_workshop_manager.entities;
+package pl.rasilewicz.car_workshop_manager.entities;
 
 import lombok.Getter;
 
@@ -25,6 +25,6 @@ public class Visit {
 
     @ManyToMany()
     @JoinTable(name = "visits_orders", joinColumns = @JoinColumn(name = "visit_id"),
-            inverseJoinColumns = @JoinColumn(name = "orders_id"))
+            inverseJoinColumns = @JoinColumn(name = "order_id"))
     private List<Order> orders;
 }

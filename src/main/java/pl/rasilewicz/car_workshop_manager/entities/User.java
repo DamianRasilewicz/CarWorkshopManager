@@ -1,4 +1,4 @@
-package rasilewicz.car_workshop_manager.entities;
+package pl.rasilewicz.car_workshop_manager.entities;
 
 import lombok.Getter;
 
