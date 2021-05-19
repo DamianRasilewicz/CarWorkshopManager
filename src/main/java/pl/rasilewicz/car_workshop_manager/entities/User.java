@@ -23,12 +23,16 @@ public class User {
     private Boolean registered;
     private String username;
     private String password;
-    private String role;
 
     @OneToMany(mappedBy = "user")
     private List<Visit> visits = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Car> cars = new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Role role ;
 
 }

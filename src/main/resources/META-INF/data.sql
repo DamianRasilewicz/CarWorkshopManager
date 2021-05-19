@@ -19,3 +19,5 @@ INSERT INTO car_workshop_manager.mechanics (first_name, last_name, seniority, sp
 INSERT INTO car_workshop_manager.mechanics (first_name, last_name, seniority, speciality, workshop_id)  VALUES ('Tomasz', 'Kwieciński', 6, 'varnishing', 3);
 INSERT INTO car_workshop_manager.mechanics (first_name, last_name, seniority, speciality, workshop_id)  VALUES ('Maciej', 'Pień', 8, 'diagnostic', 4);
 INSERT INTO car_workshop_manager.mechanics (first_name, last_name, seniority, speciality, workshop_id)  VALUES ('Wojciech', 'Długi', 4, 'bodywork', 4);
+
+INSERT INTO car_workshop_manager.roles (name) VALUES ('ADMIN'), ('USER');
