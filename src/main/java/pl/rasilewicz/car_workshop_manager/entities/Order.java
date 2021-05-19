@@ -21,6 +21,7 @@ public class Order {
     private Double partsCost;
     private Double workCost;
     private String comment;
+    private String moreInformation;
 
     @ManyToMany(mappedBy = "orders")
     private List<Visit> visits;
