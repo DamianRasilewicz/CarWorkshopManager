@@ -19,4 +19,7 @@ public class Car {
     private String engineType;
     private String engineCapacity;
     private String enginePower;
+
+    @ManyToOne
+    private User user;
 }

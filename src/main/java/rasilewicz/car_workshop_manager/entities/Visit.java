@@ -5,6 +5,7 @@ import lombok.Getter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,7 +17,14 @@ public class Visit {
     private Integer id;
     private LocalDate visitDate;
     private LocalTime visitTime;
+    private String status;
+
 
     @ManyToOne
     private User user;
+
+    @ManyToMany()
+    @JoinTable(name = "visits_orders", joinColumns = @JoinColumn(name = "visit_id"),
+            inverseJoinColumns = @JoinColumn(name = "orders_id"))
+    private List<Order> orders;
 }

@@ -18,8 +18,17 @@ public class User {
     @Column
     private String firstName;
     private String lastName;
+    private String phoneNumber;
+    private String email;
+    private Boolean registered;
+    private String username;
+    private String password;
+    private String role;
 
     @OneToMany(mappedBy = "user")
     private List<Visit> visits = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Car> cars = new ArrayList<>();
 
 }
