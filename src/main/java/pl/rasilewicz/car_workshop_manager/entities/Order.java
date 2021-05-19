@@ -20,6 +20,7 @@ public class Order {
     private Integer workingHours;
     private Double partsCost;
     private Double workCost;
+    private String comment;
 
     @ManyToMany(mappedBy = "orders")
     private List<Visit> visits;
@@ -28,4 +29,9 @@ public class Order {
     @JoinTable(name = "orders_mechanics", joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "mechanic_id"))
     private List<Mechanic> mechanics;
+
+    @ManyToMany()
+    @JoinTable(name = "orders_tasks", joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "task_id"))
+    private List<Task> tasks;
 }
