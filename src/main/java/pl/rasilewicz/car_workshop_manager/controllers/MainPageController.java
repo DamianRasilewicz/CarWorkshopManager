@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.rasilewicz.car_workshop_manager.entities.*;
 import pl.rasilewicz.car_workshop_manager.services.TaskServiceImpl;
+import pl.rasilewicz.car_workshop_manager.services.VisitDateServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.WorkshopServiceImpl;
 
 import java.util.List;
@@ -16,10 +17,13 @@ public class MainPageController {
 
     private final TaskServiceImpl taskService;
     private final WorkshopServiceImpl workshopService;
+    private final VisitDateServiceImpl visitDateService;
 
-    public MainPageController(TaskServiceImpl taskService, WorkshopServiceImpl workshopService){
+    public MainPageController(TaskServiceImpl taskService, WorkshopServiceImpl workshopService,
+                              VisitDateServiceImpl visitDateService){
         this.taskService = taskService;
         this.workshopService = workshopService;
+        this.visitDateService = visitDateService;
     }
 
     @GetMapping("/")
@@ -46,7 +50,7 @@ public class MainPageController {
 
       Workshop selectedWorkshop = workshopService.findWorkshopById(workshopId);
 
-      
+      List<VisitDate> visitDatesSelectedWorkshop = visitDateService.findVisitDateByDateAndWorkshopId(visitDate.getDate(), workshopId);
 
 
         return "redirect:/appointmentDetails";
