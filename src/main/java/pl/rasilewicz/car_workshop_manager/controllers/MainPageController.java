@@ -32,9 +32,6 @@ public class MainPageController {
         User user = new User();
         model.addAttribute("user", user);
 
-        Visit visit = new Visit();
-        model.addAttribute("visit", visit);
-
         Order order = new Order();
         model.addAttribute("order", order);
 
@@ -49,8 +46,7 @@ public class MainPageController {
     }
 
     @PostMapping("/appointment")
-    public String madeAppointment (@ModelAttribute("user") User user, @ModelAttribute("visit") Visit visit,
-                                   @ModelAttribute("order") Order order, @ModelAttribute("car") Car car){
+    public String madeAppointment (@ModelAttribute("user") User user, @ModelAttribute("order") Order order, @ModelAttribute("car") Car car){
 
 
         return "redirect:/appointment?success";

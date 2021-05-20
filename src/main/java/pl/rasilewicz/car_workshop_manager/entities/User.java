@@ -25,7 +25,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user")
-    private List<Visit> visits = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Car> cars = new ArrayList<>();

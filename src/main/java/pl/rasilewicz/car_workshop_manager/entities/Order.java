@@ -3,6 +3,9 @@ package pl.rasilewicz.car_workshop_manager.entities;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,8 +26,6 @@ public class Order {
     private String comment;
     private String moreInformation;
 
-    @ManyToMany(mappedBy = "orders")
-    private List<Visit> visits;
 
     @ManyToMany()
     @JoinTable(name = "orders_mechanics", joinColumns = @JoinColumn(name = "order_id"),
@@ -35,4 +36,9 @@ public class Order {
     @JoinTable(name = "orders_tasks", joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "task_id"))
     private List<Task> tasks;
+
+    @ManyToOne
+    private User user;
+
+
 }
