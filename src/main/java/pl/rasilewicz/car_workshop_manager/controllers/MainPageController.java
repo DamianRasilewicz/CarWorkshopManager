@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.rasilewicz.car_workshop_manager.entities.*;
 import pl.rasilewicz.car_workshop_manager.services.TaskServiceImpl;
+import pl.rasilewicz.car_workshop_manager.services.WorkshopServiceImpl;
 
 import java.util.List;
 
@@ -14,9 +15,11 @@ import java.util.List;
 public class MainPageController {
 
     private final TaskServiceImpl taskService;
+    private final WorkshopServiceImpl workshopService;
 
-    public MainPageController(TaskServiceImpl taskService){
+    public MainPageController(TaskServiceImpl taskService, WorkshopServiceImpl workshopService){
         this.taskService = taskService;
+        this.workshopService = workshopService;
     }
 
     @GetMapping("/")
@@ -27,18 +30,11 @@ public class MainPageController {
 
     @GetMapping("/appointmentDate")
     public String appointmentDate(Model model){
-        User user = new User();
-        model.addAttribute("user", user);
+        VisitDate visitDate = new VisitDate();
+        model.addAttribute("visitDate", visitDate);
 
-        Order order = new Order();
-        model.addAttribute("order", order);
-
-        Car car = new Car();
-        model.addAttribute("car", car);
-
-        List<Workshop> workshopList =
-        model.addAttribute("allTasks", taskList);
-        System.out.println(taskList.toString());
+        List<Workshop> workshopList = workshopService.findAllWorkshops();
+        model.addAttribute("workshopList", workshopList);
 
         return "mainPages/appointmentDate";
     }
@@ -68,10 +64,10 @@ public class MainPageController {
         return "mainPages/appointmentDetails";
     }
 
-    @PostMapping("/appointmentDate")
+    @PostMapping("/appointmentDetails")
     public String inputedAppointmentDetails (@ModelAttribute("user") User user, @ModelAttribute("order") Order order, @ModelAttribute("car") Car car){
 
 
-        return "redirect:/appointmentDetails";
+        return "redirect:/appointmentDetails?success";
     }
 }

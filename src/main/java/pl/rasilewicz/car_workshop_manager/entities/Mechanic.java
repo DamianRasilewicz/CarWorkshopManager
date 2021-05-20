@@ -20,7 +20,7 @@ public class Mechanic {
     private String speciality;
     private Integer seniority;
 
-    @OneToOne()
+    @ManyToOne()
     @JoinColumn(name = "workshop_id")
     private Workshop workshop;
 

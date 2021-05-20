@@ -20,8 +20,8 @@ public class Workshop {
     private String street;
     private String number;
 
-    @OneToOne(mappedBy = "workshop")
-    private Mechanic mechanic;
+    @OneToMany(mappedBy = "workshop")
+    private List<Mechanic> mechanics;
 
     @OneToMany(mappedBy = "workshop")
     private List<VisitDate> visitDates = new ArrayList<>();

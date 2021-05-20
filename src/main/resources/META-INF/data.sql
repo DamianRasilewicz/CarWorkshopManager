@@ -1,7 +1,7 @@
-INSERT INTO car_workshop_manager.workshop (city, street, number) VALUES ('Wroclaw', 'Wiejska', 3);
-INSERT INTO car_workshop_manager.workshop (city, street, number) VALUES ('Warsaw', 'Warszatowa', 16);
-INSERT INTO car_workshop_manager.workshop (city, street, number) VALUES ('Zielona Gora', 'Kluczowa', 6);
-INSERT INTO car_workshop_manager.workshop (city, street, number) VALUES ('Poznań', 'Naprawialna', 12);
+INSERT INTO car_workshop_manager.workshops (city, street, number) VALUES ('Wroclaw', 'Wiejska', 3);
+INSERT INTO car_workshop_manager.workshops (city, street, number) VALUES ('Warsaw', 'Warszatowa', 16);
+INSERT INTO car_workshop_manager.workshops (city, street, number) VALUES ('Zielona Gora', 'Kluczowa', 6);
+INSERT INTO car_workshop_manager.workshops (city, street, number) VALUES ('Poznań', 'Naprawialna', 12);
 
 INSERT INTO car_workshop_manager.tasks (description, appro_execut_time, estimated_cost) VALUES ('front suspension replacement', 6, 600);
 INSERT INTO car_workshop_manager.tasks (description, appro_execut_time, estimated_cost) VALUES ('rear suspension replacement', 4.5, 450);
