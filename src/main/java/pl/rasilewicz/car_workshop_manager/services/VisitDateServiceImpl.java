@@ -25,4 +25,9 @@ public class VisitDateServiceImpl implements VisitDateService {
     public List<VisitDate> findVisitDateByDateAndWorkshopId(LocalDate date, Integer workshopId) {
         return visitDateRepository.findVisitDateByDateAndWorkshopId(date, workshopId);
     }
+
+    @Override
+    public void save(VisitDate visitDate) {
+        visitDateRepository.save(visitDate);
+    }
 }

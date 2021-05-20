@@ -5,9 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.rasilewicz.car_workshop_manager.entities.*;
-import pl.rasilewicz.car_workshop_manager.services.TaskServiceImpl;
-import pl.rasilewicz.car_workshop_manager.services.VisitDateServiceImpl;
-import pl.rasilewicz.car_workshop_manager.services.WorkshopServiceImpl;
+import pl.rasilewicz.car_workshop_manager.services.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,12 +18,19 @@ public class MainPageController {
     private final TaskServiceImpl taskService;
     private final WorkshopServiceImpl workshopService;
     private final VisitDateServiceImpl visitDateService;
+    private final OrderServiceImpl orderService;
+    private final UserServiceImpl userService;
+    private final CarServiceImpl carService;
 
     public MainPageController(TaskServiceImpl taskService, WorkshopServiceImpl workshopService,
-                              VisitDateServiceImpl visitDateService){
+                              VisitDateServiceImpl visitDateService, OrderServiceImpl orderService,
+                              UserServiceImpl userService, CarServiceImpl carService){
         this.taskService = taskService;
         this.workshopService = workshopService;
         this.visitDateService = visitDateService;
+        this.orderService = orderService;
+        this.userService = userService;
+        this. carService = carService;
     }
 
     @GetMapping("/")
@@ -87,9 +92,6 @@ public class MainPageController {
         Car car = new Car();
         model.addAttribute("car", car);
 
-        VisitDate visitDate = new VisitDate();
-        model.addAttribute("visitDate", visitDate);
-
         List<Task> taskList = taskService.findAllTasks();
         model.addAttribute("allTasks", taskList);
         System.out.println(taskList.toString());
@@ -112,10 +114,11 @@ public class MainPageController {
         Double approExecutTimy = 0.00;
         Integer estimatedCost = 0;
 
+        List<Task> selectedTasksList = new ArrayList<>();
 
         if (selectedTasks != null) {
 
-            List<Task> selectedTasksList = new ArrayList<>();
+
 
             for (Integer taskId : selectedTasks) {
                 selectedTasksList.add(taskService.findTaskById(taskId));
@@ -129,6 +132,27 @@ public class MainPageController {
             }
         }
 
+        carService.save(car);
+
+        List<Car> carList = new ArrayList<>();
+        carList.add(car);
+        user.setCars(carList);
+        user.setRegistered(false);
+
+        userService.save(user);
+
+        Workshop selectedWorkshop = workshopService.findWorkshopById(selectedWorkshopId);
+        VisitDate selectedVisitDate = new VisitDate();
+        selectedVisitDate.setDate(LocalDate.parse(selectedDate));
+        selectedVisitDate.setTime(selectedTime);
+        selectedVisitDate.setWorkshop(selectedWorkshop);
+        visitDateService.save(selectedVisitDate);
+
+        order.setTasks(selectedTasksList);
+        order.setUser(user);
+        order.setVisitDate(selectedVisitDate);
+        order.setStatus("Pending approval");
+        orderService.save(order);
 
         return "redirect:/";
     }
