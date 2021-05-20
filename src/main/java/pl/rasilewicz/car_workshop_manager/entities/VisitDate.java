@@ -8,7 +8,8 @@ import java.time.LocalDate;
 
 @Entity
 @Getter
-public class Date {
+@Table(name = "visitDates")
+public class VisitDate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,4 +18,11 @@ public class Date {
     @Column
     private LocalDate date;
     private String time;
+
+    @OneToOne()
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @ManyToOne
+    private Workshop workshop;
 }

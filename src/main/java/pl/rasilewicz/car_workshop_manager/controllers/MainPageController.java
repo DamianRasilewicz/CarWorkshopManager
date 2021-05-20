@@ -5,11 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import pl.rasilewicz.car_workshop_manager.entities.*;
 import pl.rasilewicz.car_workshop_manager.services.TaskServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,8 +25,33 @@ public class MainPageController {
         return "mainPages/index";
     }
 
-    @GetMapping("/appointment")
-    public String makeAnAppointment(Model model){
+    @GetMapping("/appointmentDate")
+    public String appointmentDate(Model model){
+        User user = new User();
+        model.addAttribute("user", user);
+
+        Order order = new Order();
+        model.addAttribute("order", order);
+
+        Car car = new Car();
+        model.addAttribute("car", car);
+
+        List<Workshop> workshopList =
+        model.addAttribute("allTasks", taskList);
+        System.out.println(taskList.toString());
+
+        return "mainPages/appointmentDate";
+    }
+
+    @PostMapping("/appointmentDate")
+    public String inputedAppointmentDate (@ModelAttribute("user") User user, @ModelAttribute("order") Order order, @ModelAttribute("car") Car car){
+
+
+        return "redirect:/appointmentDetails";
+    }
+
+    @GetMapping("/appointmentDetails")
+    public String appointmentDetails(Model model){
         User user = new User();
         model.addAttribute("user", user);
 
@@ -42,13 +65,13 @@ public class MainPageController {
         model.addAttribute("allTasks", taskList);
         System.out.println(taskList.toString());
 
-        return "mainPages/appointment";
+        return "mainPages/appointmentDetails";
     }
 
-    @PostMapping("/appointment")
-    public String madeAppointment (@ModelAttribute("user") User user, @ModelAttribute("order") Order order, @ModelAttribute("car") Car car){
+    @PostMapping("/appointmentDate")
+    public String inputedAppointmentDetails (@ModelAttribute("user") User user, @ModelAttribute("order") Order order, @ModelAttribute("car") Car car){
 
 
-        return "redirect:/appointment?success";
+        return "redirect:/appointmentDetails";
     }
 }

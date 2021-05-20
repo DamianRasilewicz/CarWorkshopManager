@@ -3,9 +3,6 @@ package pl.rasilewicz.car_workshop_manager.entities;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -40,5 +37,7 @@ public class Order {
     @ManyToOne
     private User user;
 
+    @OneToOne(mappedBy = "order")
+    private VisitDate visitDate;
 
 }

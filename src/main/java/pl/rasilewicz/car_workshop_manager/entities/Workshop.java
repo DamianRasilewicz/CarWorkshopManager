@@ -3,9 +3,12 @@ package pl.rasilewicz.car_workshop_manager.entities;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
+@Table(name = "workshops")
 public class Workshop {
 
     @Id
@@ -19,4 +22,7 @@ public class Workshop {
 
     @OneToOne(mappedBy = "workshop")
     private Mechanic mechanic;
+
+    @OneToMany(mappedBy = "workshop")
+    private List<VisitDate> visitDates = new ArrayList<>();
 }
