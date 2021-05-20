@@ -46,16 +46,26 @@
             </div>
           </div>
           <div class="row justify-content-center">
-            <div class="col-md-3" >
+<!--            <option selected="true" disabled="disabled">Choose Tagging</option>-->
+            <div class="col-md-3">
               <div class="form-group">
-                <label>Visit Date</label>
-                <input th:field="*{visit.visitDate}" type="date" class="form-control form-control-name">
+                <label>Selected Visit Date</label>
+                <input class="form-control" name="selectedDate" id="selectedDate" th:value="${selectedDate}" type="text" disabled>
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <label>Visit Time</label>
-                <input th:field="*{visit.visitTime}" type="time" class="form-control form-control-name">
+                <label>Selected Workshop</label>
+                <input class="form-control" th:value="${selectedWorkshop.getCity() + ', ' +
+                                                        selectedWorkshop.getStreet() + ' ' + selectedWorkshop.getNumber()}" type="text" disabled>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Visit time</label>
+                <select name="selectedVisitTime" id="selectedVisitTime" class="form-control form-control-name">
+                  <option th:each="visitTime : ${availableVisitTimeList}" th:value="${visitTime}" th:text="${visitTime}"></option>
+                </select>
               </div>
             </div>
           </div>

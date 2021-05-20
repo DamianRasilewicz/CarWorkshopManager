@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pl.rasilewicz.car_workshop_manager.entities.VisitDate;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -14,5 +15,5 @@ import java.util.List;
 public interface VisitDateRepository extends JpaRepository<VisitDate, Integer> {
 
 //    @Query(value = "SELECT * FROM car_workshop_manager.tasks", nativeQuery = true)
-    List<VisitDate> findVisitDateByDateAndWorkshopId(Date date, Integer workshopId);
+    List<VisitDate> findVisitDateByDateAndWorkshopId(LocalDate date, Integer workshopId);
 }

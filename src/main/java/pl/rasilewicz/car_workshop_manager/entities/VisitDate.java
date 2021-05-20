@@ -5,7 +5,6 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -17,7 +16,7 @@ public class VisitDate {
     private Integer id;
 
     @Column
-    private Date date;
+    private LocalDate date;
     private String time;
 
     @OneToOne()

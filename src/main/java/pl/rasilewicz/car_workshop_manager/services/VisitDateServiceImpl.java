@@ -7,6 +7,7 @@ import pl.rasilewicz.car_workshop_manager.entities.Workshop;
 import pl.rasilewicz.car_workshop_manager.repositories.VisitDateRepository;
 import pl.rasilewicz.car_workshop_manager.repositories.WorkshopRepository;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class VisitDateServiceImpl implements VisitDateService {
     }
 
     @Override
-    public List<VisitDate> findVisitDateByDateAndWorkshopId(Date date, Integer workshopId) {
+    public List<VisitDate> findVisitDateByDateAndWorkshopId(LocalDate date, Integer workshopId) {
         return visitDateRepository.findVisitDateByDateAndWorkshopId(date, workshopId);
     }
 }
