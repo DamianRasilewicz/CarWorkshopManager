@@ -18,17 +18,11 @@ public class Task {
 
     @Column
     private String description;
-    private Double approExecutTime;
+    private Double estimatedExecutionTime;
     private Integer estimatedCost;
 
     @ManyToMany(mappedBy = "tasks")
     private List<Order> orders ;
-
-    public Task(String description, Double approExecutTime, Integer estimatedCost) {
-        this.description = description;
-        this.approExecutTime = approExecutTime;
-        this.estimatedCost = estimatedCost;
-    }
 
     public Task(){};
 }

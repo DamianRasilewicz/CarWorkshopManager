@@ -113,7 +113,7 @@ public class MainPageController {
                                              @ModelAttribute("selectedWorkshopId") Integer selectedWorkshopId, @ModelAttribute("selectedDate") String selectedDate,
                                              @ModelAttribute("selectedVisitTime") String selectedTime, @RequestParam(value = "selectedTasks", required = false) Integer[] selectedTasks){
 
-        Double approExecutTimy = 0.00;
+        Double estimatedExecutionTime = 0.00;
         Integer estimatedCost = 0;
 
         List<Task> selectedTasksList = new ArrayList<>();
@@ -128,35 +128,35 @@ public class MainPageController {
             }
 
             for (Task task : selectedTasksList) {
-                approExecutTimy = approExecutTimy + task.getApproExecutTime();
+                estimatedExecutionTime = estimatedExecutionTime + task.getEstimatedExecutionTime();
                 estimatedCost = estimatedCost + task.getEstimatedCost();
 
             }
         }
 
-        carService.save(car);
 
-        List<Car> carList = new ArrayList<>();
-        carList.add(car);
-        user.setCars(carList);
         user.setRegistered(false);
         Role role = roleService.findRoleById(2);
         user.setRole(role);
-
         userService.save(user);
+
+        car.setUser(user);
+        carService.save(car);
+
+        order.setTasks(selectedTasksList);
+        order.setUser(user);
+        order.setStatus("Pending approval");
+        order.setEstimatedCost(estimatedCost);
+        order.setEstimatedExecutionTime(estimatedExecutionTime);
+        orderService.save(order);
 
         Workshop selectedWorkshop = workshopService.findWorkshopById(selectedWorkshopId);
         VisitDate selectedVisitDate = new VisitDate();
         selectedVisitDate.setDate(LocalDate.parse(selectedDate));
         selectedVisitDate.setTime(selectedTime);
         selectedVisitDate.setWorkshop(selectedWorkshop);
+        selectedVisitDate.setOrder(order);
         visitDateService.save(selectedVisitDate);
-
-        order.setTasks(selectedTasksList);
-        order.setUser(user);
-        order.setVisitDate(selectedVisitDate);
-        order.setStatus("Pending approval");
-        orderService.save(order);
 
         return "redirect:/";
     }

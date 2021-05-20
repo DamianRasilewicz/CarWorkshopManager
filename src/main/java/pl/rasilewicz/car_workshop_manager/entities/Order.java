@@ -24,6 +24,8 @@ public class Order {
     private Double workCost;
     private String comment;
     private String moreInformation;
+    private Double estimatedExecutionTime;
+    private Integer estimatedCost;
 
 
     @ManyToMany()
