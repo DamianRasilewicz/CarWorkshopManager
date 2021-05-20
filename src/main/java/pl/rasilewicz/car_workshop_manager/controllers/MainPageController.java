@@ -40,7 +40,13 @@ public class MainPageController {
     }
 
     @PostMapping("/appointmentDate")
-    public String inputedAppointmentDate (@ModelAttribute("user") User user, @ModelAttribute("order") Order order, @ModelAttribute("car") Car car){
+    public String inputedAppointmentDate (@ModelAttribute("visitDate") VisitDate visitDate,
+                                          @ModelAttribute("selectedWorkshop") Integer workshopId,
+                                          Model model){
+
+      Workshop selectedWorkshop = workshopService.findWorkshopById(workshopId);
+
+      
 
 
         return "redirect:/appointmentDetails";

@@ -7,4 +7,6 @@ import java.util.List;
 public interface WorkshopService {
 
     List<Workshop> findAllWorkshops();
+
+    Workshop findWorkshopById(Integer id);
 }

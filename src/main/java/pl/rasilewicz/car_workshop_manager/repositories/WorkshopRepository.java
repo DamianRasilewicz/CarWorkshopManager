@@ -14,4 +14,6 @@ public interface WorkshopRepository extends JpaRepository<Workshop, Integer> {
 
     @Query(value = "SELECT * FROM car_workshop_manager.workshops", nativeQuery = true)
     List<Workshop> findAllWorkshops();
+
+    Workshop findWorkshopById(Integer id);
 }

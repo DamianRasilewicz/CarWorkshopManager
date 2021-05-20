@@ -2,9 +2,7 @@ package pl.rasilewicz.car_workshop_manager.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.rasilewicz.car_workshop_manager.entities.Task;
 import pl.rasilewicz.car_workshop_manager.entities.Workshop;
-import pl.rasilewicz.car_workshop_manager.repositories.TaskRepository;
 import pl.rasilewicz.car_workshop_manager.repositories.WorkshopRepository;
 
 import java.util.List;
@@ -22,5 +20,10 @@ public class WorkshopServiceImpl implements WorkshopService {
     @Override
     public List<Workshop> findAllWorkshops() {
         return workshopRepository.findAllWorkshops();
+    }
+
+    @Override
+    public Workshop findWorkshopById(Integer id) {
+        return workshopRepository.findWorkshopById(id);
     }
 }
