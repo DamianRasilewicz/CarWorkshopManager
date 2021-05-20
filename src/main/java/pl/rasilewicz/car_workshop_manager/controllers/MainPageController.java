@@ -21,16 +21,18 @@ public class MainPageController {
     private final OrderServiceImpl orderService;
     private final UserServiceImpl userService;
     private final CarServiceImpl carService;
+    private final RoleServiceImpl roleService;
 
     public MainPageController(TaskServiceImpl taskService, WorkshopServiceImpl workshopService,
                               VisitDateServiceImpl visitDateService, OrderServiceImpl orderService,
-                              UserServiceImpl userService, CarServiceImpl carService){
+                              UserServiceImpl userService, CarServiceImpl carService, RoleServiceImpl roleService){
         this.taskService = taskService;
         this.workshopService = workshopService;
         this.visitDateService = visitDateService;
         this.orderService = orderService;
         this.userService = userService;
         this. carService = carService;
+        this.roleService = roleService;
     }
 
     @GetMapping("/")
@@ -138,6 +140,8 @@ public class MainPageController {
         carList.add(car);
         user.setCars(carList);
         user.setRegistered(false);
+        Role role = roleService.findRoleById(2);
+        user.setRole(role);
 
         userService.save(user);
 
