@@ -13,4 +13,6 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
 
     @Query(value = "SELECT * FROM car_workshop_manager.tasks", nativeQuery = true)
     List<Task> findAllTasks();
+
+    Task findTaskById(Integer id);
 }

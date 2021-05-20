@@ -1,6 +1,7 @@
 package pl.rasilewicz.car_workshop_manager.entities;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "users")
 public class User {
 

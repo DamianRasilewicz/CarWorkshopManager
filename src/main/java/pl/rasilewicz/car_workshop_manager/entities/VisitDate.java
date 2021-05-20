@@ -2,12 +2,14 @@ package pl.rasilewicz.car_workshop_manager.entities;
 
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "visitDates")
 public class VisitDate {
 

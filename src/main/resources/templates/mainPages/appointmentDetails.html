@@ -38,7 +38,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <form id="contact-form" th:action="@{/appointment}" method="post" role="form">
+        <form id="contact-form" th:action="@{/appointmentDetails}" method="post" role="form">
           <div class="error-container"></div>
           <div class="row text-center">
             <div class="col-12">
@@ -46,11 +46,10 @@
             </div>
           </div>
           <div class="row justify-content-center">
-<!--            <option selected="true" disabled="disabled">Choose Tagging</option>-->
             <div class="col-md-3">
               <div class="form-group">
                 <label>Selected Visit Date</label>
-                <input class="form-control" name="selectedDate" id="selectedDate" th:value="${selectedDate}" type="text" disabled>
+                <input class="form-control" th:value="${selectedDate}" type="text" disabled>
               </div>
             </div>
             <div class="col-md-3">
@@ -62,7 +61,7 @@
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <label>Visit time</label>
+                <label>Visit Time</label>
                 <select name="selectedVisitTime" id="selectedVisitTime" class="form-control form-control-name">
                   <option th:each="visitTime : ${availableVisitTimeList}" th:value="${visitTime}" th:text="${visitTime}"></option>
                 </select>
@@ -77,19 +76,19 @@
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
-                <label>First name</label>
+                <label>First Name</label>
                 <input th:field="*{user.firstName}" type="text" class="form-control form-control-name">
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <label>Last name</label>
+                <label>Last Name</label>
                 <input th:field="*{user.lastName}" type="text" class="form-control form-control-email">
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <label>Phone number</label>
+                <label>Phone Number</label>
                 <input th:field="*{user.phoneNumber}" type="text" class="form-control form-control-subject">
               </div>
             </div>
@@ -128,7 +127,7 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label>Engine type</label>
+                <label>Engine Type</label>
                 <input th:field="*{car.engineType}" class="form-control form-control-name">
               </div>
             </div>
@@ -153,8 +152,8 @@
           <div class="row">
             <div class="col-md-4" th:each="task : ${allTasks}">
               <div class="form-check" >
-                  <input class="form-check-input" type="checkbox" name="selectedTasks" th:value="${task.getId()}" id="flexCheckDefault">
-                  <label class="form-check-label" th:text="${task.getDescription()}" for="flexCheckDefault"></label>
+                  <input class="form-check-input" type="checkbox" name="selectedTasks" id="selectedTasks" th:value="${task.getId()}">
+                  <label class="form-check-label" th:text="${task.getDescription()}" for="selectedTasks"></label>
               </div>
             </div>
           </div>
@@ -164,6 +163,8 @@
             <textarea class="form-control form-control-message" th:field="*{order.moreInformation}" placeholder="" rows="4"></textarea>
           </div>
           <div class="text-right"><br>
+            <input name="selectedWorkshopId" th:value="${selectedWorkshopId}" type="hidden">
+            <input name="selectedDate" th:value="${selectedDate}" type="hidden">
             <button class="btn btn-primary solid blank" type="submit">Submit</button>
           </div>
         </form>

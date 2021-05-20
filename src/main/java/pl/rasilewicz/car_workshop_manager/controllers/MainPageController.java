@@ -36,8 +36,6 @@ public class MainPageController {
 
     @GetMapping("/appointmentDate")
     public String appointmentDate(Model model){
-//        VisitDate visitDate = new VisitDate();
-//        model.addAttribute("visitDate", visitDate);
 
         List<Workshop> workshopList = workshopService.findAllWorkshops();
         model.addAttribute("workshopList", workshopList);
@@ -79,7 +77,7 @@ public class MainPageController {
     @GetMapping("/appointmentDetails")
     public String appointmentDetails(Model model, @RequestParam("availableVisitTimeList") List<String> availableVisitTimeList,
                                      @RequestParam("selectedWorkshopId") Integer selectedWorkshopId,
-                                     @RequestParam("selectedDate") String selectedDate, RedirectAttributes redirectAttributes){
+                                     @RequestParam("selectedDate") String selectedDate){
         User user = new User();
         model.addAttribute("user", user);
 
@@ -107,9 +105,32 @@ public class MainPageController {
     }
 
     @PostMapping("/appointmentDetails")
-    public String inputedAppointmentDetails (@ModelAttribute("user") User user, @ModelAttribute("order") Order order, @ModelAttribute("car") Car car){
+    public String inputedAppointmentDetails (@ModelAttribute("user") User user, @ModelAttribute("order") Order order, @ModelAttribute("car") Car car,
+                                             @ModelAttribute("selectedWorkshopId") Integer selectedWorkshopId, @ModelAttribute("selectedDate") String selectedDate,
+                                             @ModelAttribute("selectedVisitTime") String selectedTime, @RequestParam(value = "selectedTasks", required = false) Integer[] selectedTasks){
+
+        Double approExecutTimy = 0.00;
+        Integer estimatedCost = 0;
 
 
-        return "redirect:/appointmentDetails?success";
+        if (selectedTasks != null) {
+
+            List<Task> selectedTasksList = new ArrayList<>();
+
+            for (Integer taskId : selectedTasks) {
+                selectedTasksList.add(taskService.findTaskById(taskId));
+
+            }
+
+            for (Task task : selectedTasksList) {
+                approExecutTimy = approExecutTimy + task.getApproExecutTime();
+                estimatedCost = estimatedCost + task.getEstimatedCost();
+
+            }
+        }
+
+
+
+        return "redirect:/";
     }
 }
