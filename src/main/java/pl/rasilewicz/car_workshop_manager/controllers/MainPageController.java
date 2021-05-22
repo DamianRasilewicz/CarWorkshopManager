@@ -94,10 +94,21 @@ public class MainPageController {
 
         Workshop selectedWorkshop = workshopService.findWorkshopById(selectedWorkshopId);
 
+        List<String> carBrandsList = Arrays.asList("Abarth", "Acura","Alfa Romeo", "Alpine","Aston Martin", "Audi", "Bentley", "BMW" , "Brabus" ,"Bugatti", "Buick", "Cadillac",
+                                                    "Chevrolet", "Chrysler", "Citroën", "Daihatsu", "Dodge", "Ferrari", "Fiat", "Ford", "FSO", "GAZ", "GMC",  "Honda",
+                                                    "Hummer", "Hyundai", "Infiniti", "Isuzu", "Iveco", "Jaguar", "Jeep", "Kia", "Lada", "Lamborghini", "Lancia",
+                                                    "Land Rover", "Lexus", "Lincoln", "Lotus", "Maserati", "Maybach", "Mazda", "Mercedes-Benz", "MG", "MINI", "Mitsubishi",
+                                                    "Morgan", "Moskvich", "Nissan", "Oldsmobile", "Opel", "Peugeot", "Pontiac", "Porsche", "Renault", "Rolls-Royce","Rover",
+                                                    "Saab","Skoda","Subaru","Suzuki","Tata","Tesla","Toyota","UAZ","Vauxhall","Volkswagen","Volvo","Lotus");
+
+        List<String> engineTypesList = Arrays.asList("Benzine", "Diesel", "Hybrid", "Benzine + LPG", "CNG");
+
         model.addAttribute("availableVisitTimeList", availableVisitTimeList);
         model.addAttribute("selectedWorkshopId", selectedWorkshopId);
         model.addAttribute("selectedDate", selectedDate);
         model.addAttribute("selectedWorkshop", selectedWorkshop);
+        model.addAttribute("carBrandsList", carBrandsList);
+        model.addAttribute("engineTypesList", engineTypesList);
 
         return "mainPages/appointmentDetails";
     }
@@ -106,6 +117,7 @@ public class MainPageController {
     public String inputedAppointmentDetails (@ModelAttribute("user") User user, @ModelAttribute("order") Order order, @ModelAttribute("car") Car car,
                                              @ModelAttribute("selectedWorkshopId") Integer selectedWorkshopId, @ModelAttribute("selectedDate") String selectedDate,
                                              @ModelAttribute("selectedVisitTime") String selectedTime, @RequestParam(value = "selectedTasks", required = false) Integer[] selectedTasks){
+
 
         Double estimatedExecutionTime = 0.00;
         Integer estimatedCost = 0;

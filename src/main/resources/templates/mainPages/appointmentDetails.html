@@ -108,7 +108,9 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>Brand</label>
-                <input th:field="*{car.brand}" type="text" class="form-control form-control-name">
+                  <select name="selectedCarBrand" th:field="*{car.brand}" class="form-control form-control-name">
+                    <option th:each="brand : ${carBrandsList}" th:value="${brand}" th:text="${brand}"></option>
+                  </select>
               </div>
             </div>
             <div class="col-md-4">
@@ -128,18 +130,20 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>Engine Type</label>
-                <input th:field="*{car.engineType}" class="form-control form-control-name">
+                <select name="selectedCarBrand" th:field="*{car.engineType}" class="form-control form-control-name">
+                  <option th:each="engineType : ${engineTypesList}" th:value="${engineType}" th:text="${engineType}"></option>
+                </select>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label>Engine Capacity</label>
+                <label>Engine Capacity (CC)</label>
                 <input th:field="*{car.engineCapacity}" type="text" class="form-control form-control-name">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label>Engine Power</label>
+                <label>Engine Power (HP)</label>
                 <input th:field="*{car.enginePower}" type="text" class="form-control form-control-name">
               </div>
             </div>
