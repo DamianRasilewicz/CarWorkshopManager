@@ -8,9 +8,7 @@ import pl.rasilewicz.car_workshop_manager.entities.*;
 import pl.rasilewicz.car_workshop_manager.services.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class MainPageController {
@@ -36,7 +34,7 @@ public class MainPageController {
     }
 
     @GetMapping("/")
-    public String home(Model model){
+    public String home(){
 
         return "mainPages/index";
     }
@@ -58,21 +56,17 @@ public class MainPageController {
             LocalDate date = LocalDate.parse(selectedDate);
       List<VisitDate> visitDatesSelectedWorkshop = visitDateService.findVisitDateByDateAndWorkshopId(date, workshopId);
 
-      List<String> availableVisitTime = Arrays.asList("7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
-                                             "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30");
+      List<String> availableVisitTimeList = new ArrayList<>();
+      Collections.addAll(availableVisitTimeList, "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00",
+              "14:00", "15:00", "16:00");
 
-        List<String> availableVisitTimeList = new ArrayList<>(availableVisitTime);
+      List<String> noAvailableVisitTimeList = new ArrayList<>();
 
-        int currentIndex = 0;
-        for (String visitTime: availableVisitTime) {
-            for (VisitDate visitDate:visitDatesSelectedWorkshop) {
-               if (visitDate.getTime().equals(visitTime)){
-                   availableVisitTimeList.remove(currentIndex);
-               }
-               currentIndex ++;
-            }
-
+        for (VisitDate visitDate: visitDatesSelectedWorkshop ) {
+            noAvailableVisitTimeList.add(visitDate.getTime());
         }
+
+        availableVisitTimeList.removeAll(noAvailableVisitTimeList);
 
         redirectAttributes.addAttribute("availableVisitTimeList", availableVisitTimeList);
         redirectAttributes.addAttribute("selectedWorkshopId", workshopId);
