@@ -123,12 +123,14 @@
               <div class="form-group">
                 <label>Model</label>
                 <input th:field="*{car.model}" type="text" class="form-control form-control-name">
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('car.model')}" th:errors="*{car.model}"></div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Production Year</label>
                 <input th:field="*{car.productionYear}" type="text" class="form-control form-control-name">
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('car.productionYear')}" th:errors="*{car.productionYear}"></div>
               </div>
             </div>
           </div>
@@ -145,12 +147,14 @@
               <div class="form-group">
                 <label>Engine Capacity (CC)</label>
                 <input th:field="*{car.engineCapacity}" type="text" class="form-control form-control-name">
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('car.engineCapacity')}" th:errors="*{car.engineCapacity}"></div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Engine Power (HP)</label>
                 <input th:field="*{car.enginePower}" type="text" class="form-control form-control-name">
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('car.enginePower')}" th:errors="*{car.enginePower}"></div>
               </div>
             </div>
           </div>

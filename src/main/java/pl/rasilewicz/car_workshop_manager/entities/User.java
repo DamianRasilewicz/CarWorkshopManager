@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,17 +18,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(min = 3, message = "First name is too short (min 3 letters)")
+    @Size(min = 3, max = 30, message = "Please input correct first name")
     private String firstName;
 
-    @Size(min = 3, message = "Last name is too short (min 3 letters)")
+    @Size(min = 3, max = 30, message = "Please input correct last name")
     private String lastName;
 
-    @Pattern(regexp = "\\d{9}", message = "Incorrect phone number")
+    @Pattern(regexp = "\\d{9}", message = "Please input correct phone number")
     private String phoneNumber;
 
-    @NotBlank(message = "Incorrect email")
-    @Email(message = "Incorrect email")
+    @Email(message = "Please input correct email")
     private String email;
 
     private Boolean registered;
