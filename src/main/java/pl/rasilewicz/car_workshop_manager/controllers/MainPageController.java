@@ -178,6 +178,6 @@ public class MainPageController {
 
         sessionStatus.setComplete();
 
-        return "redirect:/appointmentDetails?success";
+        return "redirect:/success";
     }
 }

@@ -27,6 +27,7 @@ public class User {
     @Pattern(regexp = "\\d{9}", message = "Please input correct phone number")
     private String phoneNumber;
 
+    @NotBlank(message = "Please input correct email")
     @Email(message = "Please input correct email")
     private String email;
 
