@@ -178,6 +178,13 @@ public class MainPageController {
 
         sessionStatus.setComplete();
 
-        return "redirect:/success";
+        return "redirect:/appointmentSuccess";
     }
+
+    @GetMapping("/appointmentSuccess")
+    public String successfullyMadeAppointment(){
+
+        return "mainPages/appointmentSuccess";
+    }
+
 }
