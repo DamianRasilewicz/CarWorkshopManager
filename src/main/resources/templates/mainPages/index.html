@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:include="/header :: head"></head>
+<head th:include="/mainPages/header :: head"></head>
 <body>
-<span th:replace="/header :: header"></span>
+<span th:replace="/mainPages/header :: header"></span>
 
 <div class="banner-carousel banner-carousel-1 mb-0">
   <div class="banner-carousel-item" th:style="'background-image:url(' + @{/images/slider-main/bg1.jpg} + ');'">
@@ -398,7 +398,7 @@
   <!--/ Container end -->
 </section><!-- Project area end -->
 
-<span th:replace="/footer :: footer"></span>
+<span th:replace="/mainPages/footer :: footer"></span>
   </body>
 
   </html>
