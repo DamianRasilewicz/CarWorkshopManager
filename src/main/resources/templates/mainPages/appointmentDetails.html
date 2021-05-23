@@ -39,7 +39,9 @@
     <div class="row">
       <div class="col-md-12">
         <form id="contact-form" th:action="@{/appointmentDetails}" method="post" role="form">
-          <div class="error-container"></div>
+          <div  th:if="${param.success}"  class="success-container">
+            <div class="alert alert-success" style="text-align: center">You successfully ordered car fixing! You will receive more information via mail soon.</div>
+          </div>
           <div class="row text-center">
             <div class="col-12">
               <h3>Visit</h3>
@@ -78,24 +80,28 @@
               <div class="form-group">
                 <label>First Name</label>
                 <input th:field="*{user.firstName}" type="text" class="form-control form-control-name">
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('user.firstName')}" th:errors="*{user.firstName}"></div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
                 <label>Last Name</label>
                 <input th:field="*{user.lastName}" type="text" class="form-control form-control-email">
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('user.lastName')}" th:errors="*{user.lastName}"></div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
                 <label>Phone Number</label>
                 <input th:field="*{user.phoneNumber}" type="text" class="form-control form-control-subject">
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('user.phoneNumber')}" th:errors="*{user.phoneNumber}"></div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
                 <label>Email</label>
                 <input th:field="*{user.email}" type="text" class="form-control form-control-name">
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('user.email')}" th:errors="*{user.email}"></div>
               </div>
             </div>
           </div>
@@ -169,6 +175,8 @@
           <div class="text-right"><br>
             <input name="selectedWorkshopId" th:value="${selectedWorkshopId}" type="hidden">
             <input name="selectedDate" th:value="${selectedDate}" type="hidden">
+            <input name="availableVisitTimeList" th:value="${availableVisitTimeList}" type="hidden">
+
             <button class="btn btn-primary solid blank" type="submit">Submit</button>
           </div>
         </form>

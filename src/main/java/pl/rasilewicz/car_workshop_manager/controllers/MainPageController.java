@@ -2,11 +2,15 @@ package pl.rasilewicz.car_workshop_manager.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.rasilewicz.car_workshop_manager.entities.*;
 import pl.rasilewicz.car_workshop_manager.services.*;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -78,7 +82,7 @@ public class MainPageController {
     @GetMapping("/appointmentDetails")
     public String appointmentDetails(Model model, @RequestParam("availableVisitTimeList") List<String> availableVisitTimeList,
                                      @RequestParam("selectedWorkshopId") Integer selectedWorkshopId,
-                                     @RequestParam("selectedDate") String selectedDate){
+                                     @RequestParam("selectedDate") String selectedDate, HttpSession session){
         User user = new User();
         model.addAttribute("user", user);
 
@@ -104,20 +108,34 @@ public class MainPageController {
         List<String> engineTypesList = Arrays.asList("Benzine", "Diesel", "Hybrid", "Benzine + LPG", "CNG");
 
         model.addAttribute("availableVisitTimeList", availableVisitTimeList);
+        session.setAttribute("availableVisitTimeList", availableVisitTimeList);
         model.addAttribute("selectedWorkshopId", selectedWorkshopId);
         model.addAttribute("selectedDate", selectedDate);
         model.addAttribute("selectedWorkshop", selectedWorkshop);
+        session.setAttribute("selectedWorkshop", selectedWorkshop);
         model.addAttribute("carBrandsList", carBrandsList);
+        session.setAttribute("carBrandsList", carBrandsList);
         model.addAttribute("engineTypesList", engineTypesList);
-
+        session.setAttribute("engineTypesList", engineTypesList);
         return "mainPages/appointmentDetails";
     }
 
     @PostMapping("/appointmentDetails")
-    public String inputedAppointmentDetails (@ModelAttribute("user") User user, @ModelAttribute("order") Order order, @ModelAttribute("car") Car car,
-                                             @ModelAttribute("selectedWorkshopId") Integer selectedWorkshopId, @ModelAttribute("selectedDate") String selectedDate,
-                                             @ModelAttribute("selectedVisitTime") String selectedTime, @RequestParam(value = "selectedTasks", required = false) Integer[] selectedTasks){
+    public String inputtedAppointmentDetails(@ModelAttribute("user") @Valid User user, BindingResult resultUser, @ModelAttribute("order") @Valid Order order,
+                                             BindingResult resultOrder, @ModelAttribute("car") @Valid Car car, BindingResult resultCar, @ModelAttribute("selectedDate") String selectedDate,
+                                             @ModelAttribute("selectedVisitTime") String selectedTime, @RequestParam(value = "selectedTasks", required = false) Integer[] selectedTasks, Model  model,
+                                             @SessionAttribute ("availableVisitTimeList") List<String> availableVisitTimeList, @SessionAttribute ("selectedWorkshop") Workshop selectedWorkshop,
+                                             SessionStatus sessionStatus, @SessionAttribute("carBrandsList") List<String> carBrandsList, @SessionAttribute("engineTypesList") List<String> engineTypesList){
 
+
+        if (resultUser.hasErrors() || resultOrder.hasErrors() || resultCar.hasErrors()) {
+            model.addAttribute("selectedWorkshop", selectedWorkshop);
+            model.addAttribute("availableVisitTimeList", availableVisitTimeList);
+            model.addAttribute("carBrandsList", carBrandsList);
+            model.addAttribute("engineTypesList", engineTypesList);
+
+            return "mainPages/appointmentDetails";
+        }
 
         Double estimatedExecutionTime = 0.00;
         Integer estimatedCost = 0;
@@ -126,17 +144,12 @@ public class MainPageController {
 
         if (selectedTasks != null) {
 
-
-
             for (Integer taskId : selectedTasks) {
                 selectedTasksList.add(taskService.findTaskById(taskId));
-
             }
-
             for (Task task : selectedTasksList) {
                 estimatedExecutionTime = estimatedExecutionTime + task.getEstimatedExecutionTime();
                 estimatedCost = estimatedCost + task.getEstimatedCost();
-
             }
         }
 
@@ -156,7 +169,6 @@ public class MainPageController {
         order.setEstimatedExecutionTime(estimatedExecutionTime);
         orderService.save(order);
 
-        Workshop selectedWorkshop = workshopService.findWorkshopById(selectedWorkshopId);
         VisitDate selectedVisitDate = new VisitDate();
         selectedVisitDate.setDate(LocalDate.parse(selectedDate));
         selectedVisitDate.setTime(selectedTime);
@@ -164,6 +176,8 @@ public class MainPageController {
         selectedVisitDate.setOrder(order);
         visitDateService.save(selectedVisitDate);
 
-        return "redirect:/";
+        sessionStatus.setComplete();
+
+        return "redirect:/appointmentDetails?success";
     }
 }
