@@ -187,4 +187,10 @@ public class MainPageController {
         return "mainPages/appointmentSuccess";
     }
 
+    @GetMapping("/login")
+    public String loginForm(){
+
+        return "mainPages/login";
+    }
+
 }
