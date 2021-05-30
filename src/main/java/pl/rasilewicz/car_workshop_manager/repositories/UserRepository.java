@@ -9,7 +9,7 @@ import pl.rasilewicz.car_workshop_manager.entities.User;
 @EntityScan(basePackages = "pl.rasilewicz.car_workshop_manager.entities")
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    User findUserByName(String name);
+    User findUserByUsername(String userName);
 
     User findUserById(Long id);
     
