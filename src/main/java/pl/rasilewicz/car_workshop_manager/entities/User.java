@@ -32,6 +32,7 @@ public class User {
     private String email;
 
     private Boolean registered;
+    private Boolean enabled;
     private String username;
     private String password;
 
