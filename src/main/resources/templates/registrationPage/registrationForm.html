@@ -41,7 +41,7 @@
               </div>
               <div class="card-body">
                 <div th:if="${param.success}">
-                  <div class="alert alert-success" style="text-align: center">You've successfully registered! Now You can sign in.</div>
+                  <div class="alert alert-success" style="text-align: center">You've successfully registered! Now You can <a th:href="@{/login}">SIGN IN</a>.</div>
                 </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
