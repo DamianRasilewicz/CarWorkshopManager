@@ -20,9 +20,17 @@ public class DashboardController {
 
     @GetMapping("/dashboard/user/home")
     public String index(Model model, HttpSession session){
-        List<Order> userOrderList = orderService.findOrderByUserId((Integer)session.getAttribute("userId"));
-        model.addAttribute("userOrderList", userOrderList);
+        List<Order> userLastOrderList = orderService.findLastOrdersByUserId((Integer)session.getAttribute("userId"));
+        model.addAttribute("userOrderList", userLastOrderList);
 
         return "dashboardPages/dashboard";
+    }
+
+    @GetMapping("/dashboard/user/visits")
+    public String userVisits (Model model, HttpSession session){
+        List<Order> userOrderList = orderService.findOrdersByUserId((Integer)session.getAttribute("userId"));
+        model.addAttribute("userOrderList", userOrderList);
+
+        return "dashboardPages/visits";
     }
 }

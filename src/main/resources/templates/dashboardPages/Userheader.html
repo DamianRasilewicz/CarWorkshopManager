@@ -20,22 +20,22 @@
           Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
       -->
         <div class="logo">
-            <a th:href="@{/}" class="simple-text logo-normal" style="text-align: center">
+            <a th:href="@{/dashboard/user/home}" class="simple-text logo-normal" style="text-align: center">
                 Car Workshop Manager
             </a>
         </div>
         <div class="sidebar-wrapper" id="sidebar-wrapper">
             <ul class="nav">
                 <li class="active ">
-                    <a href="dashboard.html">
+                    <a th:href="@{/dashboard/user/home}">
                         <i class="now-ui-icons design_app"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="./icons.html">
+                    <a th:href="@{/dashboard/user/visits}">
                         <i class="now-ui-icons education_atom"></i>
-                        <p>Icons</p>
+                        <p>Visits</p>
                     </a>
                 </li>
                 <li>

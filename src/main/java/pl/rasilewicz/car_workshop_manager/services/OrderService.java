@@ -9,6 +9,8 @@ public interface OrderService {
 
     void save (Order order);
 
-    List<Order> findOrderByUserId (Integer userId);
+    List<Order> findLastOrdersByUserId (Integer userId);
+
+    List<Order> findOrdersByUserId(Integer userId);
 
 }
