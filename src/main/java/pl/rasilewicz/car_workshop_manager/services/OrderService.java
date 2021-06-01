@@ -13,4 +13,6 @@ public interface OrderService {
 
     List<Order> findOrdersByUserId(Integer userId);
 
+    Order findOrderById(Integer orderId);
+
 }

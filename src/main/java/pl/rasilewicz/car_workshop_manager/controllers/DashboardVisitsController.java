@@ -29,6 +29,9 @@ public class DashboardVisitsController {
 
     @GetMapping("/dashboard/user/visits/view")
     public String viewingSelectedVisit (@RequestParam Integer id, Model model){
+        Order selectedVisit = orderService.findOrderById(id);
+        model.addAttribute("selectedVisit", selectedVisit);
+
 
         return "dashboardPages/selectedVisit";
     }
