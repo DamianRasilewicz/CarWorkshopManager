@@ -22,7 +22,7 @@ public class RegisterController {
     @PostMapping("/registration")
     public String registerFormFilled(Model model){
 
-        
+
         return "registrationPage/registrationForm";
     }
 }

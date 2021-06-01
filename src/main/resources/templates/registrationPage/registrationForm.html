@@ -35,9 +35,9 @@
       <div class="container">
         <div class="col-md-4 ml-auto mr-auto">
           <div class="card card-login card-plain">
-            <form class="form" method="POST" th:action="@{/register}" th:object="${user}">
+            <form class="form" method="POST" th:action="@{/registration}" th:object="${user}">
               <div class="card-header text-center">
-                <h1 style="color: white">Login</h1>
+                <h1 style="color: white">Registration</h1>
               </div>
               <div class="card-body">
                 <div class="input-group no-border input-lg">
@@ -54,28 +54,50 @@
                       <i class="now-ui-icons text_caps-small"></i>
                     </span>
                   </div>
+                  <input type="text" placeholder="First Name..." name="firstName" id="firstName" th:field="*{firstName}" class="form-control" />
+                </div>
+                <div class="input-group no-border input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="now-ui-icons text_caps-small"></i>
+                    </span>
+                  </div>
+                  <input type="text" placeholder="Last Name..." name="lastName" id="lastName" th:field="*{lastName}" class="form-control" />
+                </div>
+                <div class="input-group no-border input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="now-ui-icons text_caps-small"></i>
+                    </span>
+                  </div>
                   <input type="text" placeholder="Password..." name="password" id="password" th:field="*{password}" class="form-control" />
+                </div>
+                <div class="input-group no-border input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="now-ui-icons text_caps-small"></i>
+                    </span>
+                  </div>
+                  <input type="text" placeholder="Email..." name="email" id="email" th:field="*{email}" class="form-control" />
+                </div>
+                <div class="input-group no-border input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="now-ui-icons text_caps-small"></i>
+                    </span>
+                  </div>
+                  <input type="text" placeholder="Password..." name="phoneNumber" id="phoneNumber" th:field="*{phoneNumber}" class="form-control" />
                 </div>
               </div>
               <div class="card-footer text-center">
-                <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Sign In</button>
-                <div class="pull-left">
-                  <h6>
-                    <a href="#pablo" class="link">Create Account</a>
-                  </h6>
-                </div>
-                <div class="pull-right">
-                  <h6>
-                    <a href="#pablo" class="link">Need Help?</a>
-                  </h6>
-                </div>
+                <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Sign Up</button>
               </div>
             </form>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
   <span th:replace="/registrationPage/registrationFooter :: footer"></span>
   </div>
 
