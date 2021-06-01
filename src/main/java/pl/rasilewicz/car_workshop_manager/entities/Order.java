@@ -18,7 +18,10 @@ public class Order {
 
     @Column
     private String status;
+
+    @Column(columnDefinition = "double default 0.00")
     private Double cost;
+
     private Integer workingHours;
     private Double partsCost;
     private Double workCost;

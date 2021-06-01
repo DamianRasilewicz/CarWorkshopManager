@@ -10,9 +10,12 @@
       <div class="panel-header">
         <h1 th:text="'Welcome to Car Workshop Manager'" style="text-align: center; color: white"></h1>
           <br>
-          <h2 th:text="'Hi John !'" style="text-align: center; color: white"></h2>
+          <h2 th:text="${'Hi ' + session.userName + ' !'}" style="text-align: center; color: white"></h2>
       </div>
       <div class="content" style="background: -webkit-gradient(linear, left top, right top, from(#0c2646), color-stop(60%, #204065), to(#2a5788));">
+          <div class="row">
+              <br>
+          </div>
           <div class="row">
               <div class="col-md-12">
                   <div class="card">
@@ -24,115 +27,40 @@
                               <table class="table">
                                   <thead class=" text-primary">
                                   <th>
-                                      Name
+                                      No.
                                   </th>
                                   <th>
-                                      Country
+                                      Date
                                   </th>
                                   <th>
-                                      City
+                                      Time
                                   </th>
-                                  <th class="text-right">
-                                      Salary
+                                  <th>
+                                      Status
+                                  </th>
+                                  <th>
+                                      Workshop
+                                  </th>
+                                  <th>
+                                      Cost
+                                  </th>
+                                  <th class="text-center">
+                                      Actions
                                   </th>
                                   </thead>
                                   <tbody>
-                                  <tr>
-                                      <td>
-                                          Dakota Rice
-                                      </td>
-                                      <td>
-                                          Niger
-                                      </td>
-                                      <td>
-                                          Oud-Turnhout
-                                      </td>
-                                      <td class="text-right">
-                                          $36,738
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          Minerva Hooper
-                                      </td>
-                                      <td>
-                                          Curaçao
-                                      </td>
-                                      <td>
-                                          Sinaai-Waas
-                                      </td>
-                                      <td class="text-right">
-                                          $23,789
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          Sage Rodriguez
-                                      </td>
-                                      <td>
-                                          Netherlands
-                                      </td>
-                                      <td>
-                                          Baileux
-                                      </td>
-                                      <td class="text-right">
-                                          $56,142
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          Philip Chaney
-                                      </td>
-                                      <td>
-                                          Korea, South
-                                      </td>
-                                      <td>
-                                          Overland Park
-                                      </td>
-                                      <td class="text-right">
-                                          $38,735
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          Doris Greene
-                                      </td>
-                                      <td>
-                                          Malawi
-                                      </td>
-                                      <td>
-                                          Feldkirchen in Kärnten
-                                      </td>
-                                      <td class="text-right">
-                                          $63,542
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          Mason Porter
-                                      </td>
-                                      <td>
-                                          Chile
-                                      </td>
-                                      <td>
-                                          Gloucester
-                                      </td>
-                                      <td class="text-right">
-                                          $78,615
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          Jon Porter
-                                      </td>
-                                      <td>
-                                          Portugal
-                                      </td>
-                                      <td>
-                                          Gloucester
-                                      </td>
-                                      <td class="text-right">
-                                          $98,615
+                                  <tr th:each="order, state : ${userOrderList}">
+                                      <td th:text="${state.count}"></td>
+                                      <td th:text="${order.getVisitDate().getDate()}"></td>
+                                      <td th:text="${order.getVisitDate().getTime()}"></td>
+                                      <td th:text="${order.getStatus()}"></td>
+                                      <td th:text="${order.getVisitDate().getWorkshop().getCity()} + ', ' +
+                                      ${order.getVisitDate().getWorkshop().getStreet()} + ' ' +
+                                      ${order.getVisitDate().getWorkshop().getNumber()}"></td>
+                                      <td th:text="${order.getCost()}"></td>
+                                      <td class="text-center">
+                                          <a th:href="@{/dashboard/user/orders/view(id=${order.getId()})}" class="btn btn-primary">View</a>
+                                          <a th:href="@{/dashboard/user/orders/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
                                       </td>
                                   </tr>
                                   </tbody>

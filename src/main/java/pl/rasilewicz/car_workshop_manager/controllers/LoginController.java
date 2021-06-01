@@ -38,6 +38,7 @@ public class LoginController {
         }
 
         session.setAttribute("userName", loggedInUser.getUserName());
+        session.setAttribute("userId", loggedInUser.getId());
         if (loggedInUser.getRole().getName().equals("USER")){
             return "redirect:/dashboard/user/home";
         }else{

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.rasilewicz.car_workshop_manager.entities.Order;
 import pl.rasilewicz.car_workshop_manager.repositories.OrderRepository;
 
+import java.util.List;
+
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -19,5 +21,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void save(Order order) {
         orderRepository.save(order);
+    }
+
+    @Override
+    public List<Order> findOrderByUserId(Integer userId) {
+       return orderRepository.findOrderByUserId(userId);
     }
 }
