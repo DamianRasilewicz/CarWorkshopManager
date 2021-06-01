@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUserName(String userName) {
-        return userRepository.findUserByUsername(userName);
+        return userRepository.findUserByUserName(userName);
     }
 
     @Override
@@ -43,11 +43,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userRepository.findUserByUsername(userName);
+        User user = userRepository.findUserByUserName(userName);
         if (user == null) {
             throw new UsernameNotFoundException("Invalid user email or password.");
         }
         return new VLVUserDetails(user);
     }
+
 
 }

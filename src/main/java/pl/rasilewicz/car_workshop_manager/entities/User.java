@@ -33,7 +33,7 @@ public class User {
 
     private Boolean registered;
     private Boolean enabled;
-    private String username;
+    private String userName;
     private String password;
 
     @OneToMany(mappedBy = "user")

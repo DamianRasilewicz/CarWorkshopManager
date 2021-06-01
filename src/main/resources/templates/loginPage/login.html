@@ -35,7 +35,7 @@
       <div class="container">
         <div class="col-md-4 ml-auto mr-auto">
           <div class="card card-login card-plain">
-            <form class="form" method="" action="">
+            <form class="form" method="POST" th:action="@{/login}" th:object="${user}">
               <div class="card-header text-center">
                 <h1 style="color: white">Login</h1>
               </div>
@@ -46,7 +46,7 @@
                       <i class="now-ui-icons users_circle-08"></i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" placeholder="First Name...">
+                  <input type="text" class="form-control" placeholder="User Name..." name="userName"  id="userName" th:field="*{userName}">
                 </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
@@ -54,11 +54,11 @@
                       <i class="now-ui-icons text_caps-small"></i>
                     </span>
                   </div>
-                  <input type="text" placeholder="Last Name..." class="form-control" />
+                  <input type="text" placeholder="Password..." name="password" id="password" th:field="*{password}" class="form-control" />
                 </div>
               </div>
               <div class="card-footer text-center">
-                <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Get Started</a>
+                <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Sign In</button>
                 <div class="pull-left">
                   <h6>
                     <a href="#pablo" class="link">Create Account</a>
@@ -69,6 +69,7 @@
                     <a href="#pablo" class="link">Need Help?</a>
                   </h6>
                 </div>
+              </div>
             </form>
             </div>
           </div>
