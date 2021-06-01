@@ -10,11 +10,11 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class DashboardController {
+public class DashboardHomeController {
 
     private final OrderServiceImpl orderService;
 
-    public DashboardController(OrderServiceImpl orderService){
+    public DashboardHomeController(OrderServiceImpl orderService){
         this.orderService = orderService;
     }
 
@@ -26,11 +26,4 @@ public class DashboardController {
         return "dashboardPages/dashboard";
     }
 
-    @GetMapping("/dashboard/user/visits")
-    public String userVisits (Model model, HttpSession session){
-        List<Order> userOrderList = orderService.findOrdersByUserId((Integer)session.getAttribute("userId"));
-        model.addAttribute("userOrderList", userOrderList);
-
-        return "dashboardPages/visits";
-    }
 }
