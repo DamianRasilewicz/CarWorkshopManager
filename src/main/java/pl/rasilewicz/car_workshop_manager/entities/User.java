@@ -33,7 +33,10 @@ public class User {
 
     private Boolean registered;
     private Boolean enabled;
+
+    @Size(min = 3, max = 30, message = "Please input correct user name")
     private String userName;
+
     private String password;
 
     @OneToMany(mappedBy = "user")

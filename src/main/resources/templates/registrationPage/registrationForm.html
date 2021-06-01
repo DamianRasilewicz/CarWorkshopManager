@@ -40,6 +40,9 @@
                 <h1 style="color: white">Registration</h1>
               </div>
               <div class="card-body">
+                <div th:if="${param.success}">
+                  <div class="alert alert-success" style="text-align: center">You've successfully registered! Now You can sign in.</div>
+                </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
@@ -48,49 +51,65 @@
                   </div>
                   <input type="text" class="form-control" placeholder="User Name..." name="userName"  id="userName" th:field="*{userName}">
                 </div>
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                      <i class="now-ui-icons text_caps-small"></i>
+                      <i class="now-ui-icons users_single-02"></i>
                     </span>
                   </div>
                   <input type="text" placeholder="First Name..." name="firstName" id="firstName" th:field="*{firstName}" class="form-control" />
                 </div>
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                      <i class="now-ui-icons text_caps-small"></i>
+                      <i class="now-ui-icons users_single-02"></i>
                     </span>
                   </div>
                   <input type="text" placeholder="Last Name..." name="lastName" id="lastName" th:field="*{lastName}" class="form-control" />
                 </div>
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                      <i class="now-ui-icons text_caps-small"></i>
+                      <i class="now-ui-icons ui-1_lock-circle-open"></i>
                     </span>
                   </div>
-                  <input type="text" placeholder="Password..." name="password" id="password" th:field="*{password}" class="form-control" />
+                  <input type="password" placeholder="Password..." name="password" id="password" th:field="*{password}" class="form-control" />
                 </div>
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                      <i class="now-ui-icons text_caps-small"></i>
+                      <i class="now-ui-icons ui-1_email-85"></i>
                     </span>
                   </div>
                   <input type="text" placeholder="Email..." name="email" id="email" th:field="*{email}" class="form-control" />
                 </div>
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                      <i class="now-ui-icons text_caps-small"></i>
+                      <i class="now-ui-icons tech_mobile"></i>
                     </span>
                   </div>
-                  <input type="text" placeholder="Password..." name="phoneNumber" id="phoneNumber" th:field="*{phoneNumber}" class="form-control" />
+                  <input type="text" placeholder="Phone number..." name="phoneNumber" id="phoneNumber" th:field="*{phoneNumber}" class="form-control" />
                 </div>
+                <div class="text-danger" style="text-align: center;" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
               </div>
               <div class="card-footer text-center">
                 <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Sign Up</button>
+                <div class="pull-left">
+                  <h6>
+                    <a th:href="@{/login}" class="link">Already registered? Sign in</a>
+                  </h6>
+                </div>
+                <div class="pull-right">
+                  <h6>
+                    <a th:href="@{/}" class="link">Home Page</a>
+                  </h6>
+                </div>
               </div>
             </form>
             </div>
