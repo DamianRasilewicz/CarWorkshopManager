@@ -22,12 +22,25 @@ public class Order {
     @Column(columnDefinition = "double default 0.00")
     private Double cost;
 
+    @Column(columnDefinition = "Integer default 0")
     private Integer workingHours;
+
+    @Column(columnDefinition = "double default 0.00")
     private Double partsCost;
+
+    @Column(columnDefinition = "double default 0.00")
     private Double workCost;
+
+    @Column(columnDefinition = "varchar(255) default '' ")
     private String comment;
+
+    @Column(columnDefinition = "varchar(255) default '' ")
     private String moreInformation;
+
+    @Column(columnDefinition = "double default 0.00")
     private Double estimatedExecutionTime;
+
+    @Column(columnDefinition = "integer default 0")
     private Integer estimatedCost;
 
 
