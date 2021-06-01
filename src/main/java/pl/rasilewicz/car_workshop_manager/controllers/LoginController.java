@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.support.SessionStatus;
 import pl.rasilewicz.car_workshop_manager.entities.User;
 import pl.rasilewicz.car_workshop_manager.services.VLVUserDetails;
 
@@ -50,5 +51,14 @@ public class LoginController {
         if (!(principal instanceof VLVUserDetails)) {
             throw new  IllegalArgumentException("Principal can not be null!");
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout(SessionStatus session, HttpSession httpSession) {
+        SecurityContextHolder.getContext().setAuthentication(null);
+        session.setComplete();
+        httpSession.removeAttribute("userName");
+        httpSession.removeAttribute("userId");
+        return "redirect:/";
     }
 }
