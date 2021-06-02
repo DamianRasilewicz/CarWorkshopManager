@@ -27,12 +27,12 @@ public class DashboardVisitsController {
         return "dashboardPages/visits";
     }
 
-    @GetMapping("/dashboard/user/visits/view")
+    @GetMapping("/dashboard/user/visits/details")
     public String viewingSelectedVisit (@RequestParam Integer id, Model model){
         Order selectedVisit = orderService.findOrderById(id);
         model.addAttribute("selectedVisit", selectedVisit);
 
 
-        return "dashboardPages/selectedVisit";
+        return "dashboardPages/visitDetails";
     }
 }

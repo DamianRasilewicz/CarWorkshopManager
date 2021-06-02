@@ -165,7 +165,7 @@ public class MainPageController {
         order.setTasks(selectedTasksList);
         order.setUser(user);
         order.setStatus("Pending approval");
-        order.setEstimatedCost(estimatedCost);
+        order.setEstimatedWorkCost(estimatedCost);
         order.setEstimatedExecutionTime(estimatedExecutionTime);
         orderService.save(order);
 

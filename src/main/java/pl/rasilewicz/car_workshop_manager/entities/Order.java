@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class Order {
     private String status;
 
     @Column(columnDefinition = "double default 0.00")
-    private Double cost;
+    private Double finalCost;
 
     @Column(columnDefinition = "Integer default 0")
     private Integer workingHours;
@@ -41,7 +42,7 @@ public class Order {
     private Double estimatedExecutionTime;
 
     @Column(columnDefinition = "integer default 0")
-    private Integer estimatedCost;
+    private Integer estimatedWorkCost;
 
 
     @ManyToMany()
@@ -59,5 +60,9 @@ public class Order {
 
     @OneToOne(mappedBy = "order")
     private VisitDate visitDate;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
 
 }

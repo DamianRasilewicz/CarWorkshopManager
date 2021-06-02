@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:include="/dashboardPages/Userheader :: head"></head>
+<head th:include="/dashboardPages/userheader :: head"></head>
 
 <body>
 <div class="wrapper">
@@ -155,9 +155,9 @@
                                       <td th:text="${order.getVisitDate().getWorkshop().getCity()} + ', ' +
                                       ${order.getVisitDate().getWorkshop().getStreet()} + ' ' +
                                       ${order.getVisitDate().getWorkshop().getNumber()}"></td>
-                                      <td th:text="${order.getCost()}"></td>
+                                      <td th:text="${order.getFinalCost()}"></td>
                                       <td class="text-center">
-                                          <a th:href="@{/dashboard/user/visits/view(id=${order.getId()})}" class="btn btn-primary">View</a>
+                                          <a th:href="@{/dashboard/user/visits/details(id=${order.getId()})}" class="btn btn-primary">Details</a>
                                           <a th:href="@{/dashboard/user/visits/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
                                       </td>
                                   </tr>
@@ -171,7 +171,7 @@
         <div class="row">
         </div>
       </div>
-      <span th:replace="/dashboardPages/Userfooter :: footer"></span>
+      <span th:replace="/dashboardPages/userfooter :: footer"></span>
 </body>
 
 </html>

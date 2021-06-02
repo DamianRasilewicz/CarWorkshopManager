@@ -35,8 +35,8 @@ INSERT INTO car_workshop_manager.cars (brand, model, production_year, engine_cap
 INSERT INTO car_workshop_manager.cars (brand, model, production_year, engine_capacity, engine_power, engine_type, user_id) VALUES ('BMW', '5', '2001',
                                                                                                                                    '2.5L', '192KM', 'Benzine', 2);
 
-INSERT INTO car_workshop_manager.orders (status, user_id) VALUES ('pending approval', 1);
-INSERT INTO car_workshop_manager.orders (status, user_id) VALUES ('in progress', 2);
+INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estimated_work_cost, parts_cost, work_cost, working_hours, final_cost, comment, car_id, user_id) VALUES ('Done', 16.5, 1650, 500, 1650, 16.5, 2150,'none', 1, 1);
+INSERT INTO car_workshop_manager.orders (status, user_id) VALUES ('In progress', 2);
 
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id) VALUES ('2021-05-20', '13:00', 1, 1);
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id) VALUES ('2021-05-17', '10:30', 2, 4);
