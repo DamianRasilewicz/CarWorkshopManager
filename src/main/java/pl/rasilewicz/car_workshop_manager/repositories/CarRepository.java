@@ -10,4 +10,6 @@ import pl.rasilewicz.car_workshop_manager.entities.Car;
 @EntityScan(basePackages = "pl.rasilewicz.car_workshop_manager.entities")
 public interface CarRepository extends JpaRepository<Car, Integer> {
 
+    Car findCarById(Integer id);
+
 }

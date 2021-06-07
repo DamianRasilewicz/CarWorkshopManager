@@ -10,4 +10,6 @@ public interface VisitDateService {
     List<VisitDate> findVisitDateByDateAndWorkshopId(LocalDate date, Integer workshopId);
 
     void save (VisitDate visitDate);
+
+    VisitDate findVisitDateById(Integer id);
 }

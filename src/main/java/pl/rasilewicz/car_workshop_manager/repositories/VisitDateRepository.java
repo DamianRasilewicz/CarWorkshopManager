@@ -16,4 +16,6 @@ public interface VisitDateRepository extends JpaRepository<VisitDate, Integer> {
 
 //    @Query(value = "SELECT * FROM car_workshop_manager.tasks", nativeQuery = true)
     List<VisitDate> findVisitDateByDateAndWorkshopId(LocalDate date, Integer workshopId);
+
+    VisitDate findVisitDateById(Integer id);
 }

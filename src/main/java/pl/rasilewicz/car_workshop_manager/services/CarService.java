@@ -7,4 +7,6 @@ public interface CarService {
 
     void save (Car car);
 
+    Car findCarById(Integer id);
+
 }

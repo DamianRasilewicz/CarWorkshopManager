@@ -30,4 +30,9 @@ public class VisitDateServiceImpl implements VisitDateService {
     public void save(VisitDate visitDate) {
         visitDateRepository.save(visitDate);
     }
+
+    @Override
+    public VisitDate findVisitDateById(Integer id) {
+        return visitDateRepository.findVisitDateById(id);
+    }
 }
