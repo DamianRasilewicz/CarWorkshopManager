@@ -61,6 +61,6 @@ public class DashboardVisitsController {
 
 
 
-        return  "redirect:/dashboard/user/visits/details";
+        return  "redirect:/dashboard/user/visits/details?success";
     }
 }

@@ -157,7 +157,7 @@
                                       ${order.getVisitDate().getWorkshop().getNumber()}"></td>
                                       <td th:text="${order.getFinalCost()}"></td>
                                       <td class="text-center">
-                                          <a th:href="@{/dashboard/user/visits/view(id=${order.getId()})}" class="btn btn-primary">View</a>
+                                          <a th:href="@{/dashboard/user/visits/details(id=${order.getId()})}" class="btn btn-primary">Details</a>
                                           <a th:href="@{/dashboard/user/visits/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
                                       </td>
                                   </tr>

@@ -22,8 +22,8 @@ INSERT INTO car_workshop_manager.mechanics (first_name, last_name, seniority, sp
 
 INSERT INTO car_workshop_manager.roles (name) VALUES ('ADMIN'), ('USER');
 
-INSERT INTO car_workshop_manager.users (email, first_name, last_name, user_name, password, phone_number, registered, enabled) VALUES ('admin@gmail.com', 'Jan', 'Kowalski',
-                                                                                                                 'admin', '$2y$12$7YIAqgrND2w1cIhfwLAgMuX7fgyqHgD.emwSu12/3.qFUcZ1U5LCK', 668875423, true, true);
+INSERT INTO car_workshop_manager.users (email, first_name, last_name, user_name, password, phone_number, registered, enabled) VALUES ('user@gmail.com', 'Jan', 'Kowalski',
+                                                                                                                 'user', '$2y$12$um7q2OHsp5kf4hHmdR.C1OhL8wBXlXJ8x5m9YMJJPPbePQEjaZCny', 668875423, true, true);
 INSERT INTO car_workshop_manager.users (email, first_name, last_name, phone_number, registered) VALUES ('andrzej345@wp.pl', 'Andrzej', 'Korzeń',
                                                                                                         856982236, false);
 
