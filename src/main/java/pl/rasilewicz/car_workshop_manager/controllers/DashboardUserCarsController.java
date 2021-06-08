@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.rasilewicz.car_workshop_manager.entities.Car;
 import pl.rasilewicz.car_workshop_manager.entities.User;
 import pl.rasilewicz.car_workshop_manager.services.CarServiceImpl;
@@ -31,12 +33,22 @@ public class DashboardUserCarsController {
         return "dashboardPages/cars";
     }
 
-    @PostMapping("/dashboard/user/cars")
-    public String changedUserProfile (User userProfile, String newPassword, HttpSession session){
+    @GetMapping("/dashboard/user/cars/edit")
+    public String userCarEditing (@RequestParam Integer id, Model model){
+        Car editingCar = carService.findCarById(id);
+        model.addAttribute("editingCar", editingCar);
 
-        session.removeAttribute("userName");
-        session.setAttribute("userName", userProfile.getUserName());
+        return "dashboardPages/carEdit";
+    }
 
-        return "redirect:/dashboard/user/profile?success";
+    @PostMapping("/dashboard/user/cars/edit")
+    public String editedUserCar (Car editingCar, HttpSession session, RedirectAttributes redirectAttributes){
+        User user = userService.findUserById((Integer) session.getAttribute("userId"));
+        editingCar.setUser(user);
+        carService.save(editingCar);
+
+        redirectAttributes.addAttribute("id", editingCar.getId());
+
+        return "redirect:/dashboard/user/cars/edit?success";
     }
 }
