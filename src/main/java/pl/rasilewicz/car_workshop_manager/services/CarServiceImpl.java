@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.rasilewicz.car_workshop_manager.entities.Car;
 import pl.rasilewicz.car_workshop_manager.repositories.CarRepository;
 
+import java.util.List;
+
 
 @Service
 public class CarServiceImpl implements CarService {
@@ -24,5 +26,10 @@ public class CarServiceImpl implements CarService {
     @Override
     public Car findCarById(Integer id) {
        return carRepository.findCarById(id);
+    }
+
+    @Override
+    public List<Car> findCarsByUserId(Integer userId) {
+        return carRepository.findCarsByUserId(userId);
     }
 }

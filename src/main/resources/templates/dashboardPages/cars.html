@@ -22,7 +22,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a th:href="@{/dashboard/user/visits}">
                         <i class="now-ui-icons education_atom"></i>
                         <p>Visits</p>
@@ -34,7 +34,7 @@
                         <p>User Profile</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a th:href="@{/dashboard/user/cars}">
                         <i class="now-ui-icons ui-1_bell-53"></i>
                         <p>Cars</p>
@@ -112,47 +112,49 @@
               <div class="col-md-12">
                   <div class="card">
                       <div class="card-header">
-                          <h4 class="card-title">Visits</h4>
+                          <h4 class="card-title">Cars</h4>
                       </div>
                       <div class="card-body">
                           <div class="table-responsive">
                               <table class="table">
-                                  <thead class=" text-primary" style="text-align: center">
+                                  <thead class="text-primary" style="text-align: center">
                                   <th>
                                       No.
                                   </th>
                                   <th>
-                                      Date
+                                      Brand
                                   </th>
                                   <th>
-                                      Time
+                                      Model
                                   </th>
                                   <th>
-                                      Status
+                                      Production Year
                                   </th>
                                   <th>
-                                      Workshop
+                                      Engine Type
                                   </th>
                                   <th>
-                                      Cost
+                                      Engine Capacity
+                                  </th>
+                                  <th>
+                                      Engine Power
                                   </th>
                                   <th class="text-center">
                                       Actions
                                   </th>
                                   </thead>
                                   <tbody>
-                                  <tr th:each="order, state : ${userOrderList}" class="text-center">
+                                  <tr th:each="car, state : ${userCarList}" class="text-center">
                                       <td th:text="${state.count}"></td>
-                                      <td th:text="${order.getVisitDate().getDate()}"></td>
-                                      <td th:text="${order.getVisitDate().getTime()}"></td>
-                                      <td th:text="${order.getStatus()}"></td>
-                                      <td th:text="${order.getVisitDate().getWorkshop().getCity()} + ', ' +
-                                      ${order.getVisitDate().getWorkshop().getStreet()} + ' ' +
-                                      ${order.getVisitDate().getWorkshop().getNumber()}"></td>
-                                      <td th:text="${order.getFinalCost()}"></td>
+                                      <td th:text="${car.getBrand()}"></td>
+                                      <td th:text="${car.getModel()}"></td>
+                                      <td th:text="${car.getProductionYear()}"></td>
+                                      <td th:text="${car.getEngineType()}"></td>
+                                      <td th:text="${car.getEngineCapacity()}"></td>
+                                      <td th:text="${car.getEnginePower()}"></td>
                                       <td class="text-center">
-                                          <a th:href="@{/dashboard/user/visits/details(id=${order.getId()})}" class="btn btn-primary">Details</a>
-                                          <a th:href="@{/dashboard/user/visits/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
+                                          <a th:href="@{/dashboard/user/cars/edit(id=${car.getId()})}" class="btn btn-primary">Edit</a>
+                                          <a th:href="@{/dashboard/user/cars/delete(id=${car.getId()})}" class="btn btn-danger">Delete</a>
                                       </td>
                                   </tr>
                                   </tbody>
