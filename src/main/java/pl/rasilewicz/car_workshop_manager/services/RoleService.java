@@ -8,4 +8,6 @@ public interface RoleService {
 
     Role findRoleById(Integer id);
 
+    Role findRoleByName(String name);
+
 }

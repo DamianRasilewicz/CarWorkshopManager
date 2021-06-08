@@ -29,9 +29,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./map.html">
-                        <i class="now-ui-icons location_map-big"></i>
-                        <p>Maps</p>
+                    <a th:href="@{/dashboard/user/profile}">
+                        <i class="now-ui-icons users_single-02"></i>
+                        <p>User Profile</p>
                     </a>
                 </li>
                 <li>
@@ -40,12 +40,7 @@
                         <p>Notifications</p>
                     </a>
                 </li>
-                <li>
-                    <a href="./user.html">
-                        <i class="now-ui-icons users_single-02"></i>
-                        <p>User Profile</p>
-                    </a>
-                </li>
+
                 <li>
                     <a href="./tables.html">
                         <i class="now-ui-icons design_bullet-list-67"></i>
@@ -96,7 +91,7 @@
                                 </p>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" th:href="@{/dashboard/user/profile}">Profile</a>
                                 <a class="dropdown-item" th:href="@{/logout}">Log Out</a>
                             </div>
                         </li>
@@ -108,7 +103,6 @@
       <div class="panel-header">
         <h1 th:text="'Car Workshop Manager'" style="text-align: center; color: white"></h1>
           <br>
-          <h2 th:text="'Visits'" style="text-align: center; color: white"></h2>
       </div>
       <div class="content" style="background: -webkit-gradient(linear, left top, right top, from(#0c2646), color-stop(60%, #204065), to(#2a5788));">
           <div class="row">

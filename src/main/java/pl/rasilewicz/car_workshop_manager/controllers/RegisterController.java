@@ -45,7 +45,7 @@ public class RegisterController {
         user.setRegistered(true);
         user.setEnabled(true);
 
-        Role userRole = roleService.findRoleById(2);
+        Role userRole = roleService.findRoleByName("USER");
         user.setRole(userRole);
 
         userService.save(user);

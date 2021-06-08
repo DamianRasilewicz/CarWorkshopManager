@@ -10,6 +10,6 @@ public interface UserService extends UserDetailsService {
 
     User findByUserName(String userName);
 
-    User findUserById(Long id);
+    User findUserById(Integer id);
 
 }
