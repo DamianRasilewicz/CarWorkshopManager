@@ -12,4 +12,5 @@ public interface VisitDateService {
     void save (VisitDate visitDate);
 
     VisitDate findVisitDateById(Integer id);
+
 }

@@ -38,8 +38,8 @@ INSERT INTO car_workshop_manager.cars (brand, model, production_year, engine_cap
 INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estimated_work_cost, parts_cost, work_cost, working_hours, final_cost, comment, car_id, user_id) VALUES ('Done', 16.5, 1650, 500, 1650, 16.5, 2150,'none', 1, 1);
 INSERT INTO car_workshop_manager.orders (status, user_id) VALUES ('In progress', 2);
 
-INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id) VALUES ('2021-05-20', '13:00', 1, 1);
-INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id) VALUES ('2021-05-17', '10:30', 2, 4);
+INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-05-20', '13:00', 1, 1, 1, 20, 5, 2021);
+INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-05-17', '10:30', 2, 4, 2, 17, 5, 2021);
 
 INSERT INTO car_workshop_manager.orders_tasks (order_id, task_id) VALUES (1, 1);
 INSERT INTO car_workshop_manager.orders_tasks (order_id, task_id) VALUES (1, 2);

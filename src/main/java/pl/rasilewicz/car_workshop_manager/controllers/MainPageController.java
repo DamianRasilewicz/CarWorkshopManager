@@ -169,11 +169,18 @@ public class MainPageController {
         order.setEstimatedExecutionTime(estimatedExecutionTime);
         orderService.save(order);
 
+        LocalDate selectedDateParsed = LocalDate.parse(selectedDate);
+
         VisitDate selectedVisitDate = new VisitDate();
-        selectedVisitDate.setDate(LocalDate.parse(selectedDate));
+        selectedVisitDate.setDate(selectedDateParsed);
         selectedVisitDate.setTime(selectedTime);
         selectedVisitDate.setWorkshop(selectedWorkshop);
         selectedVisitDate.setOrder(order);
+        selectedVisitDate.setDay(selectedDateParsed.getDayOfMonth());
+        selectedVisitDate.setMonth(selectedDateParsed.getMonthValue());
+        selectedVisitDate.setYear(selectedDateParsed.getYear());
+        selectedVisitDate.setUser(user);
+
         visitDateService.save(selectedVisitDate);
 
         sessionStatus.setComplete();

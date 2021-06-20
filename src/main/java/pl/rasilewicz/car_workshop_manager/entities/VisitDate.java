@@ -18,6 +18,9 @@ public class VisitDate {
     private Integer id;
 
     @Column
+    private Integer day;
+    private Integer month;
+    private Integer year;
     private LocalDate date;
     private String time;
 
@@ -27,4 +30,8 @@ public class VisitDate {
 
     @ManyToOne
     private Workshop workshop;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
 }
