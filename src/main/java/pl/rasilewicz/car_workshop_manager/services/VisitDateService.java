@@ -13,4 +13,6 @@ public interface VisitDateService {
 
     VisitDate findVisitDateById(Integer id);
 
+    Integer findNumberOfVisitDatesByMonthByUserId(Integer month, Integer userId);
+
 }

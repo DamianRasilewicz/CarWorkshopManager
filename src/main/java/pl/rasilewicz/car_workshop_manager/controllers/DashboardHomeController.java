@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.rasilewicz.car_workshop_manager.entities.Order;
 import pl.rasilewicz.car_workshop_manager.services.OrderServiceImpl;
+import pl.rasilewicz.car_workshop_manager.services.VisitDateServiceImpl;
 
 import java.util.*;
 
@@ -14,9 +15,11 @@ import javax.servlet.http.HttpSession;
 public class DashboardHomeController {
 
     private final OrderServiceImpl orderService;
+    private final VisitDateServiceImpl visitDateService;
 
-    public DashboardHomeController(OrderServiceImpl orderService){
+    public DashboardHomeController(OrderServiceImpl orderService, VisitDateServiceImpl visitDateService){
         this.orderService = orderService;
+        this.visitDateService = visitDateService;
     }
 
     @GetMapping("/dashboard/user/home")
@@ -24,21 +27,17 @@ public class DashboardHomeController {
         List<Order> userLastOrderList = orderService.findLastOrdersByUserId((Integer)session.getAttribute("userId"));
         model.addAttribute("userOrderList", userLastOrderList);
 
+        Integer userId = (Integer)session.getAttribute("userId");
+
         List<String> monthsList = Arrays.asList("January", "February", "March", "April", "Mai", "June", "July",
                                                 "August", "September", "October", "November", "December");
 
-        List<Integer> visitPerMonth = new ArrayList<>();
-
-//        for (Order order:userLastOrderList) {
-//            int index = 0;
-//            int numberOfVisit;
-//            order.getVisitDate().getDate().getMonth()
-//        }
-
         Map<String, Integer> data = new LinkedHashMap<String, Integer>();
-        data.put("JAVA", 50);
-        data.put("Ruby", 20);
-        data.put("Python", 30);
+
+        for (int i = 0; i <monthsList.size() ; i++) {
+            data.put(monthsList.get(i), visitDateService.findNumberOfVisitDatesByMonthByUserId(i + 1,userId));
+        }
+
 
         model.addAttribute("data", data);
 

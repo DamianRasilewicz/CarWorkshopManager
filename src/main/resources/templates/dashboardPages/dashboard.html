@@ -213,16 +213,12 @@
                             responsive: 1,
                             scales: {
                                 yAxes: [{
-                                    display:0,
-                                    gridLines:0,
-                                    ticks: {
-                                        display: false
+                                    scaleLabel: {
+                                        display: true,
                                     },
-                                    gridLines: {
-                                        zeroLineColor: "transparent",
-                                        drawTicks: false,
-                                        display: false,
-                                        drawBorder: false
+                                    ticks: {
+                                        beingAtZero: true,
+                                        stepSize: 1
                                     }
                                 }],
                                 xAxes: [{

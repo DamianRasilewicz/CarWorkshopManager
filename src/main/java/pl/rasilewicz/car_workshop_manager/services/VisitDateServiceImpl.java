@@ -35,4 +35,9 @@ public class VisitDateServiceImpl implements VisitDateService {
     public VisitDate findVisitDateById(Integer id) {
         return visitDateRepository.findVisitDateById(id);
     }
+
+    @Override
+    public Integer findNumberOfVisitDatesByMonthByUserId(Integer month, Integer userId) {
+        return visitDateRepository.findNumberOfVisitDatesByMonthByUserId(month, userId);
+    }
 }
