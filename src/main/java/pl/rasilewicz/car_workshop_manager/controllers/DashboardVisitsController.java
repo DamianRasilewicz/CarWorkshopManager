@@ -2,7 +2,6 @@ package pl.rasilewicz.car_workshop_manager.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,5 +61,21 @@ public class DashboardVisitsController {
 
 
         return  "redirect:/dashboard/user/visits/details?success";
+    }
+
+    @GetMapping("/dashboard/user/lastVisits/delete")
+    public String viewingConfirmViewDeleteVisit (@RequestParam Integer id, Model model){
+        Order selectedVisit = orderService.findOrderById(id);
+        model.addAttribute("selectedVisit", selectedVisit);
+        model.addAttribute("id", id);
+
+        return "dashboardPages/confirmationDeleteLastVisit";
+    }
+
+    @PostMapping("/dashboard/user/lastVisits/delete")
+    public String afterConfirmedBoxDeleteVisit (Integer id){
+        orderService.deleteById(id);
+
+        return "redirect:/dashboard/user/home?lastVisitDeleteSuccess";
     }
 }

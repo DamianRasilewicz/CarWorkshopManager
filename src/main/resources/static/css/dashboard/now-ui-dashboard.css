@@ -1730,7 +1730,7 @@ fieldset[disabled] .btn-link.active {
 .form-control[readonly],
 fieldset[disabled] .form-control {
   background-color: #E3E3E3;
-  color: #888;
+  color: black;
   cursor: not-allowed;
 }
 

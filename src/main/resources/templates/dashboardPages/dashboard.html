@@ -115,6 +115,9 @@
                       <div class="card-header">
                           <h4 class="card-title">Last Visits</h4>
                       </div>
+                      <div th:if="${param.lastVisitDeleteSuccess}">
+                          <div class="alert alert-success" style="text-align: center">Last visit successfully deleted!</div>
+                      </div>
                       <div class="card-body">
                           <div class="table-responsive">
                               <table class="table">
@@ -153,7 +156,7 @@
                                       <td th:text="${order.getFinalCost()}"></td>
                                       <td class="text-center">
                                           <a th:href="@{/dashboard/user/visits/details(id=${order.getId()})}" class="btn btn-primary">Details</a>
-                                          <a th:href="@{/dashboard/user/visits/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
+                                          <a th:href="@{/dashboard/user/lastVisits/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
                                       </td>
                                   </tr>
                                   </tbody>
