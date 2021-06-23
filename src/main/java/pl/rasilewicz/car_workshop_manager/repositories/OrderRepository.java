@@ -18,4 +18,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     List<Order> findOrdersByUserId(Integer userId);
 
     Order findOrderById(Integer orderId);
+
+    @Query(value = "SELECT * FROM car_workshop_manager.orders ORDER BY id DESC", nativeQuery = true)
+    List<Order> findLastUsersOrders();
 }

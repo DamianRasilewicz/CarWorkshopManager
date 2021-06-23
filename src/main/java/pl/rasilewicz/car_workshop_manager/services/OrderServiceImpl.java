@@ -42,4 +42,9 @@ public class OrderServiceImpl implements OrderService {
     public void deleteById(Integer id) {
         orderRepository.deleteById(id);
     }
+
+    @Override
+    public List<Order> findLastUsersOrders() {
+        return orderRepository.findLastUsersOrders();
+    }
 }

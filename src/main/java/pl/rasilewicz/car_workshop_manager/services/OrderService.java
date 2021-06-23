@@ -17,4 +17,6 @@ public interface OrderService {
 
     void deleteById (Integer id);
 
+    List<Order> findLastUsersOrders();
+
 }
