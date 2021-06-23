@@ -21,4 +21,7 @@ public interface VisitDateRepository extends JpaRepository<VisitDate, Integer> {
 
     @Query(value = "SELECT  COUNT(id) FROM car_workshop_manager.visit_dates WHERE month = ?1 AND user_id = ?2" ,nativeQuery = true)
     Integer findNumberOfVisitDatesByMonthByUserId(Integer month, Integer userId);
+
+    @Query(value = "SELECT  COUNT(id) FROM car_workshop_manager.visit_dates WHERE month = ?1" ,nativeQuery = true)
+    Integer findNumberOfVisitDatesAllUsers(Integer month);
 }

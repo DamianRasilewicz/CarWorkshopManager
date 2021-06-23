@@ -40,4 +40,9 @@ public class VisitDateServiceImpl implements VisitDateService {
     public Integer findNumberOfVisitDatesByMonthByUserId(Integer month, Integer userId) {
         return visitDateRepository.findNumberOfVisitDatesByMonthByUserId(month, userId);
     }
+
+    @Override
+    public Integer findNumberOfVisitDatesAllUsers(Integer month) {
+        return visitDateRepository.findNumberOfVisitDatesAllUsers(month);
+    }
 }
