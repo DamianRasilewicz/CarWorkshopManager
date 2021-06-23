@@ -28,7 +28,7 @@ INSERT INTO car_workshop_manager.users (email, first_name, last_name, user_name,
                                                                                                                                       'Admin', '$2y$12$ao279hYOuSSEtPUyB8jIi.ki2LvY9AZ4ypWR7mn2WnEd1me5Vciay', 999999999, true, true);
 
 INSERT INTO car_workshop_manager.user_role (role_id, user_id) VALUES (2, 1);
-INSERT INTO car_workshop_manager.user_role (role_id, user_id) VALUES (2, 2);
+INSERT INTO car_workshop_manager.user_role (role_id, user_id) VALUES (1, 2);
 
 INSERT INTO car_workshop_manager.cars (brand, model, production_year, engine_capacity, engine_power, engine_type, user_id) VALUES ('Audi', 'A6', '2008',
                                                                                                                                    '2700', '180', 'Diesel', 1);

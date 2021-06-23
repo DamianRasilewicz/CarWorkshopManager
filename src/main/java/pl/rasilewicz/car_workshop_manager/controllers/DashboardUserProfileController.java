@@ -4,7 +4,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.rasilewicz.car_workshop_manager.entities.Role;
 import pl.rasilewicz.car_workshop_manager.entities.User;
@@ -34,7 +33,7 @@ public class DashboardUserProfileController {
         String newPassword = "";
         model.addAttribute("newPassword", newPassword);
 
-        return "dashboardPages/userProfile";
+        return "dashboardPages/user/userProfile";
     }
 
     @PostMapping("/dashboard/user/profile")

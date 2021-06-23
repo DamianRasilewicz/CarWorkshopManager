@@ -30,7 +30,7 @@ public class DashboardUserCarsController {
         List<Car> userCarList = carService.findCarsByUserId((Integer)session.getAttribute("userId"));
         model.addAttribute("userCarList", userCarList);
 
-        return "dashboardPages/cars";
+        return "dashboardPages/user/cars";
     }
 
     @GetMapping("/dashboard/user/cars/edit")
@@ -38,7 +38,7 @@ public class DashboardUserCarsController {
         Car editingCar = carService.findCarById(id);
         model.addAttribute("editingCar", editingCar);
 
-        return "dashboardPages/carEdit";
+        return "dashboardPages/user/carEdit";
     }
 
     @PostMapping("/dashboard/user/cars/edit")

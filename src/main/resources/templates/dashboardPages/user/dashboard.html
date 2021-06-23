@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:include="/dashboardPages/userheader :: head"></head>
+<head th:include="/dashboardPages/user/userheader :: head"></head>
 
 <body>
 <div class="wrapper">
@@ -16,13 +16,13 @@
         </div>
         <div class="sidebar-wrapper" id="sidebar-wrapper">
             <ul class="nav">
-                <li>
+                <li class="active">
                     <a th:href="@{/dashboard/user/home}">
                         <i class="now-ui-icons design_app"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a th:href="@{/dashboard/user/visits}">
                         <i class="now-ui-icons education_atom"></i>
                         <p>Visits</p>
@@ -103,6 +103,7 @@
       <div class="panel-header">
         <h1 th:text="'Car Workshop Manager'" style="text-align: center; color: white"></h1>
           <br>
+          <h2 th:text="${'Hi ' + session.userName + ' !'}" style="text-align: center; color: white"></h2>
       </div>
       <div class="content" style="background: -webkit-gradient(linear, left top, right top, from(#0c2646), color-stop(60%, #204065), to(#2a5788));">
           <div class="row">
@@ -112,10 +113,10 @@
               <div class="col-md-12">
                   <div class="card">
                       <div class="card-header">
-                          <h4 class="card-title">Visits</h4>
+                          <h4 class="card-title">Last Visits</h4>
                       </div>
-                      <div th:if="${param.visitDeleteSuccess}">
-                          <div class="alert alert-success" style="text-align: center">Visit successfully deleted!</div>
+                      <div th:if="${param.lastVisitDeleteSuccess}">
+                          <div class="alert alert-success" style="text-align: center">Last visit successfully deleted!</div>
                       </div>
                       <div class="card-body">
                           <div class="table-responsive">
@@ -155,7 +156,7 @@
                                       <td th:text="${order.getFinalCost()}"></td>
                                       <td class="text-center">
                                           <a th:href="@{/dashboard/user/visits/details(id=${order.getId()})}" class="btn btn-primary">Details</a>
-                                          <a th:href="@{/dashboard/user/visits/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
+                                          <a th:href="@{/dashboard/user/lastVisits/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
                                       </td>
                                   </tr>
                                   </tbody>
@@ -166,9 +167,120 @@
               </div>
           </div>
         <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-category">2018 Sales</h5>
+                        <h4 class="card-title">All products</h4>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                                <i class="now-ui-icons loader_gear"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="exampleChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                        </div>
+                    </div>
+                    <script th:inline="javascript">
+                        /*<![CDATA[*/
+                        chartColor = "#FFFFFF";
+
+                        // General configuration for the charts with Line gradientStroke
+                        gradientChartOptionsConfiguration = {
+                            maintainAspectRatio: false,
+                            legend: {
+                                display: false
+                            },
+                            tooltips: {
+                                bodySpacing: 4,
+                                mode:"nearest",
+                                intersect: 0,
+                                position:"nearest",
+                                xPadding:10,
+                                yPadding:10,
+                                caretPadding:10
+                            },
+                            responsive: 1,
+                            scales: {
+                                yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                    },
+                                    ticks: {
+                                        beingAtZero: true,
+                                        stepSize: 1
+                                    }
+                                }],
+                                xAxes: [{
+                                    display:0,
+                                    gridLines:0,
+                                    ticks: {
+                                        display: false
+                                    },
+                                    gridLines: {
+                                        zeroLineColor: "transparent",
+                                        drawTicks: false,
+                                        display: false,
+                                        drawBorder: false
+                                    }
+                                }]
+                            },
+                            layout:{
+                                padding:{left:0,right:0,top:15,bottom:15}
+                            }
+                        };
+                        var htmldata = [[${data}]];
+                        ctx = document.getElementById('exampleChart').getContext("2d");
+
+                        gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+                        gradientStroke.addColorStop(0, '#80b6f4');
+                        gradientStroke.addColorStop(1, chartColor);
+
+                        gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+                        gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+                        gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+
+                        exampleChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: Object.keys(htmldata),
+                                datasets: [{
+                                    label: "Visits",
+                                    borderColor: "#f96332",
+                                    pointBorderColor: "#FFF",
+                                    pointBackgroundColor: "#f96332",
+                                    pointBorderWidth: 2,
+                                    pointHoverRadius: 4,
+                                    pointHoverBorderWidth: 1,
+                                    pointRadius: 4,
+                                    fill: true,
+                                    backgroundColor: gradientFill,
+                                    borderWidth: 2,
+                                    data: Object.keys(htmldata).map(function(key) {return htmldata[key];})
+                                }]
+                            },
+                            options: gradientChartOptionsConfiguration
+                        });
+                        /*]]>*/
+                    </script>
+                </div>
+            </div>
         </div>
       </div>
-      <span th:replace="/dashboardPages/userfooter :: footer"></span>
+      <span th:replace="/dashboardPages/user/userfooter :: footer"></span>
 </body>
 
 </html>

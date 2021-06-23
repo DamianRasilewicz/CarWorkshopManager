@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:include="/dashboardPages/userheader :: head"></head>
+<head th:include="/dashboardPages/user/userheader :: head"></head>
 
 <body>
 <div class="wrapper">
@@ -112,7 +112,7 @@
               <div class="col-md-6">
                   <div class="card">
                       <div class="card-body">
-                          <form th:action="@{/dashboard/user/lastVisits/delete}" method="POST">
+                          <form th:action="@{/dashboard/user/visits/delete}" method="POST">
                               <div class="row" style="justify-content: center">
                                   <h5 class="title" style="text-align: center">Confirmation</h5>
                               </div>
@@ -125,7 +125,7 @@
                               </div>
                               <div class="row" style="justify-content: space-between">
                                   <button style="margin-left: 30px" type="submit" class="btn btn-danger">Yes</button>
-                                  <a style="margin-right: 30px" type="button" th:href="@{/dashboard/user/home}" class="btn btn-info">No</a>
+                                  <a style="margin-right: 30px" type="button" th:href="@{/dashboard/user/visits}" class="btn btn-info">No</a>
                               </div>
                               <input type="hidden" th:value="${id}" id="id" name="id">
                           </form>
@@ -136,7 +136,7 @@
         <div class="row">
         </div>
       </div>
-      <span th:replace="/dashboardPages/userfooter :: footer"></span>
+      <span th:replace="/dashboardPages/user/userfooter :: footer"></span>
 </body>
 
 </html>

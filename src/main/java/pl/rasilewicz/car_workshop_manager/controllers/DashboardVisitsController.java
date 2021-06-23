@@ -33,7 +33,7 @@ public class DashboardVisitsController {
         List<Order> userOrderList = orderService.findOrdersByUserId((Integer)session.getAttribute("userId"));
         model.addAttribute("userOrderList", userOrderList);
 
-        return "dashboardPages/visits";
+        return "dashboardPages/user/visits";
     }
 
     @GetMapping("/dashboard/user/visits/details")
@@ -41,7 +41,7 @@ public class DashboardVisitsController {
         Order selectedVisit = orderService.findOrderById(id);
         model.addAttribute("selectedVisit", selectedVisit);
 
-        return "dashboardPages/visitDetails";
+        return "dashboardPages/user/visitDetails";
     }
 
     @PostMapping("/dashboard/user/visits/details")
@@ -69,7 +69,7 @@ public class DashboardVisitsController {
         model.addAttribute("selectedVisit", selectedVisit);
         model.addAttribute("id", id);
 
-        return "dashboardPages/confirmationDeleteLastVisit";
+        return "dashboardPages/user/confirmationDeleteLastVisit";
     }
 
     @PostMapping("/dashboard/user/lastVisits/delete")
@@ -85,7 +85,7 @@ public class DashboardVisitsController {
         model.addAttribute("selectedVisit", selectedVisit);
         model.addAttribute("id", id);
 
-        return "dashboardPages/confirmationDeleteVisit";
+        return "dashboardPages/user/confirmationDeleteVisit";
     }
 
     @PostMapping("/dashboard/user/visits/delete")

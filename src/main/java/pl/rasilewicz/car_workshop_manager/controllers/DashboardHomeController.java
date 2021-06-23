@@ -17,54 +17,53 @@ public class DashboardHomeController {
     private final OrderServiceImpl orderService;
     private final VisitDateServiceImpl visitDateService;
 
-    public DashboardHomeController(OrderServiceImpl orderService, VisitDateServiceImpl visitDateService){
+    public DashboardHomeController(OrderServiceImpl orderService, VisitDateServiceImpl visitDateService) {
         this.orderService = orderService;
         this.visitDateService = visitDateService;
     }
 
     @GetMapping("/dashboard/user/home")
-    public String userHome(Model model, HttpSession session){
-        List<Order> userLastOrderList = orderService.findLastOrdersByUserId((Integer)session.getAttribute("userId"));
+    public String userHome(Model model, HttpSession session) {
+        List<Order> userLastOrderList = orderService.findLastOrdersByUserId((Integer) session.getAttribute("userId"));
         model.addAttribute("userOrderList", userLastOrderList);
 
-        Integer userId = (Integer)session.getAttribute("userId");
-
-        List<String> monthsList = Arrays.asList("January", "February", "March", "April", "Mai", "June", "July",
-                                                "August", "September", "October", "November", "December");
-
-        Map<String, Integer> data = new LinkedHashMap<String, Integer>();
-
-        for (int i = 0; i <monthsList.size() ; i++) {
-            data.put(monthsList.get(i), visitDateService.findNumberOfVisitDatesByMonthByUserId(i + 1,userId));
-        }
-
-
-        model.addAttribute("data", data);
-
-
-        return "dashboardPages/dashboard";
-    }
-
-    @GetMapping("/dashboard/admin/home")
-    public String adminIndex(Model model, HttpSession session){
-        List<Order> usersLastOrderList = orderService.findLastUsersOrders();
-        model.addAttribute("usersOrderList", usersLastOrderList);
-
-        Integer userId = (Integer)session.getAttribute("userId");
+        Integer userId = (Integer) session.getAttribute("userId");
 
         List<String> monthsList = Arrays.asList("January", "February", "March", "April", "Mai", "June", "July",
                 "August", "September", "October", "November", "December");
 
         Map<String, Integer> data = new LinkedHashMap<String, Integer>();
 
-        for (int i = 0; i <monthsList.size() ; i++) {
-            data.put(monthsList.get(i), visitDateService.findNumberOfVisitDatesByMonthByUserId(i + 1,userId));
+        for (int i = 0; i < monthsList.size(); i++) {
+            data.put(monthsList.get(i), visitDateService.findNumberOfVisitDatesByMonthByUserId(i + 1, userId));
         }
 
 
         model.addAttribute("data", data);
 
 
-        return "dashboardPages/dashboard";
+        return "dashboardPages/user/dashboard";
+    }
 
+    @GetMapping("/dashboard/admin/home")
+    public String adminIndex(Model model, HttpSession session) {
+        List<Order> usersLastOrderList = orderService.findLastUsersOrders();
+        model.addAttribute("usersOrderList", usersLastOrderList);
+
+        List<String> monthsList = Arrays.asList("January", "February", "March", "April", "Mai", "June", "July",
+                "August", "September", "October", "November", "December");
+
+        Map<String, Integer> data = new LinkedHashMap<String, Integer>();
+
+        for (int i = 0; i < monthsList.size(); i++) {
+            data.put(monthsList.get(i), visitDateService.findNumberOfVisitDatesAllUsers(i + 1));
+        }
+
+
+        model.addAttribute("data", data);
+
+
+        return "dashboardPages/admin/dashboard";
+
+    }
 }

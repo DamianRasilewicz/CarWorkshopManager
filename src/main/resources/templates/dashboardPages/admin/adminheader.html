@@ -21,20 +21,20 @@
           Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
       -->
         <div class="logo">
-            <a th:href="@{/dashboard/user/home}" class="simple-text logo-normal" style="text-align: center">
+            <a th:href="@{/dashboard/admin/home}" class="simple-text logo-normal" style="text-align: center">
                 Car Workshop Manager
             </a>
         </div>
         <div class="sidebar-wrapper" id="sidebar-wrapper">
             <ul class="nav">
                 <li class="active ">
-                    <a th:href="@{/dashboard/user/home}">
+                    <a th:href="@{/dashboard/admin/home}">
                         <i class="now-ui-icons design_app"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/dashboard/user/visits}">
+                    <a th:href="@{/dashboard/admin/allVisits}">
                         <i class="now-ui-icons education_atom"></i>
                         <p>Visits</p>
                     </a>
@@ -107,7 +107,7 @@
                                 </p>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" th:href="@{/dashboard/user/profile}">Profile</a>
+                                <a class="dropdown-item" th:href="@{/dashboard/admin/profile}">Profile</a>
                                 <a class="dropdown-item" href="#">Log Out</a>
                             </div>
                         </li>
