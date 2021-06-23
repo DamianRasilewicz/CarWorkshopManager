@@ -33,7 +33,7 @@ INSERT INTO car_workshop_manager.user_role (role_id, user_id) VALUES (2, 2);
 INSERT INTO car_workshop_manager.cars (brand, model, production_year, engine_capacity, engine_power, engine_type, user_id) VALUES ('Audi', 'A6', '2008',
                                                                                                                                    '2700', '180', 'Diesel', 1);
 INSERT INTO car_workshop_manager.cars (brand, model, production_year, engine_capacity, engine_power, engine_type, user_id) VALUES ('BMW', '5', '2001',
-                                                                                                                                   '2.5L', '192', 'Benzine', 2);
+                                                                                                                                   '2.5L', '192', 'Benzine', 1);
 
 INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estimated_work_cost, parts_cost, work_cost, working_hours, final_cost, comment, car_id, user_id) VALUES ('Done', 16.5, 1650, 500, 1650, 16.5, 2150,'none', 1, 1);
 INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estimated_work_cost, parts_cost, work_cost, working_hours, final_cost, comment, car_id, user_id) VALUES ('In progress', 10, 1000, 550, 1300, 12, 1850, 'none', 2, 1);
