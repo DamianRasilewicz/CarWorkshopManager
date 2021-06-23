@@ -19,4 +19,6 @@ public interface OrderService {
 
     List<Order> findLastUsersOrders();
 
+    List<Order> findAllOrders();
+
 }

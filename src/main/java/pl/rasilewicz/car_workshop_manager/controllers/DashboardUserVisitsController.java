@@ -16,13 +16,13 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-public class DashboardVisitsController {
+public class DashboardUserVisitsController {
 
     private final OrderServiceImpl orderService;
     private final CarServiceImpl carService;
     private final VisitDateServiceImpl visitDateService;
 
-    public DashboardVisitsController(OrderServiceImpl orderService, CarServiceImpl carService, VisitDateServiceImpl visitDateService){
+    public DashboardUserVisitsController(OrderServiceImpl orderService, CarServiceImpl carService, VisitDateServiceImpl visitDateService){
         this.orderService = orderService;
         this.carService = carService;
         this.visitDateService = visitDateService;

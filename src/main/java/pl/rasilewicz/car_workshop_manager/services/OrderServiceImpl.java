@@ -47,4 +47,9 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findLastUsersOrders() {
         return orderRepository.findLastUsersOrders();
     }
+
+    @Override
+    public List<Order> findAllOrders() {
+        return orderRepository.findAllOrders();
+    }
 }

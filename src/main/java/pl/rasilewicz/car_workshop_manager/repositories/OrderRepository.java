@@ -21,4 +21,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     @Query(value = "SELECT * FROM car_workshop_manager.orders ORDER BY id DESC", nativeQuery = true)
     List<Order> findLastUsersOrders();
+
+    @Query(value = "SELECT * FROM car_workshop_manager.orders", nativeQuery = true)
+    List<Order> findAllOrders();
 }
