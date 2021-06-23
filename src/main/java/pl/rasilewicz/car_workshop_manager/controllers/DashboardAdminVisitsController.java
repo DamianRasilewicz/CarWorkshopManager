@@ -36,33 +36,40 @@ public class DashboardAdminVisitsController {
         return "dashboardPages/admin/allVisits";
     }
 
-//    @GetMapping("/dashboard/user/visits/details")
-//    public String viewingSelectedVisit (@RequestParam Integer id, Model model){
-//        Order selectedVisit = orderService.findOrderById(id);
-//        model.addAttribute("selectedVisit", selectedVisit);
-//
-//        return "dashboardPages/user/visitDetails";
-//    }
-//
-//    @PostMapping("/dashboard/user/visits/details")
-//    public String changedSelectedVisit (@ModelAttribute("selectedVisitId") Integer selectedVisitId, @ModelAttribute("wroteComment") String wroteComment,
-//                                        @ModelAttribute("visitDateId") Integer visitDateId, @ModelAttribute("carId") Integer carId, RedirectAttributes redirectAttributes) {
-//
-//        Order selectedVisit = orderService.findOrderById(selectedVisitId);
-//
-//        selectedVisit.setCar(carService.findCarById(carId));
-//        selectedVisit.setVisitDate(visitDateService.findVisitDateById(visitDateId));
-//        selectedVisit.setComment(wroteComment);
-//        orderService.save(selectedVisit);
-//
-//
-//        redirectAttributes.addAttribute("id", selectedVisit.getId());
-//
-//
-//
-//        return  "redirect:/dashboard/user/visits/details?success";
-//    }
-//
+    @GetMapping("/dashboard/admin/allVisits/details")
+    public String viewingAdminSelectedVisit (@RequestParam Integer id, Model model){
+        Order selectedVisit = orderService.findOrderById(id);
+        model.addAttribute("selectedVisit", selectedVisit);
+
+        return "dashboardPages/admin/visitDetails";
+    }
+
+    @PostMapping("/dashboard/admin/allVisits/details")
+    public String changeAdminSelectedVisit (@ModelAttribute("selectedVisitId") Integer selectedVisitId, @ModelAttribute("estimatedExecutionTime") Double estimatedExecutionTime, @ModelAttribute("estimatedWorkCost") Integer estimatedWorkCost,
+                                            @ModelAttribute("workingHours") Integer workingHours, @ModelAttribute("workCost") Double workCost, @ModelAttribute("partsCost") Double partsCost,
+                                            @ModelAttribute("finalCost") Double finalCost, @ModelAttribute("moreInformation") String moreInformation, @ModelAttribute("wroteComment") String wroteComment,
+                                            @ModelAttribute("status") String status, RedirectAttributes redirectAttributes){
+
+        Order selectedVisit = orderService.findOrderById(selectedVisitId);
+        selectedVisit.setEstimatedExecutionTime(estimatedExecutionTime);
+        selectedVisit.setEstimatedWorkCost(estimatedWorkCost);
+        selectedVisit.setWorkingHours(workingHours);
+        selectedVisit.setWorkCost(workCost);
+        selectedVisit.setPartsCost(partsCost);
+        selectedVisit.setFinalCost(finalCost);
+        selectedVisit.setMoreInformation(moreInformation);
+        selectedVisit.setComment(wroteComment);
+        selectedVisit.setStatus(status);
+        orderService.save(selectedVisit);
+
+
+        redirectAttributes.addAttribute("id", selectedVisit.getId());
+
+
+
+        return  "redirect:/dashboard/admin/allVisits/details?success";
+    }
+
 //    @GetMapping("/dashboard/user/lastVisits/delete")
 //    public String viewingConfirmViewDeleteLastVisit (@RequestParam Integer id, Model model){
 //        Order selectedVisit = orderService.findOrderById(id);
