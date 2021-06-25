@@ -22,7 +22,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a th:href="@{/dashboard/admin/allVisits}">
                         <i class="now-ui-icons education_atom"></i>
                         <p>All visits</p>
@@ -34,7 +34,7 @@
                         <p>User Profile</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a th:href="@{/dashboard/admin/users}">
                         <i class="now-ui-icons ui-1_bell-53"></i>
                         <p>Users</p>
@@ -112,10 +112,10 @@
               <div class="col-md-12">
                   <div class="card">
                       <div class="card-header">
-                          <h4 class="card-title">All Visits</h4>
+                          <h4 class="card-title">All Users</h4>
                       </div>
-                      <div th:if="${param.visitDeleteSuccess}">
-                          <div class="alert alert-success" style="text-align: center">Visit successfully deleted!</div>
+                      <div th:if="${param.userDeleteSuccess}">
+                          <div class="alert alert-success" style="text-align: center">User successfully deleted!</div>
                       </div>
                       <div class="card-body">
                           <div class="table-responsive">
@@ -125,19 +125,13 @@
                                       No.
                                   </th>
                                   <th>
-                                      Date
+                                      Username
                                   </th>
                                   <th>
-                                      Time
+                                      First name
                                   </th>
                                   <th>
-                                      Status
-                                  </th>
-                                  <th>
-                                      Workshop
-                                  </th>
-                                  <th>
-                                      Cost
+                                      Last name
                                   </th>
                                   <th class="text-center">
                                       Actions
