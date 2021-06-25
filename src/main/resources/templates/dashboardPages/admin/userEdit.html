@@ -156,7 +156,35 @@
                   <div class="col-md-2-5 px-1">
                     <div class="form-group" style="text-align: center">
                       <label>Role</label>
-                      <input type="text" class="form-control" th:value="${user.getRole.getName()}" name="newRole" id="newRole" style="text-align: center">
+                        <div class="dropdown bootstrap-select">
+                          <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round btn-block" title="Single Select" tabindex="-98">
+                          <option class="bs-title-option" value=""></option>
+                          <option disabled="" selected="">Single Option</option>
+                          <option value="2">Foobar</option>
+                          <option value="3">Is great</option>
+                        </select>
+                          <div class="dropdown-menu" role="combobox" style="overflow: hidden;">
+                            <div class="inner show" role="listbox" aria-expanded="false" tabindex="-1" style="overflow-y: auto;">
+                              <ul class="dropdown-menu inner show">
+                                <li class="disabled selected active">
+                                  <a role="option" class="dropdown-item disabled selected active" aria-disabled="true" tabindex="-1" aria-selected="true"><
+                                    <span class="text">Single Option</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false">
+                                    <span class="text">Foobar</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false">
+                                    <span class="text">Is great</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                   </div>
                     <div class="col-md-2-5 pl-1">
