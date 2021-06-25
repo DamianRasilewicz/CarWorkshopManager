@@ -70,22 +70,22 @@ public class DashboardAdminVisitsController {
         return  "redirect:/dashboard/admin/allVisits/details?success";
     }
 
-//    @GetMapping("/dashboard/user/lastVisits/delete")
-//    public String viewingConfirmViewDeleteLastVisit (@RequestParam Integer id, Model model){
-//        Order selectedVisit = orderService.findOrderById(id);
-//        model.addAttribute("selectedVisit", selectedVisit);
-//        model.addAttribute("id", id);
-//
-//        return "dashboardPages/user/confirmationDeleteLastVisit";
-//    }
-//
-//    @PostMapping("/dashboard/user/lastVisits/delete")
-//    public String afterConfirmedBoxDeleteLastVisit (Integer id){
-//        orderService.deleteById(id);
-//
-//        return "redirect:/dashboard/user/home?lastVisitDeleteSuccess";
-//    }
-//
+    @GetMapping("/dashboard/admin/lastVisits/delete")
+    public String viewingAdminConfirmViewDeleteLastVisit (@RequestParam Integer id, Model model){
+        Order selectedVisit = orderService.findOrderById(id);
+        model.addAttribute("selectedVisit", selectedVisit);
+        model.addAttribute("id", id);
+
+        return "dashboardPages/admin/confirmationDeleteLastVisit";
+    }
+
+    @PostMapping("/dashboard/admin/lastVisits/delete")
+    public String afterAdminConfirmedBoxDeleteLastVisit (Integer id){
+        orderService.deleteById(id);
+
+        return "redirect:/dashboard/admin/home?lastVisitDeleteSuccess";
+    }
+
 //    @GetMapping("/dashboard/user/visits/delete")
 //    public String viewingConfirmViewDeleteVisit (@RequestParam Integer id, Model model){
 //        Order selectedVisit = orderService.findOrderById(id);
