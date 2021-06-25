@@ -45,9 +45,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Car> cars = new ArrayList<>();
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ManyToOne()
+    @JoinColumn(name = "role_id")
     private Role role ;
 
 }

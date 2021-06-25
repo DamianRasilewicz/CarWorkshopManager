@@ -17,13 +17,10 @@ public class DashboardAdminUsersController {
     }
 
     @GetMapping("/dashboard/admin/users")
-    public String AdminProfile (Model model){
-        List<User> userList = userService.
-        model.addAttribute("userProfile", userProfile);
+    public String userList (Model model){
+        List<User> userList = userService.findAllUsers();
+        model.addAttribute("userList", userList);
 
-        String newPassword = "";
-        model.addAttribute("newPassword", newPassword);
-
-        return "dashboardPages/admin/adminProfile";
+        return "dashboardPages/admin/users";
     }
 }

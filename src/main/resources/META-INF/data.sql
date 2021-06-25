@@ -22,13 +22,10 @@ INSERT INTO car_workshop_manager.mechanics (first_name, last_name, seniority, sp
 
 INSERT INTO car_workshop_manager.roles (name) VALUES ('ADMIN'), ('USER');
 
-INSERT INTO car_workshop_manager.users (email, first_name, last_name, user_name, password, phone_number, registered, enabled) VALUES ('user@gmail.com', 'Jan', 'Kowalski',
-                                                                                                                 'User', '$2y$12$um7q2OHsp5kf4hHmdR.C1OhL8wBXlXJ8x5m9YMJJPPbePQEjaZCny', 668875423, true, true);
-INSERT INTO car_workshop_manager.users (email, first_name, last_name, user_name, password, phone_number, registered, enabled) VALUES ('admin@gmail.com', 'Admin', 'Admin',
-                                                                                                                                      'Admin', '$2y$12$ao279hYOuSSEtPUyB8jIi.ki2LvY9AZ4ypWR7mn2WnEd1me5Vciay', 999999999, true, true);
-
-INSERT INTO car_workshop_manager.user_role (role_id, user_id) VALUES (2, 1);
-INSERT INTO car_workshop_manager.user_role (role_id, user_id) VALUES (1, 2);
+INSERT INTO car_workshop_manager.users (email, first_name, last_name, user_name, password, phone_number, registered, enabled, role_id) VALUES ('user@gmail.com', 'Jan', 'Kowalski',
+                                                                                                                 'User', '$2y$12$um7q2OHsp5kf4hHmdR.C1OhL8wBXlXJ8x5m9YMJJPPbePQEjaZCny', 668875423, true, true, 2);
+INSERT INTO car_workshop_manager.users (email, first_name, last_name, user_name, password, phone_number, registered, enabled, role_id) VALUES ('admin@gmail.com', 'Admin', 'Admin',
+                                                                                                                                      'Admin', '$2y$12$ao279hYOuSSEtPUyB8jIi.ki2LvY9AZ4ypWR7mn2WnEd1me5Vciay', 999999999, true, true, 1);
 
 INSERT INTO car_workshop_manager.cars (brand, model, production_year, engine_capacity, engine_power, engine_type, user_id) VALUES ('Audi', 'A6', '2008',
                                                                                                                                    '2700', '180', 'Diesel', 1);

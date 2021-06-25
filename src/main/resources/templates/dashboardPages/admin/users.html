@@ -138,18 +138,14 @@
                                   </th>
                                   </thead>
                                   <tbody>
-                                  <tr th:each="order, state : ${usersOrderList}" class="text-center">
+                                  <tr th:each="user, state : ${userList}" class="text-center">
                                       <td th:text="${state.count}"></td>
-                                      <td th:text="${order.getVisitDate().getDate()}"></td>
-                                      <td th:text="${order.getVisitDate().getTime()}"></td>
-                                      <td th:text="${order.getStatus()}"></td>
-                                      <td th:text="${order.getVisitDate().getWorkshop().getCity()} + ', ' +
-                                      ${order.getVisitDate().getWorkshop().getStreet()} + ' ' +
-                                      ${order.getVisitDate().getWorkshop().getNumber()}"></td>
-                                      <td th:text="${order.getFinalCost()}"></td>
+                                      <td th:text="${user.getUserName()}"></td>
+                                      <td th:text="${user.getFirstName()}"></td>
+                                      <td th:text="${user.getLastName()}"></td>
                                       <td class="text-center">
-                                          <a th:href="@{/dashboard/admin/allVisits/details(id=${order.getId()})}" class="btn btn-primary">Details</a>
-                                          <a th:href="@{/dashboard/admin/allVisits/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
+                                          <a th:href="@{/dashboard/admin/users/details(id=${user.getId()})}" class="btn btn-primary">Details</a>
+                                          <a th:href="@{/dashboard/admin/users/delete(id=${user.getId()})}" class="btn btn-danger">Delete</a>
                                       </td>
                                   </tr>
                                   </tbody>
