@@ -133,6 +133,18 @@
                                   <th>
                                       Last name
                                   </th>
+                                  <th>
+                                      Email
+                                  </th>
+                                  <th>
+                                      Phone number
+                                  </th>
+                                  <th>
+                                      Role
+                                  </th>
+                                  <th>
+                                      Enabled
+                                  </th>
                                   <th class="text-center">
                                       Actions
                                   </th>
@@ -143,8 +155,12 @@
                                       <td th:text="${user.getUserName()}"></td>
                                       <td th:text="${user.getFirstName()}"></td>
                                       <td th:text="${user.getLastName()}"></td>
+                                      <td th:text="${user.getEmail()}"></td>
+                                      <td th:text="${user.getPhoneNumber()}"></td>
+                                      <td th:text="${user.getRole.getName()}"></td>
+                                      <td th:text="${user.getEnabled()}"></td>
                                       <td class="text-center">
-                                          <a th:href="@{/dashboard/admin/users/details(id=${user.getId()})}" class="btn btn-primary">Details</a>
+                                          <a th:href="@{/dashboard/admin/users/edit(id=${user.getId()})}" class="btn btn-primary">Edit</a>
                                           <a th:href="@{/dashboard/admin/users/delete(id=${user.getId()})}" class="btn btn-danger">Delete</a>
                                       </td>
                                   </tr>
