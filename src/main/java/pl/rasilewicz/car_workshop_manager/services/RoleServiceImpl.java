@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.rasilewicz.car_workshop_manager.entities.Role;
 import pl.rasilewicz.car_workshop_manager.repositories.RoleRepository;
 
+import java.util.List;
+
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -24,5 +26,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role findRoleByName(String name) {
         return roleRepository.findRoleByName(name);
+    }
+
+    @Override
+    public List<Role> findAllRoles() {
+        return roleRepository.findAllRoles();
     }
 }

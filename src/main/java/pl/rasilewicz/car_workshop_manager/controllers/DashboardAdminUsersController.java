@@ -37,6 +37,8 @@ public class DashboardAdminUsersController {
         User user = userService.findUserById(id);
         model.addAttribute("user", user);
 
+        List<String> roleList = roleService
+
         return "dashboardPages/admin/userEdit";
     }
 
