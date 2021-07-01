@@ -81,12 +81,12 @@ public class DashboardAdminUsersController {
     }
 
     @GetMapping("/dashboard/admin/users/userVisitList/show")
-    public String selectedUserVisitList(@RequestParam Integer userId, Model model, HttpSession session){
+    public String selectedUserVisitList(@RequestParam Integer userId, Model model){
 
         List<Order> userOrderList = orderService.findOrdersByUserId(userId);
         model.addAttribute("userOrderList", userOrderList);
 
-        model.addAttribute("userName", session.getAttribute("userName"));
+        model.addAttribute("userName", userService.findUserById(userId).getUserName());
 
 
         return "dashboardPages/admin/userVisitListSelectedUser";

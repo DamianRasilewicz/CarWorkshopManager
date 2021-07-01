@@ -19,7 +19,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     Order findOrderById(Integer orderId);
 
-    @Query(value = "SELECT * FROM car_workshop_manager.orders ORDER BY id DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM car_workshop_manager.orders ORDER BY id DESC LIMIT 3", nativeQuery = true)
     List<Order> findLastUsersOrders();
 
     @Query(value = "SELECT * FROM car_workshop_manager.orders", nativeQuery = true)
