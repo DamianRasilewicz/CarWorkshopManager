@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.rasilewicz.car_workshop_manager.entities.Order;
 import pl.rasilewicz.car_workshop_manager.entities.Role;
 import pl.rasilewicz.car_workshop_manager.entities.User;
+import pl.rasilewicz.car_workshop_manager.services.OrderServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.RoleServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.UserServiceImpl;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,10 +24,12 @@ public class DashboardAdminUsersController {
 
     private final UserServiceImpl userService;
     private final RoleServiceImpl roleService;
+    private final OrderServiceImpl orderService;
 
-    public DashboardAdminUsersController(UserServiceImpl userService, RoleServiceImpl roleService) {
+    public DashboardAdminUsersController(UserServiceImpl userService, RoleServiceImpl roleService, OrderServiceImpl orderService) {
         this.userService = userService;
         this.roleService = roleService;
+        this.orderService = orderService;
     }
 
     @GetMapping("/dashboard/admin/users")
@@ -64,5 +69,35 @@ public class DashboardAdminUsersController {
         redirectAttributes.addAttribute("id", selectedUserId);
 
         return "redirect:/dashboard/admin/users/edit?success";
+    }
+
+    @GetMapping("/dashboard/admin/users/userVisitList")
+    public String userVisitList(Model model){
+
+        List<User> userList = userService.findAllUsers();
+        model.addAttribute("userList", userList);
+
+        return "dashboardPages/admin/userVisitListAllUsers";
+    }
+
+    @GetMapping("/dashboard/admin/users/userVisitList/show")
+    public String selectedUserVisitList(@RequestParam Integer userId, Model model, HttpSession session){
+
+        List<Order> userOrderList = orderService.findOrdersByUserId(userId);
+        model.addAttribute("userOrderList", userOrderList);
+
+        model.addAttribute("userName", session.getAttribute("userName"));
+
+
+        return "dashboardPages/admin/userVisitListSelectedUser";
+    }
+
+    @GetMapping("/dashboard/admin/users/userVisitDetails")
+    public String selectedUserVisitDetails(@RequestParam Integer id, Model model){
+
+        Order selectedOrderDetails = orderService.findOrderById(id);
+        model.addAttribute("selectedOrderDetails", selectedOrderDetails);
+
+        return "dashboardPages/admin/selectedUserVisitDetails";
     }
 }

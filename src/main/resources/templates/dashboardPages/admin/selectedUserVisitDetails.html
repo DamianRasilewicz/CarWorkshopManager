@@ -22,7 +22,7 @@
                 <p>Dashboard</p>
             </a>
         </li>
-        <li class="active">
+        <li>
             <a th:href="@{/dashboard/admin/allVisits}">
                 <i class="now-ui-icons education_atom"></i>
                 <p>All Visits</p>
@@ -41,7 +41,7 @@
             </a>
         </li>
 
-        <li>
+        <li class="active">
             <a th:href="@{/dashboard/admin/users/userVisitList}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
                 <p>Users' Visits</p>
@@ -115,7 +115,7 @@
                           <h5 class="title">Visit Details</h5>
                       </div>
                       <div class="card-body">
-                          <form th:action="@{/dashboard/admin/allVisits/details}" method="POST">
+                          <form th:action="@{/dashboard/admin/users/userVisitDetails}" method="POST">
                               <div class="row" style="justify-content: center">
                                   <h6 class="subTitle" style="text-align: center">Visit</h6>
                               </div>
@@ -125,23 +125,23 @@
                               <div class="row" style="justify-content: space-between">
                                   <div class="col-md-3 pr-1">
                                       <div class="form-group" style="text-align: center">
-                                          <input type="hidden" th:value="${selectedVisit.getId()}" name="selectedVisitId" id="selectedVisitId">
-                                          <input type="hidden" th:value="${selectedVisit.getVisitDate().getId()}" name="visitDateId" id="visitDateId">
-                                          <input type="hidden" th:value="${selectedVisit.getCar().getId()}" name="carId" id="carId">
+                                          <input type="hidden" th:value="${selectedOrderDetails.getId()}" name="selectedVisitId" id="selectedVisitId">
+                                          <input type="hidden" th:value="${selectedOrderDetails.getVisitDate().getId()}" name="visitDateId" id="visitDateId">
+                                          <input type="hidden" th:value="${selectedOrderDetails.getCar().getId()}" name="carId" id="carId">
                                           <label>Date</label>
-                                          <input type="text" class="form-control" disabled="" th:value="${selectedVisit.getVisitDate().getDate()}" style="text-align: center">
+                                          <input type="text" class="form-control" disabled="" th:value="${selectedOrderDetails.getVisitDate().getDate()}" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-3 px-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Time</label>
-                                          <input type="text" class="form-control" disabled="" th:value="${selectedVisit.getVisitDate().getTime()}" style="text-align: center">
+                                          <input type="text" class="form-control" disabled="" th:value="${selectedOrderDetails.getVisitDate().getTime()}" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-3 pl-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Status</label>
-                                          <input type="text" class="form-control" th:field="*{selectedVisit.status}" th:value="${selectedVisit.getStatus()}" style="text-align: center" name="status" id="status">
+                                          <input type="text" class="form-control" th:field="*{selectedOrderDetails.status}" th:value="${selectedOrderDetails.getStatus()}" style="text-align: center" name="status" id="status">
                                       </div>
                                   </div>
                               </div>
@@ -152,37 +152,37 @@
                                   <div class="col-md-2 pr-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Brand</label>
-                                          <input type="text" class="form-control" disabled="" th:value="${selectedVisit.getCar().getBrand()}" style="text-align: center">
+                                          <input type="text" class="form-control" disabled="" th:value="${selectedOrderDetails.getCar().getBrand()}" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-2 px-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Model</label>
-                                          <input type="text" class="form-control" disabled="" th:value="${selectedVisit.getCar().getModel()}" style="text-align: center">
+                                          <input type="text" class="form-control" disabled="" th:value="${selectedOrderDetails.getCar().getModel()}" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-2 px-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Production Year</label>
-                                          <input type="text" class="form-control" disabled="" th:value="${selectedVisit.getCar().getProductionYear()}" style="text-align: center">
+                                          <input type="text" class="form-control" disabled="" th:value="${selectedOrderDetails.getCar().getProductionYear()}" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-2 px-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Engine Capacity</label>
-                                          <input type="text" class="form-control" disabled="" th:value="${selectedVisit.getCar().getEngineCapacity()}" style="text-align: center">
+                                          <input type="text" class="form-control" disabled="" th:value="${selectedOrderDetails.getCar().getEngineCapacity()}" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-2 px-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Engine Type</label>
-                                          <input type="text" class="form-control" disabled="" th:value="${selectedVisit.getCar().getEngineType()}" style="text-align: center">
+                                          <input type="text" class="form-control" disabled="" th:value="${selectedOrderDetails.getCar().getEngineType()}" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-2 pl-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Engine Power</label>
-                                          <input type="text" class="form-control" disabled="" th:value="${selectedVisit.getCar().getEnginePower()}" style="text-align: center">
+                                          <input type="text" class="form-control" disabled="" th:value="${selectedOrderDetails.getCar().getEnginePower()}" style="text-align: center">
                                       </div>
                                   </div>
                               </div>
@@ -193,37 +193,37 @@
                                   <div class="col-md-2 pr-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Estimated Fixing Time</label>
-                                          <input type="text" class="form-control" th:value="${selectedVisit.getEstimatedExecutionTime()}" name="estimatedExecutionTime" id="estimatedExecutionTime" style="text-align: center">
+                                          <input type="text" class="form-control" th:value="${selectedOrderDetails.getEstimatedExecutionTime()}" name="estimatedExecutionTime" id="estimatedExecutionTime" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-2 px-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Estimated Work Cost</label>
-                                          <input type="text" class="form-control" th:value="${selectedVisit.getEstimatedWorkCost()}" name="estimatedWorkCost" id="estimatedWorkCost" style="text-align: center">
+                                          <input type="text" class="form-control" th:value="${selectedOrderDetails.getEstimatedWorkCost()}" name="estimatedWorkCost" id="estimatedWorkCost" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-2 px-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Working Hours</label>
-                                          <input type="text" class="form-control" th:value="${selectedVisit.getWorkingHours()}" name="workingHours" id="workingHours" style="text-align: center">
+                                          <input type="text" class="form-control" th:value="${selectedOrderDetails.getWorkingHours()}" name="workingHours" id="workingHours" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-2 px-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Work Cost</label>
-                                          <input type="text" class="form-control" th:value="${selectedVisit.getWorkCost()}" name="workCost" id="workCost" style="text-align: center">
+                                          <input type="text" class="form-control" th:value="${selectedOrderDetails.getWorkCost()}" name="workCost" id="workCost" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-2 px-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Parts Cost</label>
-                                          <input type="text" class="form-control" th:value="${selectedVisit.getPartsCost()}" name="partsCost" id="partsCost" style="text-align: center">
+                                          <input type="text" class="form-control" th:value="${selectedOrderDetails.getPartsCost()}" name="partsCost" id="partsCost" style="text-align: center">
                                       </div>
                                   </div>
                                   <div class="col-md-2 pl-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Final Cost</label>
-                                          <input type="text" class="form-control" th:value="${selectedVisit.getFinalCost()}" name="finalCost" id="finalCost" style="text-align: center">
+                                          <input type="text" class="form-control" th:value="${selectedOrderDetails.getFinalCost()}" name="finalCost" id="finalCost" style="text-align: center">
                                       </div>
                                   </div>
                               </div>
@@ -234,13 +234,13 @@
                                   <div class="col-md-6 pr-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>More Informations</label>
-                                          <textarea rows="4" cols="80" class="form-control" placeholder="None" th:text="${selectedVisit.getMoreInformation()}" name="moreInformation" id="moreInformation"></textarea>
+                                          <textarea rows="4" cols="80" class="form-control" placeholder="None" th:text="${selectedOrderDetails.getMoreInformation()}" name="moreInformation" id="moreInformation"></textarea>
                                       </div>
                                   </div>
                                   <div class="col-md-6 pl-1">
                                       <div class="form-group" style="text-align: center">
                                           <label>Comment</label>
-                                          <textarea rows="4" cols="80" class="form-control" placeholder="This You can write comment..." th:text="${selectedVisit.getComment()}" name="wroteComment" id="wroteComment"></textarea>
+                                          <textarea rows="4" cols="80" class="form-control" placeholder="This You can write comment..." th:text="${selectedOrderDetails.getComment()}" name="wroteComment" id="wroteComment"></textarea>
                                       </div>
                                   </div>
                               </div>
