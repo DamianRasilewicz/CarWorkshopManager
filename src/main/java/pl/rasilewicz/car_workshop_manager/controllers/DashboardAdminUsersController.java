@@ -11,6 +11,9 @@ import pl.rasilewicz.car_workshop_manager.entities.Role;
 import pl.rasilewicz.car_workshop_manager.entities.User;
 import pl.rasilewicz.car_workshop_manager.services.RoleServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.UserServiceImpl;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -37,18 +40,22 @@ public class DashboardAdminUsersController {
         User user = userService.findUserById(id);
         model.addAttribute("user", user);
 
-        List<String> roleList = roleService
+        List<Role> roleList = roleService.findAllRoles();
+        model.addAttribute("roleList", roleList);
+
+        List<Boolean> enabledList = Arrays.asList(true, false);
+        model.addAttribute("enabledList", enabledList);
 
         return "dashboardPages/admin/userEdit";
     }
 
     @PostMapping("/dashboard/admin/users/edit")
     public String userDetailsChanged (@ModelAttribute("selectedUserId") Integer selectedUserId, @ModelAttribute("newRole") String newRole,
-                                      @ModelAttribute("newEnabled") Boolean newEnabled, RedirectAttributes redirectAttributes){
+                                      @ModelAttribute("newEnabled") Boolean newEnabled, @RequestParam("role") Integer roleId, RedirectAttributes redirectAttributes){
 
         User editedUser = userService.findUserById(selectedUserId);
 
-        Role selectedRole = roleService.findRoleByName(newRole);
+        Role selectedRole = roleService.findRoleById(roleId);
 
         editedUser.setRole(selectedRole);
         editedUser.setEnabled(newEnabled);
