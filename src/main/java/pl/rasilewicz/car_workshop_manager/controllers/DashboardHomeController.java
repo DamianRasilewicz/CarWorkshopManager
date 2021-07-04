@@ -66,6 +66,12 @@ public class DashboardHomeController {
         model.addAttribute("dataVisitsChart", dataVisitsChart);
         model.addAttribute("presentYear", presentYear);
 
+        List<Order> threeUndoneOrderList = orderService.findThreeUndoneOrders();
+        model.addAttribute("threeUndoneOrderList", threeUndoneOrderList);
+
+        List<Order> undoneOrderList = orderService.findAllUndoneOrders();
+        Integer numberOfUndoneOrders = undoneOrderList.size();
+        model.addAttribute("numberOfUndoneOrders", numberOfUndoneOrders);
 
         return "dashboardPages/admin/dashboard";
 

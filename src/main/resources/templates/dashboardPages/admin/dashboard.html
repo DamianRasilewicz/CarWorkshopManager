@@ -166,6 +166,65 @@
                   </div>
               </div>
           </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header" style="text-align: center">
+                          <h4 class="card-title" th:text="'Undone Orders: ' + ${numberOfUndoneOrders}"></h4>
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive">
+                              <table class="table">
+                                  <thead class=" text-primary" style="text-align: center">
+                                  <th>
+                                      No.
+                                  </th>
+                                  <th>
+                                      Date
+                                  </th>
+                                  <th>
+                                      Time
+                                  </th>
+                                  <th>
+                                      Status
+                                  </th>
+                                  <th>
+                                      Workshop
+                                  </th>
+                                  <th>
+                                      Cost
+                                  </th>
+                                  <th class="text-center">
+                                      Actions
+                                  </th>
+                                  </thead>
+                                  <tbody>
+                                  <tr th:each="order, state : ${threeUndoneOrderList}" class="text-center">
+                                      <td th:text="${state.count}"></td>
+                                      <td th:text="${order.getVisitDate().getDate()}"></td>
+                                      <td th:text="${order.getVisitDate().getTime()}"></td>
+                                      <td th:text="${order.getStatus()}"></td>
+                                      <td th:text="${order.getVisitDate().getWorkshop().getCity()} + ', ' +
+                                      ${order.getVisitDate().getWorkshop().getStreet()} + ' ' +
+                                      ${order.getVisitDate().getWorkshop().getNumber()}"></td>
+                                      <td th:text="${order.getFinalCost()}"></td>
+                                      <td class="text-center">
+                                          <a th:href="@{/dashboard/admin/allVisits/details(id=${order.getId()})}" class="btn btn-primary">Details</a>
+                                          <a th:href="@{/dashboard/admin/lastVisits/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
+                                      </td>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                      <div class="row" style="justify-content: center">
+                           <span th:if="${numberOfUndoneOrders} > 3" >
+                                              <a th:href="@{/dashboard/admin/allVisits/allUndoneOrders}" class="btn btn-primary">Show all</a>
+                           </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <div class="card card-chart">

@@ -45,12 +45,14 @@ INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estim
 INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estimated_work_cost, parts_cost, work_cost, working_hours, final_cost, comment, car_id, user_id) VALUES ('Waiting to aproval', 9, 900, 0, 0, 0, 900,'none', 3, 3);
 INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estimated_work_cost, parts_cost, work_cost, working_hours, final_cost, comment, car_id, user_id) VALUES ('Done', 5, 500, 250, 500, 5, 750,'none', 4, 4);
 INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estimated_work_cost, parts_cost, work_cost, working_hours, final_cost, comment, car_id, user_id) VALUES ('In Progress', 7.5, 750, 0, 0, 0, 750,'none', 4, 4);
+INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estimated_work_cost, parts_cost, work_cost, working_hours, final_cost, comment, car_id, user_id) VALUES ('In Progress', 6, 600, 0, 0, 0, 600,'none', 4, 4);
 
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-05-20', '13:00', 1, 1, 1, 20, 5, 2021);
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-05-17', '10:30', 2, 4, 1, 17, 6, 2021);
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-06-12', '9:00', 3, 2, 3, 12, 6, 2021);
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-06-20', '15:00', 4, 3, 4, 20, 6, 2021);
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-06-28', '7:00', 5, 3, 4, 28, 6, 2021);
+INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-06-20', '10:00', 6, 3, 4, 20, 6, 2021);
 
 INSERT INTO car_workshop_manager.orders_tasks (order_id, task_id) VALUES (1, 1);
 INSERT INTO car_workshop_manager.orders_tasks (order_id, task_id) VALUES (1, 2);
@@ -64,6 +66,8 @@ INSERT INTO car_workshop_manager.orders_tasks (order_id, task_id) VALUES (4, 1);
 INSERT INTO car_workshop_manager.orders_tasks (order_id, task_id) VALUES (4, 2);
 INSERT INTO car_workshop_manager.orders_tasks (order_id, task_id) VALUES (4, 3);
 INSERT INTO car_workshop_manager.orders_tasks (order_id, task_id) VALUES (5, 2);
+INSERT INTO car_workshop_manager.orders_tasks (order_id, task_id) VALUES (6, 1);
+INSERT INTO car_workshop_manager.orders_tasks (order_id, task_id) VALUES (6, 2);
 
 INSERT INTO car_workshop_manager.orders_mechanics (order_id, mechanic_id) VALUES (1, 1);
 INSERT INTO car_workshop_manager.orders_mechanics (order_id, mechanic_id) VALUES (1, 2);
@@ -75,3 +79,5 @@ INSERT INTO car_workshop_manager.orders_mechanics (order_id, mechanic_id) VALUES
 INSERT INTO car_workshop_manager.orders_mechanics (order_id, mechanic_id) VALUES (4, 8);
 INSERT INTO car_workshop_manager.orders_mechanics (order_id, mechanic_id) VALUES (5, 7);
 INSERT INTO car_workshop_manager.orders_mechanics (order_id, mechanic_id) VALUES (5, 8);
+INSERT INTO car_workshop_manager.orders_mechanics (order_id, mechanic_id) VALUES (6, 7);
+INSERT INTO car_workshop_manager.orders_mechanics (order_id, mechanic_id) VALUES (6, 8);

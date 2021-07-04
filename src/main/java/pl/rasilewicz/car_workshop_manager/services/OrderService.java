@@ -21,4 +21,8 @@ public interface OrderService {
 
     List<Order> findAllOrders();
 
+    List<Order> findThreeUndoneOrders();
+
+    List<Order> findAllUndoneOrders();
+
 }
