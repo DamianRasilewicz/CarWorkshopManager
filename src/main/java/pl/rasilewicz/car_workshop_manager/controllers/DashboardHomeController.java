@@ -7,6 +7,7 @@ import pl.rasilewicz.car_workshop_manager.entities.Order;
 import pl.rasilewicz.car_workshop_manager.services.OrderServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.VisitDateServiceImpl;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import javax.servlet.http.HttpSession;
@@ -32,14 +33,14 @@ public class DashboardHomeController {
         List<String> monthsList = Arrays.asList("January", "February", "March", "April", "Mai", "June", "July",
                 "August", "September", "October", "November", "December");
 
-        Map<String, Integer> data = new LinkedHashMap<String, Integer>();
+        Map<String, Integer> dataVisitsChart = new LinkedHashMap<String, Integer>();
 
         for (int i = 0; i < monthsList.size(); i++) {
-            data.put(monthsList.get(i), visitDateService.findNumberOfVisitDatesByMonthByUserId(i + 1, userId));
+            dataVisitsChart.put(monthsList.get(i), visitDateService.findNumberOfVisitDatesByMonthByUserId(i + 1, userId));
         }
 
 
-        model.addAttribute("data", data);
+        model.addAttribute("dataVisitsChart", dataVisitsChart);
 
 
         return "dashboardPages/user/dashboard";
@@ -53,14 +54,17 @@ public class DashboardHomeController {
         List<String> monthsList = Arrays.asList("January", "February", "March", "April", "Mai", "June", "July",
                 "August", "September", "October", "November", "December");
 
-        Map<String, Integer> data = new LinkedHashMap<String, Integer>();
+        Map<String, Integer> dataVisitsChart = new LinkedHashMap<String, Integer>();
+
+        Integer presentYear = LocalDate.now().getYear();
 
         for (int i = 0; i < monthsList.size(); i++) {
-            data.put(monthsList.get(i), visitDateService.findNumberOfVisitDatesAllUsers(i + 1));
+            dataVisitsChart.put(monthsList.get(i), visitDateService.findNumberOfVisitDatesAllUsersOfYear(i + 1, presentYear));
         }
 
 
-        model.addAttribute("data", data);
+        model.addAttribute("dataVisitsChart", dataVisitsChart);
+        model.addAttribute("presentYear", presentYear);
 
 
         return "dashboardPages/admin/dashboard";
