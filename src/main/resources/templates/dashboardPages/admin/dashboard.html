@@ -129,10 +129,10 @@
                                   <div class="statistics">
                                       <div class="info">
                                           <div class="icon icon-info">
-                                              <i class="now-ui-icons users_single-02"></i>
+                                              <i class="now-ui-icons users_circle-08"></i>
                                           </div>
                                           <h3 class="info-title" th:text="${numberOfAllUsers}"></h3>
-                                          <h6 class="stats-title">Clients</h6>
+                                          <h6 class="stats-title">Registered Users</h6>
                                       </div>
                                   </div>
                               </div>
@@ -142,8 +142,8 @@
                                           <div class="icon icon-success">
                                               <i class="now-ui-icons business_money-coins"></i>
                                           </div>
-                                          <h3 class="info-title"><small>$</small></h3>
-                                          <h6 class="stats-title">Today Revenue</h6>
+                                          <h3 class="info-title" th:text="${'$' + totalRevenue}"></h3>
+                                          <h6 class="stats-title">Total Revenue</h6>
                                       </div>
                                   </div>
                               </div>
@@ -151,10 +151,10 @@
                                   <div class="statistics">
                                       <div class="info">
                                           <div class="icon icon-danger">
-                                              <i class="now-ui-icons objects_support-17"></i>
+                                              <i class="now-ui-icons users_single-02"></i>
                                           </div>
-                                          <h3 class="info-title">353</h3>
-                                          <h6 class="stats-title">Support Requests</h6>
+                                          <h3 class="info-title" th:text="${}"></h3>
+                                          <h6 class="stats-title">Mechanics</h6>
                                       </div>
                                   </div>
                               </div>

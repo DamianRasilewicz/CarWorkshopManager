@@ -82,6 +82,9 @@ public class DashboardHomeController {
         Integer numberOfAllUsers = userService.findNumberOfAllUsers();
         model.addAttribute("numberOfAllUsers", numberOfAllUsers);
 
+        Integer totalRevenue = orderService.findTotalRevenue();
+        model.addAttribute("totalRevenue", totalRevenue);
+
         return "dashboardPages/admin/dashboard";
 
     }
