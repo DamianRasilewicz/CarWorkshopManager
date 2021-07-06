@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.rasilewicz.car_workshop_manager.entities.Order;
+import pl.rasilewicz.car_workshop_manager.services.MechanicServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.OrderServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.UserServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.VisitDateServiceImpl;
@@ -19,11 +20,14 @@ public class DashboardHomeController {
     private final OrderServiceImpl orderService;
     private final VisitDateServiceImpl visitDateService;
     private final UserServiceImpl userService;
+    private final MechanicServiceImpl mechanicService;
 
-    public DashboardHomeController(OrderServiceImpl orderService, VisitDateServiceImpl visitDateService, UserServiceImpl userService) {
+    public DashboardHomeController(OrderServiceImpl orderService, VisitDateServiceImpl visitDateService, UserServiceImpl userService,
+                                   MechanicServiceImpl mechanicService) {
         this.orderService = orderService;
         this.visitDateService = visitDateService;
         this.userService = userService;
+        this.mechanicService = mechanicService;
     }
 
     @GetMapping("/dashboard/user/home")
@@ -84,6 +88,9 @@ public class DashboardHomeController {
 
         Integer totalRevenue = orderService.findTotalRevenue();
         model.addAttribute("totalRevenue", totalRevenue);
+
+        Integer numberOfAllMechanics = mechanicService.findNumberOfMechanics();
+        model.addAttribute("numberOfAllMechanics", numberOfAllMechanics);
 
         return "dashboardPages/admin/dashboard";
 
