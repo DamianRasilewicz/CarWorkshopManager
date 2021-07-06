@@ -62,4 +62,9 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findAllUndoneOrders() {
         return orderRepository.findAllUndoneOrders();
     }
+
+    @Override
+    public Integer findNumberOfAllOrders() {
+        return orderRepository.findNumberOfAllOrders();
+    }
 }

@@ -30,4 +30,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     @Query(value = "SELECT * FROM car_workshop_manager.orders WHERE status != 'Done'", nativeQuery = true)
     List<Order> findAllUndoneOrders();
+
+    @Query(value = "SELECT  COUNT(id) FROM car_workshop_manager.orders",nativeQuery = true)
+    Integer findNumberOfAllOrders();
 }

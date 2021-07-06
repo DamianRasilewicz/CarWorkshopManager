@@ -25,4 +25,6 @@ public interface OrderService {
 
     List<Order> findAllUndoneOrders();
 
+    Integer findNumberOfAllOrders();
+
 }

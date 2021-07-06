@@ -73,6 +73,9 @@ public class DashboardHomeController {
         Integer numberOfUndoneOrders = undoneOrderList.size();
         model.addAttribute("numberOfUndoneOrders", numberOfUndoneOrders);
 
+        Integer numberOfAllOrders = orderService.findNumberOfAllOrders();
+        model.addAttribute("numberOfAllOrders", numberOfAllOrders);
+
         return "dashboardPages/admin/dashboard";
 
     }
