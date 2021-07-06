@@ -1,6 +1,7 @@
 package pl.rasilewicz.car_workshop_manager.services;
 
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import pl.rasilewicz.car_workshop_manager.entities.User;
 
@@ -14,6 +15,8 @@ public interface UserService extends UserDetailsService {
 
     User findUserById(Integer id);
 
-    List<User> findAllUsers();
+    List<User> findAllUsers(String userName);
+
+    void deleteById(Integer id);
 
 }

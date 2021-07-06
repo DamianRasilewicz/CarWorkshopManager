@@ -2,6 +2,8 @@ package pl.rasilewicz.car_workshop_manager.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -40,12 +42,15 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Order> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Car> cars = new ArrayList<>();
 
     @ManyToOne()
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "role_id")
     private Role role ;
 

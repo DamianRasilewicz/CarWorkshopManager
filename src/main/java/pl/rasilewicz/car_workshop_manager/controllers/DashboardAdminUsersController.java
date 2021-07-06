@@ -33,8 +33,8 @@ public class DashboardAdminUsersController {
     }
 
     @GetMapping("/dashboard/admin/users")
-    public String userList (Model model){
-        List<User> userList = userService.findAllUsers();
+    public String userList (Model model, HttpSession session){
+        List<User> userList = userService.findAllUsers((String)session.getAttribute("userName"));
         model.addAttribute("userList", userList);
 
         return "dashboardPages/admin/users";
@@ -71,10 +71,26 @@ public class DashboardAdminUsersController {
         return "redirect:/dashboard/admin/users/edit?success";
     }
 
-    @GetMapping("/dashboard/admin/users/userVisitList")
-    public String userVisitList(Model model){
+    @GetMapping("/dashboard/admin/users/delete")
+    public String viewingAdminConfirmViewDeleteUser (@RequestParam Integer id, Model model){
+        User selectedUser = userService.findUserById(id);
+        model.addAttribute("selectedUser", selectedUser);
+        model.addAttribute("id", id);
 
-        List<User> userList = userService.findAllUsers();
+        return "dashboardPages/admin/confirmationDeleteUser";
+    }
+
+    @PostMapping("/dashboard/admin/users/delete")
+    public String afterAdminConfirmedBoxDeleteUser (Integer id){
+        userService.deleteById(id);
+
+        return "redirect:/dashboard/admin/users?userDeleteSuccess";
+    }
+
+    @GetMapping("/dashboard/admin/users/userVisitList")
+    public String userVisitList(Model model, HttpSession session){
+
+        List<User> userList = userService.findAllUsers((String)session.getAttribute("userName"));
         model.addAttribute("userList", userList);
 
         return "dashboardPages/admin/userVisitListAllUsers";
