@@ -67,4 +67,9 @@ public class OrderServiceImpl implements OrderService {
     public Integer findNumberOfAllOrders() {
         return orderRepository.findNumberOfAllOrders();
     }
+
+    @Override
+    public Integer findTotalRevenue() {
+        return orderRepository.findTotalRevenue();
+    }
 }

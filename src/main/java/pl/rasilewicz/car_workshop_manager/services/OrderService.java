@@ -27,4 +27,6 @@ public interface OrderService {
 
     Integer findNumberOfAllOrders();
 
+    Integer findTotalRevenue();
+
 }

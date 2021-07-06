@@ -33,4 +33,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     @Query(value = "SELECT  COUNT(id) FROM car_workshop_manager.orders",nativeQuery = true)
     Integer findNumberOfAllOrders();
+
+    @Query(value = "SELECT  SUM(work_cost) FROM car_workshop_manager.orders",nativeQuery = true)
+    Integer findTotalRevenue();
 }

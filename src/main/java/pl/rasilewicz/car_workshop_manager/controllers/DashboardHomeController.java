@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.rasilewicz.car_workshop_manager.entities.Order;
 import pl.rasilewicz.car_workshop_manager.services.OrderServiceImpl;
+import pl.rasilewicz.car_workshop_manager.services.UserServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.VisitDateServiceImpl;
 
 import java.time.LocalDate;
@@ -17,10 +18,12 @@ public class DashboardHomeController {
 
     private final OrderServiceImpl orderService;
     private final VisitDateServiceImpl visitDateService;
+    private final UserServiceImpl userService;
 
-    public DashboardHomeController(OrderServiceImpl orderService, VisitDateServiceImpl visitDateService) {
+    public DashboardHomeController(OrderServiceImpl orderService, VisitDateServiceImpl visitDateService, UserServiceImpl userService) {
         this.orderService = orderService;
         this.visitDateService = visitDateService;
+        this.userService = userService;
     }
 
     @GetMapping("/dashboard/user/home")
@@ -75,6 +78,9 @@ public class DashboardHomeController {
 
         Integer numberOfAllOrders = orderService.findNumberOfAllOrders();
         model.addAttribute("numberOfAllOrders", numberOfAllOrders);
+
+        Integer numberOfAllUsers = userService.findNumberOfAllUsers();
+        model.addAttribute("numberOfAllUsers", numberOfAllUsers);
 
         return "dashboardPages/admin/dashboard";
 
