@@ -24,6 +24,4 @@ public class Mechanic {
     @JoinColumn(name = "workshop_id")
     private Workshop workshop;
 
-    @ManyToMany(mappedBy = "mechanics")
-    private List<Order> orders ;
 }

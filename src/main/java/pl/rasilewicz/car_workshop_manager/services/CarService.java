@@ -13,4 +13,6 @@ public interface CarService {
 
     List<Car> findCarsByUserId(Integer userId);
 
+    void deleteById (Integer id);
+
 }

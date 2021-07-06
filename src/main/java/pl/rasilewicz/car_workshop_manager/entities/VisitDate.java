@@ -32,6 +32,7 @@ public class VisitDate {
     private Order order;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Workshop workshop;
 
     @ManyToOne()

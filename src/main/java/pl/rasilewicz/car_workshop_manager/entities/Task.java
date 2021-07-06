@@ -2,6 +2,8 @@ package pl.rasilewicz.car_workshop_manager.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,9 +22,6 @@ public class Task {
     private String description;
     private Double estimatedExecutionTime;
     private Integer estimatedCost;
-
-    @ManyToMany(mappedBy = "tasks")
-    private List<Order> orders ;
 
     public Task(){};
 }

@@ -114,6 +114,9 @@
                       <div class="card-header">
                           <h4 class="card-title">Cars</h4>
                       </div>
+                      <div th:if="${param.carDeleteSuccess}">
+                          <div class="alert alert-success" style="text-align: center">Car successfully deleted!</div>
+                      </div>
                       <div class="card-body">
                           <div class="table-responsive">
                               <table class="table">

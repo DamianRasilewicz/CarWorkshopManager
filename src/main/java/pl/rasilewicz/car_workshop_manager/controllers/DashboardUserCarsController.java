@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.rasilewicz.car_workshop_manager.entities.Car;
+import pl.rasilewicz.car_workshop_manager.entities.Order;
 import pl.rasilewicz.car_workshop_manager.entities.User;
 import pl.rasilewicz.car_workshop_manager.services.CarServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.UserServiceImpl;
@@ -50,5 +51,21 @@ public class DashboardUserCarsController {
         redirectAttributes.addAttribute("id", editingCar.getId());
 
         return "redirect:/dashboard/user/cars/edit?success";
+    }
+
+    @GetMapping("/dashboard/user/cars/delete")
+    public String viewingConfirmViewDeleteCar (@RequestParam Integer id, Model model){
+        Car selectedCar = carService.findCarById(id);
+        model.addAttribute("selectedCar", selectedCar);
+        model.addAttribute("id", id);
+
+        return "dashboardPages/user/confirmationDeleteCar";
+    }
+
+    @PostMapping("/dashboard/user/cars/delete")
+    public String afterConfirmedBoxDeleteCar (Integer id){
+        carService.deleteById(id);
+
+        return "redirect:/dashboard/user/cars?carDeleteSuccess";
     }
 }

@@ -48,11 +48,13 @@ public class Order {
 
 
     @ManyToMany()
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(name = "orders_mechanics", joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "mechanic_id"))
     private List<Mechanic> mechanics;
 
     @ManyToMany()
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(name = "orders_tasks", joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "task_id"))
     private List<Task> tasks;
@@ -65,6 +67,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "car_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Car car;
 
 }

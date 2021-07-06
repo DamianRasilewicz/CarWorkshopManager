@@ -32,4 +32,9 @@ public class CarServiceImpl implements CarService {
     public List<Car> findCarsByUserId(Integer userId) {
         return carRepository.findCarsByUserId(userId);
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        carRepository.deleteById(id);
+    }
 }
