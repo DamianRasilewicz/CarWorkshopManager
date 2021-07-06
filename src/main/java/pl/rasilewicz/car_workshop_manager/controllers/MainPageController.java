@@ -94,6 +94,7 @@ public class MainPageController {
 
         List<Task> taskList = taskService.findAllTasks();
         model.addAttribute("allTasks", taskList);
+        session.setAttribute("allTasks", taskList);
         System.out.println(taskList.toString());
 
         Workshop selectedWorkshop = workshopService.findWorkshopById(selectedWorkshopId);
@@ -125,7 +126,8 @@ public class MainPageController {
                                              BindingResult resultOrder, @ModelAttribute("car") @Valid Car car, BindingResult resultCar, @ModelAttribute("selectedDate") String selectedDate,
                                              @ModelAttribute("selectedVisitTime") String selectedTime, @RequestParam(value = "selectedTasks", required = false) Integer[] selectedTasks, Model  model,
                                              @SessionAttribute ("availableVisitTimeList") List<String> availableVisitTimeList, @SessionAttribute ("selectedWorkshop") Workshop selectedWorkshop,
-                                             SessionStatus sessionStatus, @SessionAttribute("carBrandsList") List<String> carBrandsList, @SessionAttribute("engineTypesList") List<String> engineTypesList){
+                                             SessionStatus sessionStatus, @SessionAttribute("carBrandsList") List<String> carBrandsList, @SessionAttribute("engineTypesList") List<String> engineTypesList,
+                                             @SessionAttribute("allTasks") List<Task> allTasks){
 
 
         if (resultUser.hasErrors() || resultOrder.hasErrors() || resultCar.hasErrors()) {
@@ -133,6 +135,7 @@ public class MainPageController {
             model.addAttribute("availableVisitTimeList", availableVisitTimeList);
             model.addAttribute("carBrandsList", carBrandsList);
             model.addAttribute("engineTypesList", engineTypesList);
+            model.addAttribute("allTasks", allTasks);
 
             return "mainPages/appointmentDetails";
         }
