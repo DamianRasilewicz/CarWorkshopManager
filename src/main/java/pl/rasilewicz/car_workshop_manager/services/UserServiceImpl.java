@@ -48,6 +48,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Integer findNumberOfAllUsers() {
+        return userRepository.findNumberOfAllUsers();
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findUserByUserName(userName);
         if (user == null) {

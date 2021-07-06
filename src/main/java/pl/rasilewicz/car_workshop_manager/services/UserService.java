@@ -19,4 +19,6 @@ public interface UserService extends UserDetailsService {
 
     void deleteById(Integer id);
 
+    Integer findNumberOfAllUsers();
+
 }
