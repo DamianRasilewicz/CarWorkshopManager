@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class User {
 
     private Boolean registered;
     private Boolean enabled;
+    private LocalDate registeredDate;
 
     @Size(min = 3, max = 30, message = "Please input correct user name")
     private String userName;

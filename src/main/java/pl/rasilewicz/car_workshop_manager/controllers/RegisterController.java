@@ -15,6 +15,7 @@ import pl.rasilewicz.car_workshop_manager.services.RoleServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.UserServiceImpl;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 
 @Controller
 public class RegisterController {
@@ -44,6 +45,7 @@ public class RegisterController {
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
         user.setRegistered(true);
         user.setEnabled(true);
+        user.setRegisteredDate(LocalDate.now());
 
         Role userRole = roleService.findRoleByName("USER");
         user.setRole(userRole);
