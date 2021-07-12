@@ -62,6 +62,8 @@ public class UserServiceImpl implements UserService {
         return new VLVUserDetails(user);
     }
 
-
-
+    @Override
+    public Integer findNumberOfMonthlyRegisteredUsers(Integer month, Integer year) {
+        return userRepository.findNumberOfMonthlyRegisteredUsers(month, year);
+    }
 }

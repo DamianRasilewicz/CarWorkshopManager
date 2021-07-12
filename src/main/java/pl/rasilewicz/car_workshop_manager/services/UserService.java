@@ -21,4 +21,6 @@ public interface UserService extends UserDetailsService {
 
     Integer findNumberOfAllUsers();
 
+    Integer findNumberOfMonthlyRegisteredUsers(Integer month, Integer year);
+
 }
