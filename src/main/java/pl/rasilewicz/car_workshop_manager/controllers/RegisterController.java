@@ -45,7 +45,11 @@ public class RegisterController {
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
         user.setRegistered(true);
         user.setEnabled(true);
-        user.setRegisteredDate(LocalDate.now());
+        LocalDate registeredDate = LocalDate.now();
+        user.setRegisteredDate(registeredDate);
+        user.setRegisteredDay(registeredDate.getDayOfMonth());
+        user.setRegisteredMonth(registeredDate.getMonthValue());
+        user.setRegisteredYear(registeredDate.getYear());
 
         Role userRole = roleService.findRoleByName("USER");
         user.setRole(userRole);

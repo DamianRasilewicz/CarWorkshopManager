@@ -37,6 +37,9 @@ public class User {
     private Boolean registered;
     private Boolean enabled;
     private LocalDate registeredDate;
+    private Integer registeredDay;
+    private Integer registeredMonth;
+    private Integer registeredYear;
 
     @Size(min = 3, max = 30, message = "Please input correct user name")
     private String userName;

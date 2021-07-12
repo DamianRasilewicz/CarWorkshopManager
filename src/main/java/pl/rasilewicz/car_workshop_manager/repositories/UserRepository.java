@@ -20,4 +20,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query(value = "SELECT COUNT(id) FROM car_workshop_manager.users;" ,nativeQuery = true)
     Integer findNumberOfAllUsers();
+//
+//    @Query(value = "SELECT COUNT(id) FROM car_workshop_manager.users;" ,nativeQuery = true)
+//    Integer findNumberOfAllUsers();
 }
