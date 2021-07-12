@@ -303,6 +303,25 @@
                     <span th:replace="/dashboardPages/admin/charts :: visitsChart"></span>
                 </div>
             </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-category" th:text="${presentYear}"></h5>
+                        <h4 class="card-title">Revenues</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="revenuesChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                        </div>
+                    </div>
+                    <span th:replace="/dashboardPages/admin/charts :: revenuesChart"></span>
+                </div>
+            </div>
         </div>
       </div>
       <span th:replace="/dashboardPages/admin/adminfooter :: footer"></span>

@@ -59,7 +59,7 @@ INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estim
 INSERT INTO car_workshop_manager.orders (status, estimated_execution_time, estimated_work_cost, parts_cost, work_cost, working_hours, final_cost, comment, car_id, user_id) VALUES ('In Progress', 6, 600, 0, 0, 0, 600,'none', 4, 4);
 
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-05-20', '13:00', 1, 1, 1, 20, 5, 2021);
-INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-05-17', '10:30', 2, 4, 1, 17, 6, 2021);
+INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-05-17', '10:30', 2, 4, 1, 17, 5, 2021);
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-06-12', '9:00', 3, 2, 1, 12, 6, 2021);
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-06-20', '10:00', 4, 2, 1, 20, 6, 2021);
 INSERT INTO car_workshop_manager.visit_dates (date, time, order_id, workshop_id, user_id, day, month, year) VALUES ('2021-01-03', '12:00', 5, 2, 1, 3, 1, 2021);

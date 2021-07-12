@@ -29,4 +29,6 @@ public interface OrderService {
 
     Integer findTotalRevenue();
 
+    Integer findMonthlyRevenue(Integer month, Integer year);
+
 }

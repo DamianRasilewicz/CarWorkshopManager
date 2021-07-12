@@ -27,7 +27,6 @@ display: true,
 },
 ticks: {
 beingAtZero: true,
-stepSize: 1
 }
 }],
 xAxes: [{
@@ -81,5 +80,88 @@ data: Object.keys(htmldata).map(function(key) {return htmldata[key];})
 options: gradientChartOptionsConfiguration
 });
 /*]]>*/
+</script>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<script th:fragment="revenuesChart" th:inline="javascript">
+    /*<![CDATA[*/
+    chartColor = "#FFFFFF";
+
+    // General configuration for the charts with Line gradientStroke
+    gradientChartOptionsConfiguration = {
+        maintainAspectRatio: false,
+        legend: {
+            display: false
+        },
+        tooltips: {
+            bodySpacing: 4,
+            mode:"nearest",
+            intersect: 0,
+            position:"nearest",
+            xPadding:10,
+            yPadding:10,
+            caretPadding:10
+        },
+        responsive: 1,
+        scales: {
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                },
+                ticks: {
+                    beingAtZero: true,
+                }
+            }],
+            xAxes: [{
+                display:0,
+                gridLines:0,
+                ticks: {
+                    display: false
+                },
+                gridLines: {
+                    zeroLineColor: "transparent",
+                    drawTicks: false,
+                    display: false,
+                    drawBorder: false
+                }
+            }]
+        },
+        layout:{
+            padding:{left:0,right:0,top:15,bottom:15}
+        }
+    };
+    var htmldata = [[${dataRevenuesChart}]];
+    ctx = document.getElementById('revenuesChart').getContext("2d");
+
+    gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, '#80b6f4');
+    gradientStroke.addColorStop(1, chartColor);
+
+    gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, "rgba(57, 249, 86, 0.4)");
+
+    exampleChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Object.keys(htmldata),
+            datasets: [{
+                label: "Revenues",
+                borderColor: "#33ff33",
+                pointBorderColor: "#FFF",
+                pointBackgroundColor: "#33ff33",
+                pointBorderWidth: 2,
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 1,
+                pointRadius: 4,
+                fill: true,
+                backgroundColor: gradientFill,
+                borderWidth: 2,
+                data: Object.keys(htmldata).map(function(key) {return htmldata[key];})
+            }]
+        },
+        options: gradientChartOptionsConfiguration
+    });
+    /*]]>*/
 </script>
 </html>

@@ -178,7 +178,7 @@ public class MainPageController {
         selectedVisitDate.setDate(selectedDateParsed);
         selectedVisitDate.setTime(selectedTime);
         selectedVisitDate.setWorkshop(selectedWorkshop);
-        selectedVisitDate.setOrder(order);
+//        selectedVisitDate.setOrder(order);
         selectedVisitDate.setDay(selectedDateParsed.getDayOfMonth());
         selectedVisitDate.setMonth(selectedDateParsed.getMonthValue());
         selectedVisitDate.setYear(selectedDateParsed.getYear());

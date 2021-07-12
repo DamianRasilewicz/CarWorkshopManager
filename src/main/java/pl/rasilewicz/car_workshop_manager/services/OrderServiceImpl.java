@@ -72,4 +72,9 @@ public class OrderServiceImpl implements OrderService {
     public Integer findTotalRevenue() {
         return orderRepository.findTotalRevenue();
     }
+
+    @Override
+    public Integer findMonthlyRevenue(Integer month, Integer year) {
+        return orderRepository.findMonthlyRevenue(month, year);
+    }
 }
