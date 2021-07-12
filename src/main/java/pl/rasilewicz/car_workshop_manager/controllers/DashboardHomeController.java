@@ -63,21 +63,25 @@ public class DashboardHomeController {
 
         Map<String, Integer> dataVisitsChart = new LinkedHashMap<String, Integer>();
         Map<String, Integer> dataRevenuesChart = new LinkedHashMap<String, Integer>();
+        Map<String, Integer> dataRegisteredUsersChart = new LinkedHashMap<String, Integer>();
 
         Integer presentYear = LocalDate.now().getYear();
 
         for (int i = 0; i < monthsList.size(); i++) {
             dataVisitsChart.put(monthsList.get(i), visitDateService.findNumberOfVisitDatesAllUsersOfYear(i + 1, presentYear));
+
             if (orderService.findMonthlyRevenue(i + 1, presentYear) == null){
                 dataRevenuesChart.put(monthsList.get(i), 0);
             } else {
                 dataRevenuesChart.put(monthsList.get(i), orderService.findMonthlyRevenue(i + 1, presentYear));
             }
 
+            dataRegisteredUsersChart.put(monthsList.get(i), userService.findNumberOfMonthlyRegisteredUsers(i + 1, presentYear));
         }
 
         model.addAttribute("dataVisitsChart", dataVisitsChart);
         model.addAttribute("dataRevenuesChart", dataRevenuesChart);
+        model.addAttribute("dataRegisteredUsersChart", dataRegisteredUsersChart);
         model.addAttribute("presentYear", presentYear);
 
         List<Order> threeUndoneOrderList = orderService.findThreeUndoneOrders();
