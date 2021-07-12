@@ -220,7 +220,7 @@ options: gradientChartOptionsConfiguration
 
     gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, "rgba(57, 249, 86, 0.4)");
+    gradientFill.addColorStop(1, "rgba(57, 166, 249, 0.4)");
 
     exampleChart = new Chart(ctx, {
         type: 'line',
@@ -228,9 +228,9 @@ options: gradientChartOptionsConfiguration
             labels: Object.keys(htmldata),
             datasets: [{
                 label: "Registered Users",
-                borderColor: "#33ff33",
+                borderColor: "#2ca8ff",
                 pointBorderColor: "#FFF",
-                pointBackgroundColor: "#33ff33",
+                pointBackgroundColor: "#2ca8ff",
                 pointBorderWidth: 2,
                 pointHoverRadius: 4,
                 pointHoverBorderWidth: 1,
