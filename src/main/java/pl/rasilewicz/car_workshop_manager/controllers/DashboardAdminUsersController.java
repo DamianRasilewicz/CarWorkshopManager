@@ -146,8 +146,11 @@ public class DashboardAdminUsersController {
 
         Context context = new Context();
         context.setVariable("selectedVisit", selectedVisit);
+        context.setVariable("visitDate", selectedVisit.getVisitDate());
+        context.setVariable("workshop", selectedVisit.getVisitDate().getWorkshop());
+        context.setVariable("car", selectedVisit.getCar());
         context.setVariable("user", selectedVisit.getUser());
-        String body = templateEngine.process("mailTemplate", context);
+        String body = templateEngine.process("/dashboardPages/admin/mailTemplate", context);
         mailService.sendEmail(selectedVisit.getUser().getEmail(), "Car workshop manager. Your order's status has been changed!", body);
 
 
