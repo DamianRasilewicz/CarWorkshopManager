@@ -152,10 +152,18 @@ public class DashboardAdminVisitsController {
     }
 
     @GetMapping("/dashboard/admin/allVisits/allUndoneOrders/delete")
-    public String deletingSelectedUndoneOrder (Model model){
-        List<Order> undoneOrderList = orderService.findAllUndoneOrders();
-        model.addAttribute("undoneOrderList", undoneOrderList);
+    public String deletingSelectedUndoneOrder (@RequestParam Integer id, Model model){
+        Order selectedVisit = orderService.findOrderById(id);
+        model.addAttribute("selectedVisit", selectedVisit);
+        model.addAttribute("id", id);
 
-        return "dashboardPages/admin/allUndoneOrders";
+        return "dashboardPages/admin/confirmationDeleteUndoneOrder";
+    }
+
+    @PostMapping("/dashboard/admin/allVisits/allUndoneOrders/delete")
+    public String afterConfirmedBoxDeleteUndoneOrder (Integer id){
+        orderService.deleteById(id);
+
+        return "redirect:/dashboard/admin/allVisits/allUndoneOrders?undoneOrderDeleteSuccess";
     }
 }

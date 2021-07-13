@@ -102,8 +102,8 @@
                       <div class="card-header">
                           <h4 class="card-title">All Undone Orders</h4>
                       </div>
-                      <div th:if="${param.orderDeleteSuccess}">
-                          <div class="alert alert-success" style="text-align: center">Order successfully deleted!</div>
+                      <div th:if="${param.undoneOrderDeleteSuccess}">
+                          <div class="alert alert-success" style="text-align: center">Undone order successfully deleted!</div>
                       </div>
                       <div class="card-body">
                           <div class="table-responsive">
@@ -142,8 +142,8 @@
                                       ${order.getVisitDate().getWorkshop().getNumber()}"></td>
                                       <td th:text="${order.getFinalCost()}"></td>
                                       <td class="text-center">
-                                          <a th:href="@{/dashboard/admin/allVisits/details(id=${order.getId()})}" class="btn btn-primary">Details</a>
-                                          <a th:href="@{/dashboard/admin/allVisits/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
+                                          <a th:href="@{/dashboard/admin/allVisits/allUndoneOrders/details(id=${order.getId()})}" class="btn btn-primary">Details</a>
+                                          <a th:href="@{/dashboard/admin/allVisits/allUndoneOrders/delete(id=${order.getId()})}" class="btn btn-danger">Delete</a>
                                       </td>
                                   </tr>
                                   </tbody>
