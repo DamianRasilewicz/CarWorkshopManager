@@ -105,4 +105,57 @@ public class DashboardAdminVisitsController {
 
         return "redirect:/dashboard/admin/allVisits?visitDeleteSuccess";
     }
+
+    @GetMapping("/dashboard/admin/allVisits/allUndoneOrders")
+    public String viewingAllUndoneOrders (Model model){
+        List<Order> undoneOrderList = orderService.findAllUndoneOrders();
+        model.addAttribute("undoneOrderList", undoneOrderList);
+
+        return "dashboardPages/admin/allUndoneOrders";
+    }
+
+    @GetMapping("/dashboard/admin/allVisits/allUndoneOrders/details")
+    public String viewingDetailsSelectedUndoneOrder (@RequestParam Integer id, Model model){
+        Order selectedUndoneOrder = orderService.findOrderById(id);
+        model.addAttribute("selectedUndoneOrder", selectedUndoneOrder);
+
+        List<String> statusList = Arrays.asList("Waiting for approval", "Pending", "In progress", "In progress - delayed",  "Done");
+        model.addAttribute("statusList", statusList);
+
+        return "dashboardPages/admin/undoneOrderDetails";
+    }
+
+    @PostMapping("/dashboard/admin/allVisits/allUndoneOrders/details")
+    public String changedUndoneSelectedOrder (@ModelAttribute("selectedVisitId") Integer selectedVisitId, @ModelAttribute("estimatedExecutionTime") Double estimatedExecutionTime, @ModelAttribute("estimatedWorkCost") Integer estimatedWorkCost,
+                                            @ModelAttribute("workingHours") Integer workingHours, @ModelAttribute("workCost") Double workCost, @ModelAttribute("partsCost") Double partsCost,
+                                            @ModelAttribute("finalCost") Double finalCost, @ModelAttribute("moreInformation") String moreInformation, @ModelAttribute("wroteComment") String wroteComment,
+                                            @ModelAttribute("status") String status, RedirectAttributes redirectAttributes){
+
+        Order selectedVisit = orderService.findOrderById(selectedVisitId);
+        selectedVisit.setEstimatedExecutionTime(estimatedExecutionTime);
+        selectedVisit.setEstimatedWorkCost(estimatedWorkCost);
+        selectedVisit.setWorkingHours(workingHours);
+        selectedVisit.setWorkCost(workCost);
+        selectedVisit.setPartsCost(partsCost);
+        selectedVisit.setFinalCost(finalCost);
+        selectedVisit.setMoreInformation(moreInformation);
+        selectedVisit.setComment(wroteComment);
+        selectedVisit.setStatus(status);
+        orderService.save(selectedVisit);
+
+
+        redirectAttributes.addAttribute("id", selectedVisit.getId());
+
+
+
+        return  "redirect:/dashboard/admin/allVisits/allUndoneOrders/details?success";
+    }
+
+    @GetMapping("/dashboard/admin/allVisits/allUndoneOrders/delete")
+    public String deletingSelectedUndoneOrder (Model model){
+        List<Order> undoneOrderList = orderService.findAllUndoneOrders();
+        model.addAttribute("undoneOrderList", undoneOrderList);
+
+        return "dashboardPages/admin/allUndoneOrders";
+    }
 }
