@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 import pl.rasilewicz.car_workshop_manager.entities.Order;
 import pl.rasilewicz.car_workshop_manager.entities.Role;
 import pl.rasilewicz.car_workshop_manager.entities.User;
+import pl.rasilewicz.car_workshop_manager.services.MailServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.OrderServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.RoleServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.UserServiceImpl;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
@@ -25,11 +26,16 @@ public class DashboardAdminUsersController {
     private final UserServiceImpl userService;
     private final RoleServiceImpl roleService;
     private final OrderServiceImpl orderService;
+    private final MailServiceImpl mailService;
+    private final TemplateEngine templateEngine;
 
-    public DashboardAdminUsersController(UserServiceImpl userService, RoleServiceImpl roleService, OrderServiceImpl orderService) {
+    public DashboardAdminUsersController(UserServiceImpl userService, RoleServiceImpl roleService, OrderServiceImpl orderService,
+                                         MailServiceImpl mailService, TemplateEngine templateEngine) {
         this.userService = userService;
         this.roleService = roleService;
         this.orderService = orderService;
+        this.mailService = mailService;
+        this.templateEngine = templateEngine;
     }
 
     @GetMapping("/dashboard/admin/users")
@@ -137,6 +143,12 @@ public class DashboardAdminUsersController {
         selectedVisit.setComment(wroteComment);
         selectedVisit.setStatus(status);
         orderService.save(selectedVisit);
+
+        Context context = new Context();
+        context.setVariable("selectedVisit", selectedVisit);
+        context.setVariable("user", selectedVisit.getUser());
+        String body = templateEngine.process("mailTemplate", context);
+        mailService.sendEmail(selectedVisit.getUser().getEmail(), "Car workshop manager. Your order's status has been changed!", body);
 
 
         redirectAttributes.addAttribute("id", selectedVisit.getId());
