@@ -114,6 +114,9 @@ public class DashboardAdminUsersController {
         Order selectedOrderDetails = orderService.findOrderById(id);
         model.addAttribute("selectedOrderDetails", selectedOrderDetails);
 
+        List<String> statusList = Arrays.asList("Waiting for approval", "Pending", "In progress", "In progress - delayed",  "Done");
+        model.addAttribute("statusList", statusList);
+
         return "dashboardPages/admin/selectedUserVisitDetails";
     }
 
