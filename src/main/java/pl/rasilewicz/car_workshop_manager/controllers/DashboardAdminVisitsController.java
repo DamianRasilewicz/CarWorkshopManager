@@ -13,6 +13,7 @@ import pl.rasilewicz.car_workshop_manager.services.OrderServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.VisitDateServiceImpl;
 
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -40,6 +41,9 @@ public class DashboardAdminVisitsController {
     public String viewingAdminSelectedVisit (@RequestParam Integer id, Model model){
         Order selectedVisit = orderService.findOrderById(id);
         model.addAttribute("selectedVisit", selectedVisit);
+
+        List<String> statusList = Arrays.asList("Waiting for approval", "Pending", "In progress", "In progress - delayed",  "Done");
+        model.addAttribute("statusList", statusList);
 
         return "dashboardPages/admin/visitDetails";
     }
