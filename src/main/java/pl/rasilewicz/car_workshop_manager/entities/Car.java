@@ -37,7 +37,6 @@ public class Car {
     @Range(min = 10, max = 2000, message = "Please input correct engine power")
     private String enginePower;
 
-    @ManyToOne()
-    @JoinColumn(name = "user_id")
+    @ManyToOne
     private User user;
 }
