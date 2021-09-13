@@ -31,7 +31,8 @@ public class VisitDate {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Order order;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "workshop_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Workshop workshop;
 
