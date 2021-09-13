@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:include="/mainPages/header :: head"></head>
+<head th:include="mainPages/header :: head"></head>
 <body>
 
-<span th:replace="/mainPages/header :: header"></span>
+<span th:replace="mainPages/header :: header"></span>
 
 <div id="banner-area" class="banner-area" th:style="'background-image:url(' + @{/images/banner/banner1.jpg} + ');'">
   <div class="banner-text">
@@ -46,7 +46,7 @@
   </div><!-- Conatiner end -->
 </section><!-- Main container end -->
 
-<span th:replace="/mainPages/footer :: footer"></span>
+<span th:replace="mainPages/footer :: footer"></span>
   </body>
 
   </html>
