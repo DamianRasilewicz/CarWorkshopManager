@@ -14,7 +14,9 @@
     <name>car_workshop_manager</name>
     <description>Car Workshop Manager</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>13</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
