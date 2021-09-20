@@ -151,10 +151,10 @@ public class DashboardAdminUsersController {
         context.setVariable("car", selectedVisit.getCar());
         context.setVariable("user", selectedVisit.getUser());
         if (selectedVisit.getStatus().equals("Done")){
-            String body = templateEngine.process("/dashboardPages/admin/mailTemplateDone", context);
+            String body = templateEngine.process("dashboardPages/admin/mailTemplateDone", context);
             mailService.sendEmail(selectedVisit.getUser().getEmail(), "Car workshop manager. Your order's status has been changed!", body);
         }else {
-            String body = templateEngine.process("/dashboardPages/admin/mailTemplateInProgress", context);
+            String body = templateEngine.process("dashboardPages/admin/mailTemplateInProgress", context);
             mailService.sendEmail(selectedVisit.getUser().getEmail(), "Car workshop manager. Your order's status has been changed!", body);
         }
 
