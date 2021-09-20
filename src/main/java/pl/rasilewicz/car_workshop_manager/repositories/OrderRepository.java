@@ -37,7 +37,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     @Query(value = "SELECT  SUM(work_cost) FROM car_workshop_manager.orders",nativeQuery = true)
     Integer findTotalRevenue();
 
-    @Query(value = "SELECT SUM(work_cost) FROM car_workshop_manager.orders INNER JOIN visit_dates ON orders.id = visit_dates.order_id WHERE month = ?1 AND year = ?2",nativeQuery = true)
+    @Query(value = "SELECT SUM(work_cost) FROM car_workshop_manager.orders INNER JOIN car_workshop_manager.visit_dates ON orders.id = visit_dates.order_id WHERE month = ?1 AND year = ?2",nativeQuery = true)
     Integer findMonthlyRevenue(Integer month, Integer year);
 
 }
