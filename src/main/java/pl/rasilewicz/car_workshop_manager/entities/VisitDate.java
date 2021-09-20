@@ -38,5 +38,6 @@ public class VisitDate {
 
     @ManyToOne()
     @JoinColumn(name = "user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 }
