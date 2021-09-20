@@ -170,6 +170,9 @@ public class MainPageController {
         order.setStatus("Pending approval");
         order.setEstimatedWorkCost(estimatedCost);
         order.setEstimatedExecutionTime(estimatedExecutionTime);
+        order.setWorkingHours(0);
+        order.setComment("none");
+        order.setCar(car);
         orderService.save(order);
 
         LocalDate selectedDateParsed = LocalDate.parse(selectedDate);

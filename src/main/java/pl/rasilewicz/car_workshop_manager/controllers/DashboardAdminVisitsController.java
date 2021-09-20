@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 import pl.rasilewicz.car_workshop_manager.entities.Order;
 import pl.rasilewicz.car_workshop_manager.services.CarServiceImpl;
+import pl.rasilewicz.car_workshop_manager.services.MailServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.OrderServiceImpl;
 import pl.rasilewicz.car_workshop_manager.services.VisitDateServiceImpl;
 
@@ -22,11 +25,16 @@ public class DashboardAdminVisitsController {
     private final OrderServiceImpl orderService;
     private final CarServiceImpl carService;
     private final VisitDateServiceImpl visitDateService;
+    private final MailServiceImpl mailService;
+    private final TemplateEngine templateEngine;
 
-    public DashboardAdminVisitsController(OrderServiceImpl orderService, CarServiceImpl carService, VisitDateServiceImpl visitDateService){
+    public DashboardAdminVisitsController(OrderServiceImpl orderService, CarServiceImpl carService, VisitDateServiceImpl visitDateService,
+                                          MailServiceImpl mailService, TemplateEngine templateEngine){
         this.orderService = orderService;
         this.carService = carService;
         this.visitDateService = visitDateService;
+        this.mailService = mailService;
+        this.templateEngine = templateEngine;
     }
 
     @GetMapping("/dashboard/admin/allVisits")
@@ -65,6 +73,20 @@ public class DashboardAdminVisitsController {
         selectedVisit.setComment(wroteComment);
         selectedVisit.setStatus(status);
         orderService.save(selectedVisit);
+
+        Context context = new Context();
+        context.setVariable("selectedVisit", selectedVisit);
+        context.setVariable("visitDate", selectedVisit.getVisitDate());
+        context.setVariable("workshop", selectedVisit.getVisitDate().getWorkshop());
+        context.setVariable("car", selectedVisit.getCar());
+        context.setVariable("user", selectedVisit.getUser());
+        if (selectedVisit.getStatus().equals("Done")){
+            String body = templateEngine.process("dashboardPages/admin/mailTemplateDone", context);
+            mailService.sendEmail(selectedVisit.getUser().getEmail(), "Car workshop manager. Your order's status has been changed!", body);
+        }else {
+            String body = templateEngine.process("dashboardPages/admin/mailTemplateInProgress", context);
+            mailService.sendEmail(selectedVisit.getUser().getEmail(), "Car workshop manager. Your order's status has been changed!", body);
+        }
 
 
         redirectAttributes.addAttribute("id", selectedVisit.getId());
