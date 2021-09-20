@@ -6,6 +6,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 import pl.rasilewicz.car_workshop_manager.entities.*;
 import pl.rasilewicz.car_workshop_manager.services.*;
 
@@ -24,10 +26,13 @@ public class MainPageController {
     private final UserServiceImpl userService;
     private final CarServiceImpl carService;
     private final RoleServiceImpl roleService;
+    private final MailServiceImpl mailService;
+    private final TemplateEngine templateEngine;
 
     public MainPageController(TaskServiceImpl taskService, WorkshopServiceImpl workshopService,
                               VisitDateServiceImpl visitDateService, OrderServiceImpl orderService,
-                              UserServiceImpl userService, CarServiceImpl carService, RoleServiceImpl roleService){
+                              UserServiceImpl userService, CarServiceImpl carService, RoleServiceImpl roleService,
+                              MailServiceImpl mailService, TemplateEngine templateEngine){
         this.taskService = taskService;
         this.workshopService = workshopService;
         this.visitDateService = visitDateService;
@@ -35,6 +40,8 @@ public class MainPageController {
         this.userService = userService;
         this. carService = carService;
         this.roleService = roleService;
+        this.mailService = mailService;
+        this.templateEngine = templateEngine;
     }
 
     @GetMapping("/")
@@ -188,6 +195,16 @@ public class MainPageController {
         selectedVisitDate.setUser(user);
 
         visitDateService.save(selectedVisitDate);
+
+        Context context = new Context();
+        context.setVariable("selectedVisit", order);
+        context.setVariable("visitDate", selectedVisitDate);
+        context.setVariable("workshop", selectedVisitDate.getWorkshop());
+        context.setVariable("car", order.getCar());
+        context.setVariable("user", order.getUser());
+            String body = templateEngine.process("dashboardPages/admin/mailTemplateRegisteredOrder", context);
+            mailService.sendEmail(order.getUser().getEmail(), "Car workshop manager. Your order has been registered!", body);
+
 
         sessionStatus.setComplete();
 
