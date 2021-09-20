@@ -63,6 +63,7 @@ public class Order {
     private User user;
 
     @OneToOne(mappedBy = "order")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private VisitDate visitDate;
 
     @ManyToOne
