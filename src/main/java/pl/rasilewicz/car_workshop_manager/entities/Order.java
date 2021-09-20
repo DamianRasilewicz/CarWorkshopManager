@@ -22,16 +22,16 @@ public class Order {
     @Column
     private String status;
 
-    @Column(columnDefinition = "Decimal(5,2) default 0.00")
+    @Column(columnDefinition = "Decimal(10,2) default 0.00")
     private double finalCost;
 
     @Column(columnDefinition = "integer default 0")
     private Integer workingHours;
 
-    @Column(columnDefinition = "Decimal(5,2) default 0.00")
+    @Column(columnDefinition = "Decimal(10,2) default 0.00")
     private double partsCost;
 
-    @Column(columnDefinition = "Decimal(5,2) default 0.00")
+    @Column(columnDefinition = "Decimal(10,2) default 0.00")
     private double workCost;
 
     @Column(columnDefinition = "varchar(255) default '' ")
@@ -40,7 +40,7 @@ public class Order {
     @Column(columnDefinition = "varchar(255) default '' ")
     private String moreInformation;
 
-    @Column(columnDefinition = "Decimal(5,2) default 0.00")
+    @Column(columnDefinition = "Decimal(10,2) default 0.00")
     private double estimatedExecutionTime;
 
     @Column(columnDefinition = "integer default 0")
