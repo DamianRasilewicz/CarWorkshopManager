@@ -217,5 +217,10 @@ public class MainPageController {
         return "mainPages/appointmentSuccess";
     }
 
+    @GetMapping("/stillWorking")
+    public String stillWorkingTemplate(){
+
+        return "mainPages/stillWorking";
+    }
 
 }
