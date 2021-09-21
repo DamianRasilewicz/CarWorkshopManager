@@ -26,7 +26,7 @@ It's a web application to manage your workshop. You have stats, undone orders an
 ![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/registration.png)
 
   - **Admin Dashboard**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/adminDashboard.png)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/d07c3ef819eaf5ad3fa68d6bb13dfc3188c2897f/src/main/demoViews/adminDashboard.png)
 
   - **Admin Dashboard Stats**
 ![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/adminDashboardStats.png)
