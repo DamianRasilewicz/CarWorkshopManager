@@ -13,38 +13,41 @@ It's a web application to manage your workshop. You have stats, undone orders an
 ## User flow
 
  - **Main Page**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/mainPage.png)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/mainPage.png)
 
  - **Appointment Page**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/appointment1)
- ![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/appointment2)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/appointment1.png)
+ ![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/appointment2.png)
  
   - **Login Page**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/login)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/login.png)
 
   - **Registration Page**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/registration.png)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/registration.png)
 
   - **Admin Dashboard**
 ![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/d07c3ef819eaf5ad3fa68d6bb13dfc3188c2897f/src/main/demoViews/adminDashboard.png)
 
   - **Admin Dashboard Stats**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/adminDashboardStats.png)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/adminDashboardStats.png)
 
   - **All visits**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/allVisits.png)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/allVisits.png)
 
   - **Visit details**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/visitDetails.png)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/visitDetails.png)
 
 - **Profile**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/profile.png)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/profile.png)
 
  - **All users**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/allUsers.png)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/allUsers.png)
 
 - **Users' visits**
-![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/usersVisits.png)
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/usersVisits.png)
+
+- **User Dashboard**
+![](https://github.com/DamianRasilewicz/CarWorkshopManager/blob/5e18361c9a100aa4de922d2d5c471a55246e40db/src/main/demoViews/userDashboard.png)
 
 ## Try Application
 
