@@ -40,7 +40,7 @@ It's a web application to manage your workshop. You have stats, undone orders an
 - **Profile**
 ![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/profile.png)
 
-  - **All users**
+ - **All users**
 ![](https://github.com/DamianRasilewicz/CarWorkshopManager/tree/main/src/main/demoViews/allUsers.png)
 
 - **Users' visits**
