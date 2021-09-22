@@ -24,8 +24,8 @@ MailServiceImpl implements MailService {
         try {
             MimeMessageHelper helper = new MimeMessageHelper(mail, true);
             helper.setTo(to);
-            helper.setReplyTo("carworkshopmanager@gmail.com");
-            helper.setFrom("carworkshopmanager@gmail.com");
+            helper.setReplyTo("carworkshopmanager@outlook.com");
+            helper.setFrom("carworkshopmanager@outlook.com");
             helper.setSubject(subject);
             helper.setText(content, true);
         } catch (MessagingException e) {
